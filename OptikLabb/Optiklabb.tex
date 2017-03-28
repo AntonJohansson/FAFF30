@@ -10,8 +10,19 @@
 \usepackage[runin]{abstract}
 \renewcommand{\abstitleskip}{0mm}
 
+\usepackage{hyperref}
+\usepackage{amsmath}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
+
+\addto\extrasswedish{%
+	\def\equationautorefname{Ekvation}%
+	\def\figureautorefname{Figur}%
+	\def\tableautorefname{Tabell}%
+	\def\sectionautorefname{Rubrik}%
+	\def\subsectionautorefname{Underrubrik}%
+	\def\pageautorefname{Sida}%
+}
 
 \usepackage{graphicx}
 \usepackage{ccaption}
@@ -94,58 +105,65 @@ Lämnad till handledare: &	2013-xx-xx \\
 
 \begin{multicols}{2}
   \section*{Inledning}
-  Preliminär beskrivning av uppgiften  i lättfattliga termer. Bakgrunden
-  till att man intresserar sig för detta problem, denna uppgift. Hur den
-  ingår i ett större sammanhang.
+  %Preliminär beskrivning av uppgiften  i lättfattliga termer. Bakgrunden till att man intresserar sig för detta problem, denna uppgift. Hur den ingår i ett större sammanhang.
 
-  En detaljerad beskrivning av vad det hela går ut på, och vad exakt din
-  uppgift   i    sammanhanget   är.    Utrustningsförutsättningar.   Det
-  ursprungligen avsedda målet. Även den i ämnet oinsatte ska ha en ärlig
-  chans att förstå de stora dragen.
+%  En detaljerad beskrivning av vad det hela går ut på, och vad exakt din uppgift   i    sammanhanget   är.    Utrustningsförutsättningar.   Det
+%  ursprungligen avsedda målet. Även den i ämnet oinsatte ska ha en ärlig
+%  chans att förstå de stora dragen.
+%
+%  Beskrivning av hur rapporten är uppbyggd, för att göra det möjligt för
+%  läsaren att förstå vad som  pågår, ge läsaren rätta förväntningar, och
+%  för  att  underlätta direktåtkomst  av  för  den individuelle  läsaren
+%  särskilt intressanta delar.
 
-  Beskrivning av hur rapporten är uppbyggd, för att göra det möjligt för
-  läsaren att förstå vad som  pågår, ge läsaren rätta förväntningar, och
-  för  att  underlätta direktåtkomst  av  för  den individuelle  läsaren
-  särskilt intressanta delar.
-  
-  \begin{equation}
-  \alpha' = \arcsin\left(\frac{\sin\alpha}{n}\right)
+
+
+  \begin{align} 
+  \alpha' &= \arcsin\left(\frac{\sin\alpha}{n}\right)\label{eq:alphaPrim}\\
+  \beta &= \arcsin\left(n \sin\beta'\right)\label{eq:beta}\\
+  \beta' &= A-\alpha'\label{eq:betaPrim}\\
+  \delta &= \alpha+\beta-\alpha'-\beta'  \label{eq:delta}
+  \end{align}
+
+  \begin{equation} \label{eq:avlänkning}
+  \delta = \alpha-A+\arcsin\left(n \sin\left(A-\arcsin\left(\frac{\sin\alpha}{n}\right)\right)\right)
   \end{equation}
 
   \section{Metod}
-  De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
-  algoritmer,  programspråk och  annan programvara,  undersökningsmetod,
-  statistiska  metoder. Där  valmöjligheter finns,  diskutera de  gjorda
-  valen.
+  % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
+  % algoritmer,  programspråk och  annan programvara,  undersökningsmetod,
+  % statistiska  metoder. Där  valmöjligheter finns,  diskutera de  gjorda
+  % valen.
+  \autoref{eq:beta}
 
   \section{Resultat}
-  Vad man  kommer fram till?  Om uppgiften innebär programmering  så kan
-  det färdiga programmet i sig vara resultatet.  Här är det i så fall på
-  sin  plats  med  beskrivningar  av programmet,  till  exempel  teknisk
-  beskrivning,    funktionell    beskrivning,    användningsbeskrivning,
-  användargränssnitt  etc.  Genomförandebeskrivning  kommer  i  så  fall
-  närmast att handla om programutvecklingen.
+  %Vad man  kommer fram till?  Om uppgiften innebär programmering  så kan
+  %det färdiga programmet i sig vara resultatet.  Här är det i så fall på
+  %sin  plats  med  beskrivningar  av programmet,  till  exempel  teknisk
+  %beskrivning,    funktionell    beskrivning,    användningsbeskrivning,
+  %användargränssnitt  etc.  Genomförandebeskrivning  kommer  i  så  fall
+  %närmast att handla om programutvecklingen.
 
-  Men det kan också vara så  att det snarare är programmets beteende som
-  är resultatet.  Man utvecklar till  exempel en numerisk metod  för att
-  lösa ett problem,  och sedan gör man experiment  med testkörningar och
-  analyserar dessa test.
+  %Men det kan också vara så  att det snarare är programmets beteende som
+  %är resultatet.  Man utvecklar till  exempel en numerisk metod  för att
+  %lösa ett problem,  och sedan gör man experiment  med testkörningar och
+  %analyserar dessa test.
 
   \section{Diskussion}
-  Är resultaten rimliga? Vad hade kunnat göras annorlunda?
+  %Är resultaten rimliga? Vad hade kunnat göras annorlunda?
 
   \section{Slutsats/avslutning}
-  En   sammanfattning  där   man  till   skillnad  från   den  inledande
-  sammanfattningen förutsätter  att läsaren har läst  rapporten, samt de
-  slutsatser man kan dra av det gjorda arbetet.
+  %En   sammanfattning  där   man  till   skillnad  från   den  inledande
+  %sammanfattningen förutsätter  att läsaren har läst  rapporten, samt de
+  %slutsatser man kan dra av det gjorda arbetet.
 
   \section{Referenser}
-  Den använda litteraturen.
+  %Den använda litteraturen.
 
   \section{Appendix}
-  Eventuell     användarhandledning,     källkod,    anvisningar     för
-  systemgenerering, och liknande som inte  är av omedelbart intresse för
-  den ordinäre läsaren, läggs lämpligen som appendix.
+  %Eventuell     användarhandledning,     källkod,    anvisningar     för
+  %systemgenerering, och liknande som inte  är av omedelbart intresse för
+  %den ordinäre läsaren, läggs lämpligen som appendix.
 
 \end{multicols}
 
