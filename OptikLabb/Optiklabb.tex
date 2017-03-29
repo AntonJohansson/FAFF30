@@ -14,6 +14,7 @@
 \usepackage{amsmath}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
+\usepackage{tikz}
 
 \addto\extrasswedish{%
 	\def\equationautorefname{Ekvation}%
@@ -116,8 +117,6 @@ Lämnad till handledare: &	2013-xx-xx \\
 %  för  att  underlätta direktåtkomst  av  för  den individuelle  läsaren
 %  särskilt intressanta delar.
 
-
-
   \begin{align} 
   \alpha' &= \arcsin\left(\frac{\sin\alpha}{n}\right)\label{eq:alphaPrim}\\
   \beta &= \arcsin\left(n \sin\beta'\right)\label{eq:beta}\\
@@ -166,6 +165,36 @@ Lämnad till handledare: &	2013-xx-xx \\
   %den ordinäre läsaren, läggs lämpligen som appendix.
 
 \end{multicols}
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[scale=1.5]
+		\draw (0, 0) -- ({4/sqrt(3)}, -4) -- ({-4/sqrt(3)}, -4) -- (0, 0); % Triangeln
+		
+		\draw (-3, -3) -- ({-2/sqrt(3)}, -2) -- ({1.8/sqrt(3)}, -1.8) -- (2.8, -3); % Den brutna ljusstrålen
+		\draw [dashed] ({-2/sqrt(3)}, -2) -- ({6 - 2*sqrt(3)}, 0); % Hjälplinjer
+		\draw [dashed] ({1.8/sqrt(3)}, -1.8) -- (-1.65, 0);
+		\draw [dashed] ({-2/sqrt(3)-1}, {-(6-sqrt(3))/3}) -- ({-2/sqrt(3)+1}, {-(6+sqrt(3))/3});
+		\draw [dashed] ({1.8/sqrt(3)-1}, -2.4) -- ({1.8/sqrt(3)+1}, -1.25);
+		
+		\draw ({-0.4/2}, {-0.4*sqrt(3)/2}) arc [radius=0.4, start angle=240, end angle=300]; % Toppvinkeln
+		\draw ({-2/sqrt(3) - (sqrt(3)*0.4)/2}, {-2 + 0.4/2}) arc [radius=0.4, start angle=150, end angle={150+58.45}]; % Infallsvinkeln
+		\draw ({0.23 + 2.3*0.83}, {-1.25 - 2.3*0.56}) arc [radius=2.3, start angle=-34, end angle=28.5]; % Avlänkningsvinkeln
+		\draw ({1.8/sqrt(3) + 0.4*0.83}, {-1.8 - 0.4*0.56}) arc [radius=0.4, start angle=-34, end angle=30]; % Lämningsvinkeln
+		\draw ({-2/sqrt(3) + 0.4*sqrt(3)/2}, {-2 - 0.4*0.5}) arc [radius=0.4, start angle=-30, end angle=5.2]; % Hjälpvinklar
+		\draw ({1.8/sqrt(3) - 0.4*0.996}, {-1.8 - 0.4*0.091}) arc [radius=0.4, start angle=185.2, end angle=210];
+		\draw ({-0.21 + 0.2*sqrt(3)/2}, {-2.55 + 0.2*0.5}) arc [radius=0.2, start angle=30, end angle=150];
+		
+		\node [left] at ({-2/sqrt(3)-0.4}, -2) {$\alpha$};
+		\node [right] at ({-2/sqrt(3)+0.4}, -2.1) {$\alpha'$};
+		\node [left] at ({1.8/sqrt(3)-0.4}, -2.05) {$\beta'$};
+		\node [right] at ({1.8/sqrt(3)+0.4}, -1.8) {$\beta$};
+		\node [right] at ({0.23 + 2.3}, -1.25) {$\delta$};
+		\node [below] at (0, -0.4) {$A$};
+		\node [above] at (-0.21, -2.35) {$B$};
+	\end{tikzpicture}
+	\caption{Test}
+\end{figure}
 
 \section{\LaTeX-kommentarer}
 Kompileras enklast med \texttt{pdflatex}. Använd TeX Live i Linux och
