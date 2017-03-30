@@ -15,6 +15,8 @@
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows.meta}
 
 \addto\extrasswedish{%
 	\def\equationautorefname{Ekvation}%
@@ -133,7 +135,14 @@ Lämnad till handledare: &	2013-xx-xx \\
   % algoritmer,  programspråk och  annan programvara,  undersökningsmetod,
   % statistiska  metoder. Där  valmöjligheter finns,  diskutera de  gjorda
   % valen.
-  \autoref{eq:beta}
+  
+  % Beskrivning av mätning av fokallängd här.
+  
+  En laser leddes genom ett optiskt fiber och en lins användes för att kollimera stålen när den lämnade fibret. Två irisar placerades på en väldefinierad linje och lasern leddes genom dessa för att bekräfta att lasern var rak och kollimerad.
+  
+  Ett prisma på en graderad roterbar platta placerades i laserstrålens väg och en millimetergraderad skärm placerades ut parallell med laserstrålen så att den brutna strålen träffade skärmen enligt \autoref{fig:exp}. Prismat roterades så att laserstrålen träffade rakt på ($\alpha=0$) och prismats rotation antecknades. Sedan roterades prismat 2\textdegree upprepade gånger och positionen där laserstrålen träffade skärmen antecknades och räknades om till vinkeln $\gamma$.
+  
+  Mätvärdena matades in i matlab och där användes appen ``Curve Fitting'' för att hitta ett brytningsindex så att ekvationen \eqref{eq:avlänkning} gäller så väl som möjligt.
 
   \section{Resultat}
   %Vad man  kommer fram till?  Om uppgiften innebär programmering  så kan
@@ -193,7 +202,29 @@ Lämnad till handledare: &	2013-xx-xx \\
 		\node [below] at (0, -0.4) {$A$};
 		\node [above] at (-0.21, -2.35) {$B$};
 	\end{tikzpicture}
-	\caption{Test}
+	\caption{Ljusstråle som bryts genom ett prisma med de hjälpvinklar som behövs för att räkna ut avlänkningsvinkeln.}
+	\label{eq:prisma}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[scale=1.5]
+		\draw [decorate,decoration={brace,amplitude=10pt}] (0, 0) -- (0, 2) node [midway,left,xshift=-10pt] {$y_0$};
+		\draw [decorate,decoration={brace,amplitude=10pt}] (0, 2) -- (2, 2) node [midway,above,yshift=10pt] {$x_0$};
+		\draw [decorate,decoration={brace,amplitude=7pt,mirror}] (2, 2) -- (3, 2) node [midway,below,yshift=-5pt,xshift=-2pt] {$x$};
+		\draw [dashed] (0, 0) -- (0, 3);
+		\draw [dashed] (-1, 2) -- (2, 2);
+		\draw (2, 2) -- (4, 2);
+		\draw [-{>[scale=1.5]}] (0, 0) -- (1.5, 1);
+		\draw (1.5, 1) -- (3, 2);
+		\node [below] at (0, 0) {Prisma};
+		\node [above] at (3, 2) {Skärm};
+		\draw (0.5, 0) arc [radius=0.5, start angle=0, end angle={atan(2/3)}] node [midway,right,yshift=1pt] {$\gamma=\arctan(\frac{y_0}{x_0+x})$};
+		\draw [-{>[scale=1.5]}] (-2, 0) -- (-1, 0) node [midway,above,xshift=-5pt,yshift=2pt] {Inkommande laser};
+		\draw (-1, 0) -- (0, 0);
+		\draw [dashed] (0, 0) -- (1, 0);
+	\end{tikzpicture}
+	\caption{Experimentuppställning}
+	\label{fig:exp}
 \end{figure}
 
 \section{\LaTeX-kommentarer}
