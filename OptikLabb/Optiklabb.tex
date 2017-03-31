@@ -121,7 +121,13 @@ Lämnad till handledare: &	2013-xx-xx \\
 
   \section{Teori}
   
+  För att räkna ut avlänkningsvinkeln i ett prisma ritas \autoref{fig:prisma} upp med hjälpvinklarna $\alpha'$, $\beta'$ och $\beta$. Med hjälp av vinkelsumman i triangeln som bildas av prismat samt strålen genom prismat fås
   
+  \begin{equation} \label{eq:triSum}
+  	(90\textdegree - \alpha') + (90\textdegree - \beta') + A = 180\textdegree.
+  \end{equation}
+  
+  Med denna ekvation tillsammans med Snells lag kan följande ekvationer härledas
 
   \begin{align} 
   \label{eq:alphaPrim}
@@ -133,9 +139,11 @@ Lämnad till handledare: &	2013-xx-xx \\
   \label{eq:delta}
   \delta &= \alpha+\beta-\alpha'-\beta'
   \end{align}
+  
+  som kan kombineras till
 
   \begin{equation} \label{eq:avlänkning}
-  \delta = \alpha-A+\arcsin\left(n \sin\left(A-\arcsin\left(\frac{\sin\alpha}{n}\right)\right)\right)
+  \delta = \alpha-A+\arcsin\left(n \sin\left(A-\arcsin\left(\frac{\sin\alpha}{n}\right)\right)\right).
   \end{equation}
 
   \section{Metod}
@@ -200,7 +208,7 @@ Lämnad till handledare: &	2013-xx-xx \\
 		\draw ({1.8/sqrt(3) + 0.4*0.83}, {-1.8 - 0.4*0.56}) arc [radius=0.4, start angle=-34, end angle=30]; % Lämningsvinkeln
 		\draw ({-2/sqrt(3) + 0.4*sqrt(3)/2}, {-2 - 0.4*0.5}) arc [radius=0.4, start angle=-30, end angle=5.2]; % Hjälpvinklar
 		\draw ({1.8/sqrt(3) - 0.4*0.996}, {-1.8 - 0.4*0.091}) arc [radius=0.4, start angle=185.2, end angle=210];
-		\draw ({-0.21 + 0.2*sqrt(3)/2}, {-2.55 + 0.2*0.5}) arc [radius=0.2, start angle=30, end angle=150];
+		%\draw ({-0.21 + 0.2*sqrt(3)/2}, {-2.55 + 0.2*0.5}) arc [radius=0.2, start angle=30, end angle=150];
 		
 		\node [left] at ({-2/sqrt(3)-0.4}, -2) {$\alpha$};
 		\node [right] at ({-2/sqrt(3)+0.4}, -2.1) {$\alpha'$};
@@ -208,7 +216,7 @@ Lämnad till handledare: &	2013-xx-xx \\
 		\node [right] at ({1.8/sqrt(3)+0.4}, -1.8) {$\beta$};
 		\node [right] at ({0.23 + 2.3}, -1.25) {$\delta$};
 		\node [below] at (0, -0.4) {$A$};
-		\node [above] at (-0.21, -2.35) {$B$};
+		%\node [above] at (-0.21, -2.35) {$B$};
 	\end{tikzpicture}
 	\caption{Ljusstråle som bryts genom ett prisma med de hjälpvinklar som behövs för att räkna ut avlänkningsvinkeln.}
 	\label{fig:prisma}
