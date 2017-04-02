@@ -14,7 +14,7 @@
 \usepackage{amsmath}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
-\usepackage{tikz}
+\usepackage{pgfplots}
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{arrows.meta}
 
@@ -124,7 +124,7 @@ Lämnad till handledare: &	2013-xx-xx \\
   För att räkna ut avlänkningsvinkeln i ett prisma ritas \autoref{fig:prisma} upp med hjälpvinklarna $\alpha'$, $\beta'$ och $\beta$. Med hjälp av vinkelsumman i triangeln som bildas av prismat samt strålen genom prismat fås
   
   \begin{equation} \label{eq:triSum}
-  	(90\textdegree - \alpha') + (90\textdegree - \beta') + A = 180\textdegree.
+  	(90° - \alpha') + (90° - \beta') + A = 180°.
   \end{equation}
   
   Med denna ekvation tillsammans med Snells lag kan följande ekvationer härledas
@@ -241,6 +241,30 @@ Lämnad till handledare: &	2013-xx-xx \\
 	\end{tikzpicture}
 	\caption{Experimentuppställning}
 	\label{fig:exp}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\input{data/rod_laser_A60.tex}
+	\caption{Röd laser med $A$ fixerad till $60°$. I den bästa anpassningen är $n=1.61$ och i 95\%-intervallet är $1.608\le n \le1.612$.}
+	\label{fig:red60}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\input{data/rod_laser.tex}
+	\caption{Röd laser med varierande $A$. I den bästa anpassningen är $n=1.587$ och $A=61.51°$ och i 95\%-intervallet är $1.584\le n \le1.591$ och $61.27°\le A \le61.75°$.}
+	\label{fig:red}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\input{data/bla_laser_A60.tex}
+	\caption{Blå laser med $A$ fixerad till $60°$. I den bästa anpassningen är $n=1.641$ och i 95\%-intervallet är $1.638\le n \le1.643$.}
+	\label{fig:blue60}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\input{data/bla_laser.tex}
+	\caption{Blå laser med varierande $A$. I den bästa anpassningen är $n=1.676$ och $A=58.25°$ och i 95\%-intervallet är $1.674\le n \le1.679$ och $58.13°\le A \le58.36°$.}
+	\label{fig:blue}
 \end{figure}
 
 \section{\LaTeX-kommentarer}
