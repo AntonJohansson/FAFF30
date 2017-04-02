@@ -55,8 +55,8 @@
 }
 \setcounter{secnumdepth}{-1}
 
-\title{Laborationen ”Polarisation”}
-\author{Johan Mauritsson\\Lunds Universitet}
+\title{Laborationen ”Optik”}
+\author{Johan Boström\\Anton Johansson\\Lunds Universitet}
 
 \makeatletter
 \renewcommand{\section}{\@startsection
@@ -86,13 +86,13 @@
 
 
 \begin{abstract}
-  Kort beskrivning  av resultaten (5-10  rader). Det ska inte  vara en
-  innehållsbeskrivning (först gör vi det, sen använder vi den metoden,
-  och så jämför vi det med de där tidigare kända resultaten, etc) utan
-  vara   koncentrerat  till   ”resultatet”,   vad   man  kommer   fram
-  till. Sammanfattningen är uppsatsens löpsedel. Den ska vara kort och
-  kärnfull och locka läsare genom att  effektivt göra klart vad det är
-  man uppnår genom att läsa rapporten.
+  %Kort beskrivning  av resultaten (5-10  rader). Det ska inte  vara en
+  %innehållsbeskrivning (först gör vi det, sen använder vi den metoden,
+  %och så jämför vi det med de där tidigare kända resultaten, etc) utan
+  %vara   koncentrerat  till   ”resultatet”,   vad   man  kommer   fram
+  %till. Sammanfattningen är uppsatsens löpsedel. Den ska vara kort och
+  %kärnfull och locka läsare genom att  effektivt göra klart vad det är
+  %man uppnår genom att läsa rapporten.
 \end{abstract}
 
 \vspace{2mm}
@@ -100,7 +100,7 @@
 \hspace{-3mm}
 \begin{tabular}{ll}
 Laborationen genomförd: &	2017-03-27 \\
-Rapporten kamratgranskad: &	2013-xx-xx \\
+%Rapporten kamratgranskad: &	2013-xx-xx \\
 Lämnad till handledare: &	2013-xx-xx \\
 \end{tabular}
 
@@ -158,7 +158,7 @@ Lämnad till handledare: &	2013-xx-xx \\
   
   Ett prisma på en graderad roterbar platta placerades i laserstrålens väg och en millimetergraderad skärm placerades ut parallell med laserstrålen så att den brutna strålen träffade skärmen enligt \autoref{fig:exp}. Prismat roterades så att laserstrålen träffade rakt på ($\alpha=0$) och prismats rotation antecknades. Sedan roterades prismat 2\textdegree upprepade gånger och positionen där laserstrålen träffade skärmen antecknades och räknades om till vinkeln $\gamma$.
   
-  Mätvärdena matades in i matlab och där användes appen ``Curve Fitting'' för att hitta ett brytningsindex så att ekvationen \eqref{eq:avlänkning} gäller så väl som möjligt.
+  Mätvärdena matades in i matlab och där användes appen ”Curve Fitting” för att hitta ett brytningsindex så att ekvationen \eqref{eq:avlänkning} gäller så väl som möjligt.
 
   \section{Resultat}
   %Vad man  kommer fram till?  Om uppgiften innebär programmering  så kan
@@ -340,22 +340,5 @@ Lämnad till handledare: &	2013-xx-xx \\
 	\caption{Plot av komat när att ljuset kommer in med en vinkel på $15°$ till en planokonvex lins. (Vi måste skilja på orienteringen)}
 	\label{fig:comM1}
 \end{figure}
-
-\section{\LaTeX-kommentarer}
-Kompileras enklast med \texttt{pdflatex}. Använd TeX Live i Linux och
-MiKTeX i Windows.
-
-Test av ”komma-hack” och enhetskommando (se källkod):
-\hrule
-\begin{minipage}{0.5\linewidth}
-  Kod
-\begin{verbatim}
-\[ \Delta x = 1.23\unit{km} \]
-\end{verbatim}
-\end{minipage}
-\begin{minipage}{0.5\linewidth}
-  Resultat\\
-  $ \Delta x = 1.23\unit{km} $
-\end{minipage}
 
 \end{document}
