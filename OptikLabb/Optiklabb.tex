@@ -15,8 +15,11 @@
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{arrows.meta}
+\usepackage{placeins}
+%\usepackage{siunitx}
 
 \addto\extrasswedish{%
 	\def\equationautorefname{Ekvation}%
@@ -59,13 +62,13 @@
 \author{Johan Boström\\Anton Johansson\\Lunds Universitet}
 
 \makeatletter
-\renewcommand{\section}{\@startsection
-{section}%                   % the name
-{1}%                         % the level
-{0mm}%                       % the indent
-{-\baselineskip}%            % the before skip
-{0.5mm}%          % the after skip
-{\normalfont\bfseries}} % the style
+%\renewcommand{\section}{\@startsection
+%{section}%                   % the name
+%{1}%                         % the level
+%{0mm}%                       % the indent
+%{-\baselineskip}%            % the before skip
+%{0.5mm}%          % the after skip
+%{\normalfont\bfseries}} % the style
 %\renewcommand{\sectionmark}[1]{ }
 %\renewcommand{\thesection}{}
 
@@ -106,8 +109,7 @@ Lämnad till handledare: &	2013-xx-xx \\
 
 \vspace{3mm}
 
-\begin{multicols}{2}
-  \section*{Inledning}
+\section{Inledning}
   %Preliminär beskrivning av uppgiften  i lättfattliga termer. Bakgrunden till att man intresserar sig för detta problem, denna uppgift. Hur den ingår i ett större sammanhang.
 
 %  En detaljerad beskrivning av vad det hela går ut på, och vad exakt din uppgift   i    sammanhanget   är.    Utrustningsförutsättningar.   Det
@@ -119,81 +121,10 @@ Lämnad till handledare: &	2013-xx-xx \\
 %  för  att  underlätta direktåtkomst  av  för  den individuelle  läsaren
 %  särskilt intressanta delar.
 
-  \section{Teori}
-  
-  För att räkna ut avlänkningsvinkeln i ett prisma ritas \autoref{fig:prisma} upp med hjälpvinklarna $\alpha'$, $\beta'$ och $\beta$. Med hjälp av vinkelsumman i triangeln som bildas av prismat samt strålen genom prismat fås
-  
-  \begin{equation} \label{eq:triSum}
-  	(90° - \alpha') + (90° - \beta') + A = 180°.
-  \end{equation}
-  
-  Med denna ekvation tillsammans med Snells lag kan följande ekvationer härledas
-
-  \begin{align} 
-  \label{eq:alphaPrim}
-  \alpha' &= \arcsin\left(\frac{\sin\alpha}{n}\right)\\
-  \label{eq:beta}
-  \beta &= \arcsin\left(n \sin\beta'\right)\\
-  \label{eq:betaPrim}
-  \beta' &= A-\alpha'\\
-  \label{eq:delta}
-  \delta &= \alpha+\beta-\alpha'-\beta'
-  \end{align}
-  
-  som kan kombineras till
-
-  \begin{equation} \label{eq:avlänkning}
-  \delta = \alpha-A+\arcsin\left(n \sin\left(A-\arcsin\left(\frac{\sin\alpha}{n}\right)\right)\right).
-  \end{equation}
-
-  \section{Metod}
-  % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
-  % algoritmer,  programspråk och  annan programvara,  undersökningsmetod,
-  % statistiska  metoder. Där  valmöjligheter finns,  diskutera de  gjorda
-  % valen.
-  
-  % Beskrivning av mätning av fokallängd här.
-  
-  En laser leddes genom ett optiskt fiber och en lins användes för att kollimera stålen när den lämnade fibret. Två irisar placerades på en väldefinierad linje och lasern leddes genom dessa för att bekräfta att lasern var rak och kollimerad.
-  
-  Ett prisma på en graderad roterbar platta placerades i laserstrålens väg och en millimetergraderad skärm placerades ut parallell med laserstrålen så att den brutna strålen träffade skärmen enligt \autoref{fig:exp}. Prismat roterades så att laserstrålen träffade rakt på ($\alpha=0$) och prismats rotation antecknades. Sedan roterades prismat 2\textdegree upprepade gånger och positionen där laserstrålen träffade skärmen antecknades och räknades om till vinkeln $\gamma$.
-  
-  Mätvärdena matades in i matlab och där användes appen ”Curve Fitting” för att hitta ett brytningsindex så att ekvationen \eqref{eq:avlänkning} gäller så väl som möjligt.
-
-  \section{Resultat}
-  %Vad man  kommer fram till?  Om uppgiften innebär programmering  så kan
-  %det färdiga programmet i sig vara resultatet.  Här är det i så fall på
-  %sin  plats  med  beskrivningar  av programmet,  till  exempel  teknisk
-  %beskrivning,    funktionell    beskrivning,    användningsbeskrivning,
-  %användargränssnitt  etc.  Genomförandebeskrivning  kommer  i  så  fall
-  %närmast att handla om programutvecklingen.
-
-  %Men det kan också vara så  att det snarare är programmets beteende som
-  %är resultatet.  Man utvecklar till  exempel en numerisk metod  för att
-  %lösa ett problem,  och sedan gör man experiment  med testkörningar och
-  %analyserar dessa test.
-
-  \section{Diskussion}
-  %Är resultaten rimliga? Vad hade kunnat göras annorlunda?
-
-  \section{Slutsats/avslutning}
-  %En   sammanfattning  där   man  till   skillnad  från   den  inledande
-  %sammanfattningen förutsätter  att läsaren har läst  rapporten, samt de
-  %slutsatser man kan dra av det gjorda arbetet.
-
-  \section{Referenser}
-  %Den använda litteraturen.
-
-  \section{Appendix}
-  %Eventuell     användarhandledning,     källkod,    anvisningar     för
-  %systemgenerering, och liknande som inte  är av omedelbart intresse för
-  %den ordinäre läsaren, läggs lämpligen som appendix.
-
-\end{multicols}
-
+\section{Teori}
 \begin{figure}[h]
 	\centering
-	\begin{tikzpicture}[scale=1.5]
+	\begin{tikzpicture}[scale=1.2]
 		\draw (0, 0) -- ({4/sqrt(3)}, -4) -- ({-4/sqrt(3)}, -4) -- (0, 0); % Triangeln
 		
 		\draw (-3, -3) -- ({-2/sqrt(3)}, -2) -- ({1.8/sqrt(3)}, -1.8) -- (2.8, -3); % Den brutna ljusstrålen
@@ -221,6 +152,44 @@ Lämnad till handledare: &	2013-xx-xx \\
 	\caption{Ljusstråle som bryts genom ett prisma med de hjälpvinklar som behövs för att räkna ut avlänkningsvinkeln.}
 	\label{fig:prisma}
 \end{figure}
+  
+	\cite{pearsonIntroOpt}  
+  
+  För att räkna ut avlänkningsvinkeln i ett prisma ritas \autoref{fig:prisma} upp med hjälpvinklarna $\alpha'$, $\beta'$ och $\beta$. Med hjälp av vinkelsumman i triangeln som bildas av prismat samt strålen genom prismat fås
+  
+  \begin{equation} \label{eq:triSum}
+  	(90° - \alpha') + (90° - \beta') + A = 180°.
+  \end{equation}
+  
+  Med denna ekvation tillsammans med Snells lag kan följande ekvationer härledas
+
+  \begin{align} 
+  \label{eq:alphaPrim}
+  \alpha' &= \arcsin\left(\frac{\sin\alpha}{n}\right)\\
+  \label{eq:beta}
+  \beta &= \arcsin\left(n \sin\beta'\right)\\
+  \label{eq:betaPrim}
+  \beta' &= A-\alpha'\\
+  \label{eq:delta}
+  \delta &= \alpha+\beta-\alpha'-\beta'
+  \end{align}
+  
+  som kan kombineras till
+
+  \begin{equation} \label{eq:avlänkning}
+  \delta = \alpha-A+\arcsin\left(n \sin\left(A-\arcsin\left(\frac{\sin\alpha}{n}\right)\right)\right).
+  \end{equation}
+
+\subsection{Totalreflektion}
+
+\section{Metod}
+  % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
+  % algoritmer,  programspråk och  annan programvara,  undersökningsmetod,
+  % statistiska  metoder. Där  valmöjligheter finns,  diskutera de  gjorda
+  % valen.
+  
+  % Beskrivning av mätning av fokallängd här (OBS annan lins än senare).
+  
 \begin{figure}[h]
 	\centering
 	\begin{tikzpicture}[scale=1.5]
@@ -242,6 +211,48 @@ Lämnad till handledare: &	2013-xx-xx \\
 	\caption{Experimentuppställning}
 	\label{fig:exp}
 \end{figure}
+  
+  En laser leddes genom ett optiskt fiber och en lins användes för att kollimera stålen när den lämnade fibret. Två irisar placerades på en väldefinierad linje och lasern leddes genom dessa för att bekräfta att lasern var rak och kollimerad.
+  
+  Ett prisma på en graderad roterbar platta placerades i laserstrålens väg och en millimetergraderad skärm placerades ut parallell med laserstrålen så att den brutna strålen träffade skärmen enligt \autoref{fig:exp}. Prismat roterades så att laserstrålen träffade rakt på ($\alpha=0$) och prismats rotation antecknades. Sedan roterades prismat 2\textdegree upprepade gånger och positionen där laserstrålen träffade skärmen antecknades och räknades om till vinkeln $\gamma$.
+  
+  Mätvärdena matades in i matlab och där användes appen ”Curve Fitting” för att hitta ett brytningsindex så att ekvationen \eqref{eq:avlänkning} gäller så väl som möjligt.
+
+\section{Resultat}
+  %Vad man  kommer fram till?
+
+\FloatBarrier
+
+\begin{table}[h]
+	\centering
+	\caption{Uppmätta storlekar av lasern på olika avstånd och den divergens som de motsvarar samt medelvärdet av de beräknade divergenserna.}
+	\label{tab:div}
+	\begin{tabular}{rrr}% Värdesiffror? Före/efter genomsnitt?
+		\hline
+		Avstånd från lasern till ytan (cm) & Uppmätta diametern på ytan (cm) & Divergens (°) \\
+		\hline
+		$24$ & $8.5$ & $10$ \\
+		$52$ & $16.5$ & $9.0$ \\
+		$54$ & $17.0$ & $8.9$ \\
+		$71$ & $23.0$ & $9.2$ \\
+		$84$ & $27.0$ & $9.1$ \\
+		& Medelvärde: & $9.2$ \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Uppmätta avstånd mellan lasern och en lins så att strålen fokuseras på en yta längre bort och de med denna data beräknade fokallängderna till linsen.}
+	\label{tab:foc}
+	\begin{tabular}{|r|r|r|}\hline % Värdesiffror? Före/efter genomsnitt?
+		Avstånd från lasern till linsen (cm) & Avstånd från linsen till ytan (cm) & Beräknad fokallängd (cm) \\\hline
+		$7.4$ & $24.7$ & $5.69$ \\\hline
+		$10$ & $13.5$ & $5.74$ \\\hline
+		$12$ & $10.4$ & $5.57$ \\\hline
+		& Medelvärde: & $5.67$ \\\hline
+	\end{tabular}
+\end{table}
 \begin{figure}[h]
 	\centering
 	\input{Data/rod_laser_A60.tex}
@@ -266,37 +277,65 @@ Lämnad till handledare: &	2013-xx-xx \\
 	\caption{Blå laser med varierande $A$. I den bästa anpassningen är $n=1.676$ och $A=58.25°$ och i 95\%-intervallet är $1.674\le n \le1.679$ och $58.13°\le A \le58.36°$.}
 	\label{fig:blue}
 \end{figure}
-\begin{table}[h]
+
+\FloatBarrier
+
+\section{Diskussion}
+  %Är resultaten rimliga? Vad hade kunnat göras annorlunda?
+  
+  % Rimlighet hos divergens.
+  
+  % Rimlighet hos fokallängd (6cm på linsen).
+  
+  % Anpassning, jämföra med och utan toppvinkeln. Rimlighet. Hur bra.
+  
+  % Jämföra röd och blå (Cauchys formel s.67).
+  
+  % (Vilket glas?)
+  
+  % Rimlighet hos brytningsindex.
+  
+  % Felkällor:
+  % Handmätt
+  % Utsmetad prick på ytan
+  % Svårdefinierad divergens
+  % Paraxial
+  % 0-nollvinkeln påverkar
+
+\section{Slutsats/avslutning}
+  %En   sammanfattning  där   man  till   skillnad  från   den  inledande
+  %sammanfattningen förutsätter  att läsaren har läst  rapporten, samt de
+  %slutsatser man kan dra av det gjorda arbetet.
+
+\section{FRED}
+
+% Om FRED
+
+\subsection{Aberrationer i lins-/spegelsystem}
+
+
+
+\subsection{Metod}
+
+
+
+\subsection{Resultat}
+
+\FloatBarrier
+
+\begin{figure}[h]
 	\centering
-	\caption{Uppmätta storlekar av lasern på olika avstånd och den divergens som de motsvarar samt medelvärdet av de beräknade divergenserna.}
-	\label{tab:div}
-	\begin{tabular}{rrr}% Värdesiffror? Före/efter genomsnitt?
-		\hline
-		\hline
-		Avstånd från lasern till ytan (cm) & Uppmätta diametern på ytan (cm) & Divergens (°) \\
-		\hline
-		$24$ & $8.5$ & $10$ \\
-		$52$ & $16.5$ & $9.0$ \\
-		$54$ & $17.0$ & $8.9$ \\
-		$71$ & $23.0$ & $9.2$ \\
-		$84$ & $27.0$ & $9.1$ \\
-		& Medelvärde: & $9.2$ \\
-		\hline
-		\hline
-	\end{tabular}
-\end{table}
-\begin{table}[h]
+	\includegraphics[width=0.5\textwidth]{Data/frustrerad_inget.jpg}
+	\caption{}
+	\label{fig:frustInget}
+\end{figure}
+\begin{figure}[h]
 	\centering
-	\caption{Uppmätta avstånd mellan lasern och en lins så att strålen fokuseras på en yta längre bort och de med denna data beräknade fokallängderna till linsen.}
-	\label{tab:foc}
-	\begin{tabular}{|r|r|r|}\hline % Värdesiffror? Före/efter genomsnitt?
-		Avstånd från lasern till linsen (cm) & Avstånd från linsen till ytan (cm) & Beräknad fokallängd (cm) \\\hline
-		$7.4$ & $24.7$ & $5.69$ \\\hline
-		$10$ & $13.5$ & $5.74$ \\\hline
-		$12$ & $10.4$ & $5.57$ \\\hline
-		& Medelvärde: & $5.67$ \\\hline
-	\end{tabular}
-\end{table}
+	\includegraphics[width=0.5\textwidth]{Data/frustrerad_hand.jpg}
+	\caption{}
+	\label{fig:frustHand}
+\end{figure}
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Data/FRED/FRED1.jpg}
@@ -345,5 +384,12 @@ Lämnad till handledare: &	2013-xx-xx \\
 	\caption{Plot av komat när att ljuset kommer in med en vinkel på $15°$ till en planokonvex lins. (Vi måste skilja på orienteringen)}
 	\label{fig:comM1}
 \end{figure}
+
+\FloatBarrier
+
+ %Den använda litteraturen.
+ 
+ \bibliography{bibliography.bib}{}
+ \bibliographystyle{plain}
 
 \end{document}
