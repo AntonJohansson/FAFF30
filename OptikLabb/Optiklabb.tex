@@ -19,7 +19,7 @@
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{arrows.meta}
 \usepackage{placeins}
-%\usepackage{siunitx}
+\usepackage{siunitx}
 
 \addto\extrasswedish{%
 	\def\equationautorefname{Ekvation}%
@@ -153,12 +153,10 @@ Lämnad till handledare: &	2013-xx-xx \\
 	\label{fig:prisma}
 \end{figure}
   
-	\cite{pearsonIntroOpt}  
-  
-  För att räkna ut avlänkningsvinkeln i ett prisma ritas \autoref{fig:prisma} upp med hjälpvinklarna $\alpha'$, $\beta'$ och $\beta$. Med hjälp av vinkelsumman i triangeln som bildas av prismat samt strålen genom prismat fås
+  För att räkna ut avlänkningsvinkeln i ett prisma används en liknande strategi som \cite[p.~65]{pearsonIntroOpt} och \autoref{fig:prisma} ritas upp med hjälpvinklarna $\alpha'$, $\beta'$ och $\beta$. Med hjälp av vinkelsumman i triangeln som bildas av prismat samt strålen genom prismat fås
   
   \begin{equation} \label{eq:triSum}
-  	(90° - \alpha') + (90° - \beta') + A = 180°.
+  	(\SI{90}{\degree} - \alpha') + (\SI{90}{\degree} - \beta') + A = \SI{180}{\degree}.
   \end{equation}
   
   Med denna ekvation tillsammans med Snells lag kan följande ekvationer härledas
@@ -181,6 +179,16 @@ Lämnad till handledare: &	2013-xx-xx \\
   \end{equation}
 
 \subsection{Totalreflektion}
+
+	Om $n_i$ betecknar brytningsindex för det första mediet, $n_t$ betecknar brytningsindex för det andra mediet, $\theta_i$ betecknar infallsvinkeln och $\theta_t$ betecknar brytningsvinkeln kan Snells lag uttryckas \cite[pp.~21--22]{pearsonIntroOpt}
+	
+	\begin{equation} \label{eq:snell}
+		n_i\sin\theta_i = n_t\sin\theta_t.
+	\end{equation}
+	
+	Om $n_t < n_i$ och därmed $\frac{n_t}{n_i} < 1$ finns det någon vinkel $\theta_c$ så att $\sin\theta_c = \frac{n_t}{n_i}$. Om $\theta_i$ sätts till denna vilkel ger Snells lag att $\sin\theta_t = 1$, och alla $\theta_i$ större än $\theta_c$ ger att $\sin\theta_t > 1$, vilket är omöjligt. Eftersom refraktion i det här fallet är omöjligt, och ljuset måste ta vägen någonstans, måste därför allt ljus reflekteras. Detta kallas totalreflection.
+	
+	Om en ljusstråle skulle ledas in i ett medium med högt brytningsindex och tillräckligt plana sidor nära parallella med ljusstrålen skulle man kunna få totalreflection på båda sidor och behålla ljusstrålen i mediet hur länge som helst. Detta är principen bakom till exempel optiska fibrer \cite[p.~261]{pearsonIntroOpt}.
 
 \section{Metod}
   % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
@@ -214,7 +222,7 @@ Lämnad till handledare: &	2013-xx-xx \\
   
   En laser leddes genom ett optiskt fiber och en lins användes för att kollimera stålen när den lämnade fibret. Två irisar placerades på en väldefinierad linje och lasern leddes genom dessa för att bekräfta att lasern var rak och kollimerad.
   
-  Ett prisma på en graderad roterbar platta placerades i laserstrålens väg och en millimetergraderad skärm placerades ut parallell med laserstrålen så att den brutna strålen träffade skärmen enligt \autoref{fig:exp}. Prismat roterades så att laserstrålen träffade rakt på ($\alpha=0$) och prismats rotation antecknades. Sedan roterades prismat 2\textdegree upprepade gånger och positionen där laserstrålen träffade skärmen antecknades och räknades om till vinkeln $\gamma$.
+  Ett prisma på en graderad roterbar platta placerades i laserstrålens väg och en millimetergraderad skärm placerades ut parallell med laserstrålen så att den brutna strålen träffade skärmen enligt \autoref{fig:exp}. Prismat roterades så att laserstrålen träffade rakt på ($\alpha=0$) och prismats rotation antecknades. Sedan roterades prismat \SI{2}{\degree} upprepade gånger och positionen där laserstrålen träffade skärmen antecknades och räknades om till vinkeln $\gamma$.
   
   Mätvärdena matades in i matlab och där användes appen ”Curve Fitting” för att hitta ett brytningsindex så att ekvationen \eqref{eq:avlänkning} gäller så väl som möjligt.
 
@@ -229,7 +237,7 @@ Lämnad till handledare: &	2013-xx-xx \\
 	\label{tab:div}
 	\begin{tabular}{rrr}% Värdesiffror? Före/efter genomsnitt?
 		\hline
-		Avstånd från lasern till ytan (cm) & Uppmätta diametern på ytan (cm) & Divergens (°) \\
+		Avstånd från lasern till ytan (\si{\centi\meter}) & Uppmätta diametern på ytan (\si{\centi\meter}) & Divergens (\si{\degree}) \\
 		\hline
 		$24$ & $8.5$ & $10$ \\
 		$52$ & $16.5$ & $9.0$ \\
@@ -246,7 +254,7 @@ Lämnad till handledare: &	2013-xx-xx \\
 	\caption{Uppmätta avstånd mellan lasern och en lins så att strålen fokuseras på en yta längre bort och de med denna data beräknade fokallängderna till linsen.}
 	\label{tab:foc}
 	\begin{tabular}{|r|r|r|}\hline % Värdesiffror? Före/efter genomsnitt?
-		Avstånd från lasern till linsen (cm) & Avstånd från linsen till ytan (cm) & Beräknad fokallängd (cm) \\\hline
+		Avstånd från lasern till linsen (\si{\centi\meter}) & Avstånd från linsen till ytan (\si{\centi\meter}) & Beräknad fokallängd (\si{\centi\meter}) \\\hline
 		$7.4$ & $24.7$ & $5.69$ \\\hline
 		$10$ & $13.5$ & $5.74$ \\\hline
 		$12$ & $10.4$ & $5.57$ \\\hline
@@ -256,25 +264,25 @@ Lämnad till handledare: &	2013-xx-xx \\
 \begin{figure}[h]
 	\centering
 	\input{Data/rod_laser_A60.tex}
-	\caption{Röd laser med $A$ fixerad till $60°$. I den bästa anpassningen är $n=1.61$ och i 95\%-intervallet är $1.608\le n \le1.612$.}
+	\caption{Röd laser med $A$ fixerad till $\SI{60}{\degree}$. I den bästa anpassningen är $n=1.61$ och i 95\%-intervallet är $1.608\le n \le1.612$.}
 	\label{fig:red60}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/rod_laser.tex}
-	\caption{Röd laser med varierande $A$. I den bästa anpassningen är $n=1.587$ och $A=61.51°$ och i 95\%-intervallet är $1.584\le n \le1.591$ och $61.27°\le A \le61.75°$.}
+	\caption{Röd laser med varierande $A$. I den bästa anpassningen är $n=1.587$ och $A=\SI{61.51}{\degree}$ och i 95\%-intervallet är $1.584\le n \le1.591$ och $\SI{61.27}{\degree}\le A \le\SI{61.75}{\degree}$.}
 	\label{fig:red}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/bla_laser_A60.tex}
-	\caption{Blå laser med $A$ fixerad till $60°$. I den bästa anpassningen är $n=1.641$ och i 95\%-intervallet är $1.638\le n \le1.643$.}
+	\caption{Blå laser med $A$ fixerad till $\SI{60}{\degree}$. I den bästa anpassningen är $n=1.641$ och i 95\%-intervallet är $1.638\le n \le1.643$.}
 	\label{fig:blue60}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/bla_laser.tex}
-	\caption{Blå laser med varierande $A$. I den bästa anpassningen är $n=1.676$ och $A=58.25°$ och i 95\%-intervallet är $1.674\le n \le1.679$ och $58.13°\le A \le58.36°$.}
+	\caption{Blå laser med varierande $A$. I den bästa anpassningen är $n=1.676$ och $A=\SI{58.25}{\degree}$ och i 95\%-intervallet är $1.674\le n \le1.679$ och $\SI{58.13}{\degree}\le A \le\SI{58.36}{\degree}$.}
 	\label{fig:blue}
 \end{figure}
 
@@ -351,13 +359,13 @@ Lämnad till handledare: &	2013-xx-xx \\
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/Chroma1.tex}
-	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden $600\unit{nm}$.}
+	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden $\SI{600}{\nano\meter}$.}
 	\label{fig:chrLens1}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/Chroma2.tex}
-	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden $400\unit{nm}$.}
+	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden $\SI{400}{\nano\meter}$.}
 	\label{fig:chrLens2}
 \end{figure}
 \begin{figure}[h]
@@ -369,19 +377,19 @@ Lämnad till handledare: &	2013-xx-xx \\
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/ComaSym.tex}
-	\caption{Plot av komat när att ljuset kommer in med en vinkel på $15°$ till en symmetrisk konvex lins.}
+	\caption{Plot av komat när att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en symmetrisk konvex lins.}
 	\label{fig:comSym}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/ComaP1.tex}
-	\caption{Plot av komat när av att ljuset kommer in med en vinkel på $15°$ till en planokonvex lins. (Vi måste skilja på orienteringen)}
+	\caption{Plot av komat när av att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en planokonvex lins. (Vi måste skilja på orienteringen)}
 	\label{fig:comP1}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/ComaM1.tex}
-	\caption{Plot av komat när att ljuset kommer in med en vinkel på $15°$ till en planokonvex lins. (Vi måste skilja på orienteringen)}
+	\caption{Plot av komat när att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en planokonvex lins. (Vi måste skilja på orienteringen)}
 	\label{fig:comM1}
 \end{figure}
 
@@ -389,7 +397,7 @@ Lämnad till handledare: &	2013-xx-xx \\
 
  %Den använda litteraturen.
  
- \bibliography{bibliography.bib}{}
+ \bibliography{bibliography}{}
  \bibliographystyle{plain}
 
 \end{document}
