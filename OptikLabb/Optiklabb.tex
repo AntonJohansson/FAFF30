@@ -188,7 +188,8 @@ Lämnad till handledare: &	2013-xx-xx \\
 	
 	Om $n_t < n_i$ och därmed $\frac{n_t}{n_i} < 1$ finns det någon vinkel $\theta_c$ så att $\sin\theta_c = \frac{n_t}{n_i}$. Om $\theta_i$ sätts till denna vilkel ger Snells lag att $\sin\theta_t = 1$, och alla $\theta_i$ större än $\theta_c$ ger att $\sin\theta_t > 1$, vilket är omöjligt. Eftersom refraktion i det här fallet är omöjligt, och ljuset måste ta vägen någonstans, måste därför allt ljus reflekteras. Detta kallas totalreflection.
 	
-	Om en ljusstråle skulle ledas in i ett medium med högt brytningsindex och tillräckligt plana sidor nära parallella med ljusstrålen skulle man kunna få totalreflection på båda sidor och behålla ljusstrålen i mediet hur länge som helst. Detta är principen bakom till exempel optiska fibrer \cite[p.~261]{pearsonIntroOpt}.
+	Om en ljusstråle skulle ledas in i ett medium med högt brytningsindex och tillräckligt plana sidor nära parallella med ljusstrålen skulle man kunna få totalreflection på båda sidor och behålla ljusstrålen i mediet hur länge som helst. Detta är principen bakom till exempel optiska fibrer. Ett problem som uppstår i optiska fiber är vad som kallas för frustrerad totalreflektion. Detta sker när ett medium med högre brytningsindex än $n_t$ kommer i kontakt med ytan. Om det nya brytningsindexet är tillräckligt stort förstörs totalreflektionen och ljus läcker ut i det nya mediet. Om det nya mediet är en annan fibertråd kommer signaler i det ena fibret komma in i det andra, vilket kallas ”cross talk” i kommunikationskretsar.
+	\cite[pp.~261--263]{pearsonIntroOpt}
 
 \section{Metod}
   % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
@@ -235,7 +236,7 @@ Lämnad till handledare: &	2013-xx-xx \\
 	\centering
 	\caption{Uppmätta storlekar av lasern på olika avstånd och den divergens som de motsvarar samt medelvärdet av de beräknade divergenserna.}
 	\label{tab:div}
-	\begin{tabular}{rrr}% Värdesiffror? Före/efter genomsnitt?
+	\begin{tabular}{|rrr|}% Värdesiffror? Före/efter genomsnitt?
 		\hline
 		Avstånd från lasern till ytan (\si{\centi\meter}) & Uppmätta diametern på ytan (\si{\centi\meter}) & Divergens (\si{\degree}) \\
 		\hline
@@ -243,9 +244,8 @@ Lämnad till handledare: &	2013-xx-xx \\
 		$52$ & $16.5$ & $9.0$ \\
 		$54$ & $17.0$ & $8.9$ \\
 		$71$ & $23.0$ & $9.2$ \\
-		$84$ & $27.0$ & $9.1$ \\
-		& Medelvärde: & $9.2$ \\
-		\hline
+		$84$ & $27.0$ & $9.1$ \\\hline
+		& Medelvärde: & $9.2$ \\\hline
 	\end{tabular}
 \end{table}
 
@@ -253,10 +253,10 @@ Lämnad till handledare: &	2013-xx-xx \\
 	\centering
 	\caption{Uppmätta avstånd mellan lasern och en lins så att strålen fokuseras på en yta längre bort och de med denna data beräknade fokallängderna till linsen.}
 	\label{tab:foc}
-	\begin{tabular}{|r|r|r|}\hline % Värdesiffror? Före/efter genomsnitt?
+	\begin{tabular}{|rrr|}\hline % Värdesiffror? Före/efter genomsnitt?
 		Avstånd från lasern till linsen (\si{\centi\meter}) & Avstånd från linsen till ytan (\si{\centi\meter}) & Beräknad fokallängd (\si{\centi\meter}) \\\hline
-		$7.4$ & $24.7$ & $5.69$ \\\hline
-		$10$ & $13.5$ & $5.74$ \\\hline
+		$7.4$ & $24.7$ & $5.69$ \\
+		$10$ & $13.5$ & $5.74$ \\
 		$12$ & $10.4$ & $5.57$ \\\hline
 		& Medelvärde: & $5.67$ \\\hline
 	\end{tabular}
@@ -264,25 +264,25 @@ Lämnad till handledare: &	2013-xx-xx \\
 \begin{figure}[h]
 	\centering
 	\input{Data/rod_laser_A60.tex}
-	\caption{Röd laser med $A$ fixerad till $\SI{60}{\degree}$. I den bästa anpassningen är $n=1.61$ och i 95\%-intervallet är $1.608\le n \le1.612$.}
+	\caption{Röd laser med $A$ fixerad till $\SI{60}{\degree}$. I den bästa anpassningen är $n=1.61$ och i \SI{95}{\percent}-intervallet är $1.608\le n \le1.612$.}
 	\label{fig:red60}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/rod_laser.tex}
-	\caption{Röd laser med varierande $A$. I den bästa anpassningen är $n=1.587$ och $A=\SI{61.51}{\degree}$ och i 95\%-intervallet är $1.584\le n \le1.591$ och $\SI{61.27}{\degree}\le A \le\SI{61.75}{\degree}$.}
+	\caption{Röd laser med varierande $A$. I den bästa anpassningen är $n=1.587$ och $A=\SI{61.51}{\degree}$ och i \SI{95}{\percent}-intervallet är $1.584\le n \le1.591$ och $\SI{61.27}{\degree}\le A \le\SI{61.75}{\degree}$.}
 	\label{fig:red}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/bla_laser_A60.tex}
-	\caption{Blå laser med $A$ fixerad till $\SI{60}{\degree}$. I den bästa anpassningen är $n=1.641$ och i 95\%-intervallet är $1.638\le n \le1.643$.}
+	\caption{Blå laser med $A$ fixerad till $\SI{60}{\degree}$. I den bästa anpassningen är $n=1.641$ och i \SI{95}{\percent}-intervallet är $1.638\le n \le1.643$.}
 	\label{fig:blue60}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/bla_laser.tex}
-	\caption{Blå laser med varierande $A$. I den bästa anpassningen är $n=1.676$ och $A=\SI{58.25}{\degree}$ och i 95\%-intervallet är $1.674\le n \le1.679$ och $\SI{58.13}{\degree}\le A \le\SI{58.36}{\degree}$.}
+	\caption{Blå laser med varierande $A$. I den bästa anpassningen är $n=1.676$ och $A=\SI{58.25}{\degree}$ och i \SI{95}{\percent}-intervallet är $1.674\le n \le1.679$ och $\SI{58.13}{\degree}\le A \le\SI{58.36}{\degree}$.}
 	\label{fig:blue}
 \end{figure}
 
