@@ -87,15 +87,15 @@
 \begin{document}
 \maketitle
 
+\renewcommand{\abstractname}{Abstract} % Om vi vill ha titeln till abstracten på engelska.
 
 \begin{abstract}
-  %Kort beskrivning  av resultaten (5-10  rader). Det ska inte  vara en
-  %innehållsbeskrivning (först gör vi det, sen använder vi den metoden,
-  %och så jämför vi det med de där tidigare kända resultaten, etc) utan
-  %vara   koncentrerat  till   ”resultatet”,   vad   man  kommer   fram
-  %till. Sammanfattningen är uppsatsens löpsedel. Den ska vara kort och
-  %kärnfull och locka läsare genom att  effektivt göra klart vad det är
-  %man uppnår genom att läsa rapporten.
+  %Kort beskrivning  av resultaten (5-10  rader). Det ska inte  vara en innehållsbeskrivning (först gör vi det, sen använder vi den metoden, och så jämför vi det med de där tidigare kända resultaten, etc) utan vara   koncentrerat  till   ”resultatet”,   vad   man  kommer fram till. Sammanfattningen är uppsatsens löpsedel. Den ska vara kort och kärnfull och locka läsare genom att  effektivt göra klart vad det är man uppnår genom att läsa rapporten.
+  
+  The study of the properties of optical systems and materials is paramount in the field of optics, and a complete understanding of how light behaves in different media and configurations is important for constructing better optical instruments. In this paper, the behaviour of prisms have been studied and the deflection angle has been derived theoretically and compared to experimental data using lasers of two different wavelengths. A close fit was achieved and the two refractive indices were calculated, but it was found that the shape of the prisms may not have been exactly according to specifications. A simple analysis of the divergence of the laser source as well as a measurement of the focal length of a lens is also included in the paper.
+  
+  In the second part the optical raytracing program FRED was used to study different aberrations in both lens- and mirror systems and it was found that simple optical system have inherent problems that needs to be solved in order to create effective instrument for use in precision applications.
+  
 \end{abstract}
 
 \vspace{2mm}
@@ -321,7 +321,7 @@ Lämnad till handledare: &	2013-xx-xx \\
 
 \subsection{Aberrationer i lins-/spegelsystem}
 
-
+Då sfäriska linser inte är den ideala formen för att fokusera korrekt uppkommer aberrationer när dessa används. De lägsta ordningens avvikelser är av tredje ordningens och behandlas i detalj i \cite[Kapitel~20]{pearsonIntroOpt}. Tredje ordningens aberrationer kan delas in i fem kategorier; sfärisk aberration, koma, astigmatism, bildfältskrökning och förvrängning. Här undersöker vi endast koma och astigmatism, men de andra aberrationerna kan säkert hittas i de resulterand punktdiagrammen.
 
 \subsection{Metod}
 
@@ -334,13 +334,13 @@ Lämnad till handledare: &	2013-xx-xx \\
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Data/frustrerad_inget.jpg}
-	\caption{}
+	\caption{Fotografi av en glasplatta vari ljus fångats med hjälp av totalreflektion. Man ser att en del ljus slipper ut, men glasbiten ser ändå mycket ut som en vanlig glasbit.}
 	\label{fig:frustInget}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Data/frustrerad_hand.jpg}
-	\caption{}
+	\caption{Samma glasbit som i \autoref{fig:frustInget} med totalreflekterande ljus inuti, men här ser man att när man nuddar ytan med något med högre brytningsindex -- som till exempel ett finger -- totalreflekteras inte längre ljuset vid den ytan utan lämnar istället glasbiten och sprids av fingret.}
 	\label{fig:frustHand}
 \end{figure}
 
