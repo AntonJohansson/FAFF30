@@ -156,7 +156,7 @@ Lämnad till handledare: &	2013-xx-xx \\
   För att räkna ut avlänkningsvinkeln i ett prisma används en liknande strategi som \cite[p.~65]{pearsonIntroOpt} och \autoref{fig:prisma} ritas upp med hjälpvinklarna $\alpha'$, $\beta'$ och $\beta$. Med hjälp av vinkelsumman i triangeln som bildas av prismat samt strålen genom prismat fås
   
   \begin{equation} \label{eq:triSum}
-  	(\SI{90}{\degree} - \alpha') + (\SI{90}{\degree} - \beta') + A = \SI{180}{\degree}.
+  	(\SI{90}{\degree} - \alpha') + (\SI{90}{\degree} - \beta') + A = \SI{180}{\degree}\text{.}
   \end{equation}
   
   Med denna ekvation tillsammans med Snells lag kan följande ekvationer härledas
@@ -175,7 +175,7 @@ Lämnad till handledare: &	2013-xx-xx \\
   som kan kombineras till
 
   \begin{equation} \label{eq:avlänkning}
-  \delta = \alpha-A+\arcsin\left(n \sin\left(A-\arcsin\left(\frac{\sin\alpha}{n}\right)\right)\right).
+  	\delta = \alpha-A+\arcsin\left(n \sin\left(A-\arcsin\left(\frac{\sin\alpha}{n}\right)\right)\right)\text{.}
   \end{equation}
 
 \subsection{Totalreflektion}
@@ -183,7 +183,7 @@ Lämnad till handledare: &	2013-xx-xx \\
 	Om $n_i$ betecknar brytningsindex för det första mediet, $n_t$ betecknar brytningsindex för det andra mediet, $\theta_i$ betecknar infallsvinkeln och $\theta_t$ betecknar brytningsvinkeln kan Snells lag uttryckas \cite[pp.~21--22]{pearsonIntroOpt}
 	
 	\begin{equation} \label{eq:snell}
-		n_i\sin\theta_i = n_t\sin\theta_t.
+		n_i\sin\theta_i = n_t\sin\theta_t\text{.}
 	\end{equation}
 	
 	Om $n_t < n_i$ och därmed $\frac{n_t}{n_i} < 1$ finns det någon vinkel $\theta_c$ så att $\sin\theta_c = \frac{n_t}{n_i}$. Om $\theta_i$ sätts till denna vilkel ger Snells lag att $\sin\theta_t = 1$, och alla $\theta_i$ större än $\theta_c$ ger att $\sin\theta_t > 1$, vilket är omöjligt. Eftersom refraktion i det här fallet är omöjligt, och ljuset måste ta vägen någonstans, måste därför allt ljus reflekteras. Detta kallas totalreflection.
@@ -304,9 +304,9 @@ Lämnad till handledare: &	2013-xx-xx \\
 \section{Diskussion}
   %Är resultaten rimliga? Vad hade kunnat göras annorlunda?
   
-  % Rimlighet hos divergens.
+  Alla mått på divergensen ligger runt samma värde och \SI{9}{\degree} är inte orimligt för den laser vi hade.
   
-  % Rimlighet hos fokallängd (6cm på linsen).
+  Fokallängden som stod på linsen var \SI{6}{\centi\meter} och värdet vi fick var \SI{5.67}{\centi\meter}, vilket är ganska nära. Skillnaden kan dels bero på felmätning då alla mätningar gjordes för hand, dels på inexaktheter i tillverkningen av linsen samt dels på approximationer i teorin, vilka behandlas senare.
   
   % Anpassning, jämföra med och utan toppvinkeln. Rimlighet. Hur bra.
   
@@ -315,6 +315,8 @@ Lämnad till handledare: &	2013-xx-xx \\
   % (Vilket glas?)
   
   % Rimlighet hos brytningsindex.
+
+  Det finns ett flertal felkällor som kan ha bidragit till de fel i anpassningarna vi ser. Främst var alla avstånd mätta för hand med måttband eller linjal. Vid mätning av divergensen speciellt är kanten på laserstrålen svårdefinierad och vid mätningen av fokallängd användes formler som antar både att linsen är tunn och att alla involverade vinklar var små. Vid mätningen av avlänkningsvinkeln blev pricken som bildades på skärmen relativt utsmetad då avlänkningen var som störst, vilket kan ha påverkat mätningens exakthet. Samtidigt mättes infallsvinkeln med hjälp av måttet som själva prismat var fäst på, och då behövdes den vinkel då infallsvinkeln är $\SI{0}{\degree}$. Denna mättes och kan bara mätas en gång men påverkar alla andra vinklar.
   
   % Felkällor:
   % Handmätt
