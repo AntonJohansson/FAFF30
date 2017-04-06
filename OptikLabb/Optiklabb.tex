@@ -286,6 +286,19 @@ Lämnad till handledare: &	2013-xx-xx \\
 	\label{fig:blue}
 \end{figure}
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Data/frustrerad_inget.jpg}
+	\caption{Fotografi av en glasplatta vari ljus fångats med hjälp av totalreflektion. Man ser att en del ljus slipper ut, men glasbiten ser ändå mycket ut som en vanlig glasbit.}
+	\label{fig:frustInget}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Data/frustrerad_hand.jpg}
+	\caption{Samma glasbit som i \autoref{fig:frustInget} med totalreflekterande ljus inuti, men här ser man att när man nuddar ytan med något med högre brytningsindex -- som till exempel ett finger -- totalreflekteras inte längre ljuset vid den ytan utan lämnar istället glasbiten och sprids av fingret.}
+	\label{fig:frustHand}
+\end{figure}
+
 \FloatBarrier
 
 \section{Diskussion}
@@ -323,26 +336,17 @@ Lämnad till handledare: &	2013-xx-xx \\
 
 Då sfäriska linser inte är den ideala formen för att fokusera korrekt uppkommer aberrationer när dessa används. De lägsta ordningens avvikelser är av tredje ordningens och behandlas i detalj i \cite[Kapitel~20]{pearsonIntroOpt}. Tredje ordningens aberrationer kan delas in i fem kategorier; sfärisk aberration, koma, astigmatism, bildfältskrökning och förvrängning. Här undersöker vi endast koma och astigmatism, men de andra aberrationerna kan säkert hittas i de resulterand punktdiagrammen.
 
+Förutom dessa är även kromatisk aberration ett problem. Kromatisk aberration har inte något med linsens form att göra, utan faktumet att material har olika brytningsindex för olika våglängder på ljus. Det betyder att en lins har olika fokallängder för olika våglängder.
+
 \subsection{Metod}
 
+För att skapa spegelsystemet skapades först en punktkälla som placerades i origo. Sedan en \SI{60}{\milli\meter} stor spegel förskjuten \SI{600}{\milli\meter} i z-led roterad \SI{5}{\degree} runt y-axeln med en fokallängd med \SI{300}{\milli\meter}. Till slut placerades en detektor förskjuten \SI{104}{\milli\meter} i negativ x-led och justerades till den positionen ”Best Geometric Focus...” angav. För att undersöka kromatisk aberration lades en våglängd till till punktkällan.
 
+Linssystemet byggdes upp av kollimerad källa förskjuten \SI{-300}{\milli\meter} i z-riktningen, en detektor förskjuten \SI{300}{\milli\meter} i z-riktningen och en lins i origo med fokallängden \SI{300}{\milli\meter}. Återigen användes funktionen ”Best Geometric Focus...” för att justera detektorns position. När den kromatiska aberrationen undersöktes lades en våglängd till till ljuskällan och vid studien av koma roterades linsen \SI{15}{\degree} runt y-axeln och formfaktorerna -1, 0 och 1.
 
 \subsection{Resultat}
 
 \FloatBarrier
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Data/frustrerad_inget.jpg}
-	\caption{Fotografi av en glasplatta vari ljus fångats med hjälp av totalreflektion. Man ser att en del ljus slipper ut, men glasbiten ser ändå mycket ut som en vanlig glasbit.}
-	\label{fig:frustInget}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Data/frustrerad_hand.jpg}
-	\caption{Samma glasbit som i \autoref{fig:frustInget} med totalreflekterande ljus inuti, men här ser man att när man nuddar ytan med något med högre brytningsindex -- som till exempel ett finger -- totalreflekteras inte längre ljuset vid den ytan utan lämnar istället glasbiten och sprids av fingret.}
-	\label{fig:frustHand}
-\end{figure}
 
 \begin{figure}[h]
 	\centering
@@ -358,6 +362,12 @@ Då sfäriska linser inte är den ideala formen för att fokusera korrekt uppkom
 \end{figure}
 \begin{figure}[h]
 	\centering
+	\input{Data/FRED/ChromaAbberationMirrorSys.tex}
+	\caption{Plot av hur olika våglängder träffar sensorytan i ett spegelsystem.}
+	\label{fig:chrMir}
+\end{figure}
+\begin{figure}[h]
+	\centering
 	\input{Data/FRED/Chroma1.tex}
 	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden $\SI{600}{\nano\meter}$.}
 	\label{fig:chrLens1}
@@ -367,12 +377,6 @@ Då sfäriska linser inte är den ideala formen för att fokusera korrekt uppkom
 	\input{Data/FRED/Chroma2.tex}
 	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden $\SI{400}{\nano\meter}$.}
 	\label{fig:chrLens2}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\input{Data/FRED/ChromaAbberationMirrorSys.tex}
-	\caption{Plot av hur olika våglängder träffar sensorytan i ett spegelsystem.}
-	\label{fig:chrMir}
 \end{figure}
 \begin{figure}[h]
 	\centering
