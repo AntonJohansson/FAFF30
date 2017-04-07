@@ -362,50 +362,50 @@ Linssystemet byggdes upp av kollimerad källa förskjuten \SI{-300}{\milli\meter
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\textwidth]{Data/FRED/FRED1.jpg}
-	\caption{Bild av ljusstrålar som fokuseras av en konvex spegel sett uppifrån. Fokuspunkten hamnar strax innan skärmen.}
-	\label{fig:astigmAbove}
-\end{figure}
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Data/FRED/FRED2.jpg}
-	\caption{Bild av ljusstrålar som fokuseras av en konvex spegel sett från sidan. Fokuspunkten hamnar strax efter skärmen.}
-	\label{fig:astigmSide}
+	\begin{minipage}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{Data/FRED/FRED1.jpg}
+	\end{minipage}
+	\hspace{10pt}
+	\begin{minipage}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{Data/FRED/FRED2.jpg}
+	\end{minipage}
+	\caption{Bild av ljusstrålar som fokuseras av en konvex spegel sett uppifrån respektive från sidan. Sett ovanifrån hamnar fokuspunkten innan skärmen medan sett från sidan hamnar fokuspunkten efter skärmen. Denna skillnad i fokuspunkt kallas för astigmatism. För att minimera effekten placeras sensorn mitt i mellan fokuspunkterna.}
+	\label{fig:astigmBoth}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/ChromaAbberationMirrorSys.tex}
-	\caption{Plot av hur olika våglängder träffar sensorytan i ett spegelsystem.}
+	\caption{Plot av hur olika våglängder träffar sensorytan i ett spegelsystem. Här ser man att kromatisk aberration inte är något problem i spegelsystem.}
 	\label{fig:chrMir}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/Chroma1.tex}
-	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden $\SI{600}{\nano\meter}$.}
+	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden \SI{600}{\nano\meter}. Då linsen har en annan fokuslängd för ljus med \SI{400}{\nano\meter} blir dessa ljusstrålar inte alls lika väl fokuserade. Resultatet blir kromatisk aberration.}
 	\label{fig:chrLens1}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/Chroma2.tex}
-	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden $\SI{400}{\nano\meter}$.}
+	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden \SI{400}{\nano\meter}. Då linsen har en annan fokuslängd för ljus med \SI{600}{\nano\meter} blir dessa ljusstrålar inte alls lika väl fokuserade. Resultatet blir kromatisk aberration.}
 	\label{fig:chrLens2}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/ComaSym.tex}
-	\caption{Plot av komat när att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en symmetrisk konvex lins.}
+	\caption{Plot av komat när att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en symmetrisk konvex lins. I bilden kan man se ursprunget till namnet då det liknar en komet med svans.}
 	\label{fig:comSym}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/ComaP1.tex}
-	\caption{Plot av komat när av att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en planokonvex lins. (Vi måste skilja på orienteringen)}
+	\caption{Plot av komat när av att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en planokonvex lins med den sfäriska ytan vänd mot ljuskällan. Jämfört med \autoref{fig:comSym} sprids ljuset mer, men spridningen är mycket mer symmetrisk och liknar mer en bild som är ofokuserad.}
 	\label{fig:comP1}
 \end{figure}
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/ComaM1.tex}
-	\caption{Plot av komat när att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en planokonvex lins. (Vi måste skilja på orienteringen)}
+	\caption{Plot av komat när att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en planokonvex lins med den plana ytan vänd mot ljuskällan. Effekten som syns i \autoref{fig:comSym} är här förstärkt.}
 	\label{fig:comM1}
 \end{figure}
 
