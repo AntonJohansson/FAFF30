@@ -127,7 +127,7 @@ Lämnad till handledare: &	2017-xx-xx \\
 % prisma, illustrera spridning/brytning av ljus
 
 
-Optik är ett väldigt mångsidigt fält som utnyttjas i allt från utvecklingen av optiska kretskort i kvantdatorer \cite{quantumOptics} till framtagandet av en femto-kamera som kan filma i $10^{18}$ bilder per sekund \cite{femtoKamera}.
+Optik är ett väldigt mångsidigt fält som utnyttjas i allt från utvecklingen av optiska kretskort i kvantdatorer \cite{quantumOptics} till framtagandet av en femto-kamera som kan filma i $10^{12}$ bilder per sekund \cite{femtoKamera}.
 
 Denna laboration syftar i att bygga en förståelse för konstruktionen av optiska system från grundläggande komponenter. Mer specifikt så är syftet att konstruera ett optiskt system som kan användas för att bestämma brytningsindexet hos ett prisma. Därutöver beräknas även divergensen för en laserstråle som lämnar en optisk fiber, samt att beräkna fokallängden för en positiv lins.
 
@@ -208,7 +208,19 @@ Denna laboration syftar i att bygga en förståelse för konstruktionen av optis
   % valen.
   
   % Beskrivning av mätning av fokallängd här (OBS annan lins än senare).
-  
+
+Först av allt, bestämdes divergensen $\theta$ hos en diodlaser som letts genom optisk fiber. Detta gjordes genom att placera en skärm på ett känt avstånd $d$ från lasern och mäta radien $r$ av laserns avbild skärmen. Sedan utnyttjades \autoref{eq:divergensGeom} för att få fram divergensen, som kan härledas ur geometrin. Detta upprepades sedan fem gånger för olika $d$ och $r$ för att få fram ett medelvärde av divergensen.
+
+ \begin{equation}
+\tan\theta = \frac{r}{d} \Rightarrow \theta = \arctan\frac{r}{d}\label{eq:divergensGeom}
+\end{equation}
+
+Därefter bestämdes fokallängden $f$ för en given positiv lins genom att placera linsen på ett avstånd $s_1$ från lasern, och sedan placera skärmen på ett avstånd $s_2$ från linsen, sådana att lasern fokuseras på skärmen. Därefter användes \autoref{eq:foklength} för att beräkna fokallängden. Denna metod upprepades tre gånger för att minska påverkan av eventuella mätfel.
+
+\begin{equation}
+	\frac{1}{s_1} + \frac{1}{s_2} = \frac{1}{f} \iff f = \frac{1}{\frac{1}{s_1} + \frac{1}{s_2}}\label{eq:foklength}
+\end{equation}
+
 \begin{figure}[h]
 	\centering
 	\begin{tikzpicture}[scale=1.5]
@@ -231,7 +243,7 @@ Denna laboration syftar i att bygga en förståelse för konstruktionen av optis
 	\label{fig:exp}
 \end{figure}
   
-  En laser leddes genom ett optiskt fiber och en lins användes för att kollimera stålen när den lämnade fibret. Två irisar placerades på en väldefinierad linje och lasern leddes genom dessa för att bekräfta att lasern var rak och kollimerad.
+Slutligen leddes samma laser genom ett optiskt fiber och en mindre lins användes för att kollimera laserstrålen då den lämnade fibret. Två irisar placerades på en väldefinierad linje och lasern leddes genom dessa för att bekräfta att lasern var rak och kollimerad.
   
   Ett prisma på en graderad roterbar platta placerades i laserstrålens väg och en millimetergraderad skärm placerades ut parallell med laserstrålen så att den brutna strålen träffade skärmen enligt \autoref{fig:exp}. Prismat roterades så att laserstrålen träffade rakt på ($\alpha=0$) och prismats rotation antecknades. Sedan roterades prismat \SI{2}{\degree} upprepade gånger och positionen där laserstrålen träffade skärmen antecknades och räknades om till vinkeln $\gamma$.
   
