@@ -184,7 +184,7 @@ Denna laboration syftar i att bygga en förståelse för konstruktionen av optis
   
   som kan kombineras till
 
-  \begin{equation} \label{eq:avlänkning}
+  \begin{equation} \label{eq:avlankning}
   	\delta = \alpha-A+\arcsin\left(n \sin\left(A-\arcsin\left(\frac{\sin\alpha}{n}\right)\right)\right)\text{.}
   \end{equation}
   
@@ -271,7 +271,9 @@ Slutligen leddes samma laser genom ett optiskt fiber och en mindre lins använde
   
   Ett prisma på en graderad roterbar platta placerades i laserstrålens väg och en millimetergraderad skärm placerades ut parallell med laserstrålen så att den brutna strålen träffade skärmen enligt \autoref{fig:exp}. Prismat roterades så att laserstrålen träffade rakt på ($\alpha=0$) och prismats rotation antecknades. Sedan roterades prismat \SI{2}{\degree} upprepade gånger och positionen där laserstrålen träffade skärmen antecknades och räknades om till vinkeln $\gamma$.
   
-  Mätvärdena matades in i matlab och där användes appen ”Curve Fitting” för att hitta ett brytningsindex så att ekvationen \eqref{eq:avlänkning} gäller så väl som möjligt.
+  Mätvärdena matades in i matlab och där användes appen ”Curve Fitting” för att hitta ett brytningsindex så att ekvationen \eqref{eq:avlankning} gäller så väl som möjligt.
+
+  Datan för den blå lasern insamlades av en kollega och använder en likanande uppställning, men med ett annat prisma.
 
 \section{Resultat}
   %Vad man  kommer fram till?
@@ -365,6 +367,8 @@ Ur \autoref{tab:foc} fås \SI{5.67}{\centi\meter} som medelvärde på fokalläng
   % Rimlighet hos brytningsindex.
 
 Kurvanpassningarna som gjordes för den röda lasern (se Figure \ref{fig:red60} och \ref{fig:red}) resulterar i ett brytningsindex i bästa anpassning på $n = 1.61$ då toppvinkeln $A$ hölls fixerat och $n = 1.587$ då både $A$ och $n$ varierade. Likningsvis, det bäst anpassade brytingsindex för den blåa lasern (se Figur \ref{fig:blue60} och \ref{fig:blue}) är $n = 1.641$ då $A$ hölls fix, och $n = 1.676$ då även $A$ tilläts variera. Detta är rimliga värden på brytningsindex för ett glasprisma, då det typiska värdet för glas ligger runt $n = 1.5$ \cite{glassProperties}.
+
+Det är även noterbart att toppvinkeln för kurvanpassningarna som varierade både $n$ och $A$ gav $\SI{61.27}{\degree} \le A \le \SI{61.75}{\degree}$ för den röda lasern och $A = \SI{58.25}{\degree}$ för den blåa. Vilket kan förklaras med imperfektioner i tillverkningen av de två olika prismorna som användes.
 
   Det finns ett flertal felkällor som kan ha bidragit till de fel i anpassningarna vi ser. Främst var alla avstånd mätta för hand med måttband eller linjal. Vid mätning av divergensen speciellt är kanten på laserstrålen svårdefinierad och vid mätningen av fokallängd användes formler som antar både att linsen är tunn och att alla involverade vinklar var små. Vid mätningen av avlänkningsvinkeln blev pricken som bildades på skärmen relativt utsmetad då avlänkningen var som störst, vilket kan ha påverkat mätningens exakthet. Samtidigt mättes infallsvinkeln med hjälp av måttet som själva prismat var fäst på, och då behövdes den vinkel då infallsvinkeln är $\SI{0}{\degree}$. Denna mättes och kan bara mätas en gång men påverkar alla andra vinklar.
   
