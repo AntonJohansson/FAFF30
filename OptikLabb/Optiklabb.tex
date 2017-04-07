@@ -217,7 +217,7 @@ Denna laboration syftar i att bygga en förståelse för konstruktionen av optis
   
   % Beskrivning av mätning av fokallängd här (OBS annan lins än senare).
 
-Först av allt, bestämdes divergensen $\theta$ hos en diodlaser som letts genom optisk fiber. Detta gjordes genom att placera en skärm på ett känt avstånd $d$ från lasern och mäta radien $r$ av laserns avbild skärmen. Sedan utnyttjades \autoref{eq:divergensGeom} för att få fram divergensen, som kan härledas ur geometrin. Detta upprepades sedan fem gånger för olika $d$ och $r$ för att få fram ett medelvärde av divergensen.
+Först av allt, bestämdes divergensen $\theta$ hos en diodlaser som letts genom optisk fiber. Detta gjordes genom att placera en skärm på ett känt avstånd $d$ från lasern och mäta radien $r$ av laserns avbild skärmen. Sedan utnyttjades \eqref{eq:divergensGeom} för att få fram divergensen, som kan härledas ur geometrin. Detta upprepades sedan fem gånger för olika $d$ och $r$ för att få fram ett medelvärde av divergensen.
 
  \begin{equation}
 \tan\theta = \frac{r}{d} \Rightarrow \theta = \arctan\frac{r}{d}\label{eq:divergensGeom}
@@ -225,7 +225,7 @@ Först av allt, bestämdes divergensen $\theta$ hos en diodlaser som letts genom
 
 %% TUNN LINS, PARAXIAL APPROX
 
-Därefter bestämdes fokallängden $f$ för en given positiv lins genom att placera linsen på ett avstånd $s_1$ från lasern, och sedan placera skärmen på ett avstånd $s_2$ från linsen, sådana att lasern fokuseras på skärmen. Därefter användes \autoref{eq:foklength} för att beräkna fokallängden. Denna metod upprepades tre gånger för att minska påverkan av eventuella mätfel.
+Därefter bestämdes fokallängden $f$ för en given positiv lins genom att placera linsen på ett avstånd $s_1$ från lasern, och sedan placera skärmen på ett avstånd $s_2$ från linsen, sådana att lasern fokuseras på skärmen. Därefter användes \eqref{eq:foklength} för att beräkna fokallängden. Denna metod upprepades tre gånger för att minska påverkan av eventuella mätfel.
 
 \begin{equation}
 	\frac{1}{s_1} + \frac{1}{s_2} = \frac{1}{f} \iff f = \frac{1}{\frac{1}{s_1} + \frac{1}{s_2}}\label{eq:foklength}
@@ -372,7 +372,7 @@ Ur \autoref{tab:foc} fås \SI{5.67}{\centi\meter} som medelvärde på fokalläng
 
 Då sfäriska linser inte är den ideala formen för att fokusera korrekt uppkommer aberrationer när dessa används. De lägsta ordningens avvikelser är av tredje ordningens och behandlas i detalj i \cite[Kapitel~20]{pearsonIntroOpt}. Tredje ordningens aberrationer kan delas in i fem kategorier; sfärisk aberration, koma, astigmatism, bildfältskrökning och förvrängning. Här undersöker vi endast koma och astigmatism, men de andra aberrationerna kan säkert hittas i de resulterand punktdiagrammen.
 
-Förutom dessa är även kromatisk aberration ett problem. Kromatisk aberration har inte något med linsens form att göra, utan faktumet att material har olika brytningsindex för olika våglängder på ljus. Det betyder att en lins har olika fokallängder för olika våglängder.
+Förutom dessa är även kromatisk aberration ett problem. Kromatisk aberration har inte något med linsens form att göra, utan faktumet att material har olika brytningsindex för olika våglängder på ljus. Det betyder att en lins har olika fokallängder för olika våglängder \cite[Kapitel~20]{pearsonIntroOpt}.
 
 \subsection{Metod}
 
