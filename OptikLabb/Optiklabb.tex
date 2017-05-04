@@ -276,10 +276,10 @@ Slutligen leddes samma laser genom ett optiskt fiber och en mindre lins använde
   Datan för den blå lasern insamlades av en kollega och använder en likanande uppställning, men med ett annat prisma.
 
 \section{Resultat}
-  %Vad man  kommer fram till?
+
+I \autoref{tab:div} presenteras den, enligt \autoref{eq:divergensGeom}, uträknade divergensen för en röd lasern som letts genom en optisk fiber, tillsammans med den uppmätta diametern på laserns avbildning samt avståndet till ytan där den avbildades. Ett medelvärde på divergensen togs fram till $9.2\si{\degree}$.
 
 \FloatBarrier
-
 \begin{table}[h]
 	\centering
 	\caption{Uppmätta storlekar av lasern på olika avstånd och den divergens som de motsvarar samt medelvärdet av de beräknade divergenserna.}
@@ -296,6 +296,9 @@ Slutligen leddes samma laser genom ett optiskt fiber och en mindre lins använde
 		& Medelvärde: & $9.2$ \\\hline
 	\end{tabular}
 \end{table}
+\FloatBarrier
+
+\autoref{tab:foc} redogör för den beräknade fokallängden hos en given lins och tillhörande uppmätta värden på avstånet mellan lasern, linsen och ytan som lasern fokuserades på. Det beräknade medelvärdet på fokallängden kan avläsas till $5.67\unit{cm}$.
 
 \begin{table}[h]
 	\centering
@@ -309,6 +312,11 @@ Slutligen leddes samma laser genom ett optiskt fiber och en mindre lins använde
 		& Medelvärde: & $5.67$ \\\hline
 	\end{tabular}
 \end{table}
+
+I Figur \ref{fig:red60} och \ref{fig:red} presenteras den uppmätta avlänkningen för olika infallsvinklar då en röd laser leds genom ett prisma. En kurvanpassning gjordes enligt \autoref{eq:avlankning}, där toppvinkeln antogs till $A = 60\si{\degree}$ och brytningsindex $n$ läts variera. Bäst anpassning fås då $n = 1.61$ och brytningsindexet för prismat ligger med $95\%$ säkerhet inom intervallet $1.608\le n \le1.612$. I \autoref{fig:red} anpassades istället en kurva med både toppvinkeln $A$ och brytningsindex $n$ som variabler till samma mätvärden. I den bästa anpassningen är $n = 1.587$ och $A = 61.51\si{\degree}$, där $n$ och $A$ ligger inom $1.584\le n \le1.591$ samt $61.27\si{\degree}\le A \le 61.75\si{\degree}$ med $95\%$ säkerhet.
+
+
+\FloatBarrier
 \begin{figure}[h]
 	\centering
 	\input{Data/rod_laser_A60.tex}
@@ -321,6 +329,11 @@ Slutligen leddes samma laser genom ett optiskt fiber och en mindre lins använde
 	\caption{Röd laser med varierande $A$. I den bästa anpassningen är $n=1.587$ och $A=\SI{61.51}{\degree}$ och i \SI{95}{\percent}-intervallet är $1.584\le n \le1.591$ och $\SI{61.27}{\degree}\le A \le\SI{61.75}{\degree}$.}
 	\label{fig:red}
 \end{figure}
+\FloatBarrier
+
+På liknande vis presenteras i Figur \ref{fig:blue60} och \ref{fig:blue} den uppmätta avlänkningen som uppstår då en blå laser letts genom ett prisma för olika infallsvinklar, tillsammans med en kurvanpassning genom mätvärdena. Kurvanpassningen i \autoref{fig:blue60} gjordes med ett fixerat $A = 60\si{\degree}$ och ett varierande brytningsindex $n$. I bästa anpassningen är $n = 1.641$ och $95\%$-intervallet är $1.638\le n \le 1.643$. I \autoref{fig:blue} gjordes istället anpassningen med varierande $A$ och $n$, vilket gav $n = 1.676$ och $A = 58.25\si{\degree}$ i den bästa anpassningen, tillsammans med $95\%$-intervall på $1.674\le n \le 1.679$ och $58.13\si{\degree}\le A \le58.36\si{\degree}$.
+
+\FloatBarrier
 \begin{figure}[h]
 	\centering
 	\input{Data/bla_laser_A60.tex}
@@ -333,7 +346,11 @@ Slutligen leddes samma laser genom ett optiskt fiber och en mindre lins använde
 	\caption{Blå laser med varierande $A$. I den bästa anpassningen är $n=1.676$ och $A=\SI{58.25}{\degree}$ och i \SI{95}{\percent}-intervallet är $1.674\le n \le1.679$ och $\SI{58.13}{\degree}\le A \le\SI{58.36}{\degree}$.}
 	\label{fig:blue}
 \end{figure}
+\FloatBarrier
 
+Figur \ref{fig:frustInget} och \ref{fig:frustHand} visar totalreflektionen som uppstår då en laser leds in i en glasbit med en infallsvinkel som är mindre än den kritiska vinkeln, samt den frustrerade totalreflektionen som uppstår då ett material med högre brytningsindex kommer i kontakt med glasbiten.
+
+\FloatBarrier
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.5\textwidth,angle=-90]{Data/frustrerad_inget.jpg}
@@ -346,7 +363,6 @@ Slutligen leddes samma laser genom ett optiskt fiber och en mindre lins använde
 	\caption{Samma glasbit som i \autoref{fig:frustInget} med totalreflekterande ljus inuti, men här ser man att när man nuddar ytan med något med högre brytningsindex -- som till exempel ett finger -- totalreflekteras inte längre ljuset vid den ytan utan lämnar istället glasbiten och sprids av fingret.}
 	\label{fig:frustHand}
 \end{figure}
-
 \FloatBarrier
 
 \section{Diskussion}
@@ -406,8 +422,9 @@ Linssystemet byggdes upp av kollimerad källa förskjuten \SI{-300}{\milli\meter
 
 \subsection{Resultat}
 
-\FloatBarrier
+\autoref{fig:astigmBoth} visar de aberrationer som uppstår från en astigmatisk lins. I bilden till vänster ses ett horisontalt fokus som hamnar före skärmen, medan bilden till höger visar hur det vertikala fokuset hamnar efter skärmen.
 
+\FloatBarrier
 \begin{figure}[h]
 	\centering
 	\begin{minipage}[b]{0.4\textwidth}
@@ -420,12 +437,22 @@ Linssystemet byggdes upp av kollimerad källa förskjuten \SI{-300}{\milli\meter
 	\caption{Bild av ljusstrålar som fokuseras av en konvex spegel sett uppifrån respektive från sidan. Sett ovanifrån hamnar fokuspunkten innan skärmen medan sett från sidan hamnar fokuspunkten efter skärmen. Denna skillnad i fokuspunkt kallas för astigmatism. För att minimera effekten placeras sensorn mitt i mellan fokuspunkterna.}
 	\label{fig:astigmBoth}
 \end{figure}
+\FloatBarrier
+
+I \autoref{fig:chrMir} kan det ses att kromatiska aberrationer inte uppstår i ett spegelsystem som belyses med ljus av våglängderna $600\unit{nm}$ och $400\unit{nm}$. Det sker ingen synbar avvikelse på grund av ljusets våglängden.
+
+\FloatBarrier
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/ChromaAbberationMirrorSys.tex}
 	\caption{Plot av hur olika våglängder träffar sensorytan i ett spegelsystem. Här ser man att kromatisk aberration inte är något problem i spegelsystem.}
 	\label{fig:chrMir}
 \end{figure}
+\FloatBarrier
+
+Däremot uppstår kromatiska aberrationer i linssystem, som kan ses i Figur \ref{fig:chrLens1} och \ref{fig:chrLens2}. Om systemet byggs för att fokusera längre våglängder (\autoref{fig:chrLens1}) fokuseras inte kortare våglängder korrekt, och om systemet istället optimeras för lägre våglängder (\autoref{fig:chrLens2}) hanteras istället inte längre våglängder på rätt sätt.
+
+\FloatBarrier
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/Chroma1.tex}
@@ -438,6 +465,11 @@ Linssystemet byggdes upp av kollimerad källa förskjuten \SI{-300}{\milli\meter
 	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden \SI{400}{\nano\meter}. Då linsen har en annan fokuslängd för ljus med \SI{600}{\nano\meter} blir dessa ljusstrålar inte alls lika väl fokuserade. Resultatet blir kromatisk aberration.}
 	\label{fig:chrLens2}
 \end{figure}
+\FloatBarrier
+
+Figur \ref{fig:comSym}, \ref{fig:comP1} och \ref{fig:comM1} visar hur ett koma uppstår i en konvex och en planokonvex lins som belyses med vinkeln $15\si{\degree}$. I den symmetriska konvexa linsen (Figur \ref{fig:comSym}) ses ett tydligt koma med en maximal spridning på ungefär $5.5\unit{mm}$ i x-led och $2\unit{mm}$ i y-led. Däremot blir komat i den planokonvexa linsen med den sfäriska ytan vänd mot ljuskällan (Figur \ref{fig:comP1}) mer symmetriskt, likt en ofokuserad bild, men den maximala spridningen är ungefär densamma. Till sist, om den planokonvexa linsen belyses med den plana ytan mot ljuskällan (Figur \ref{fig:comM1}), ses istället ett förstärkt koma, med ett större spridning i både x- och y-led.
+
+\FloatBarrier
 \begin{figure}[h]
 	\centering
 	\input{Data/FRED/ComaSym.tex}
@@ -456,10 +488,7 @@ Linssystemet byggdes upp av kollimerad källa förskjuten \SI{-300}{\milli\meter
 	\caption{Plot av komat när att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en planokonvex lins med den plana ytan vänd mot ljuskällan. Effekten som syns i \autoref{fig:comSym} är här förstärkt.}
 	\label{fig:comM1}
 \end{figure}
-
 \FloatBarrier
-
- %Den använda litteraturen.
  
  \bibliography{bibliography}{}
  \bibliographystyle{plain}
