@@ -14,6 +14,12 @@
 \usepackage{amsmath}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows.meta}
+\usepackage{placeins}
+\usepackage{siunitx}
 
 \addto\extrasswedish{%
 	\def\equationautorefname{Ekvation}%
@@ -52,17 +58,17 @@
 }
 \setcounter{secnumdepth}{-1}
 
-\title{Laborationen ”Polarisation”}
-\author{Johan Mauritsson\\Lunds Universitet}
+\title{Laborationen ”Optik”}
+\author{Johan Boström\\Anton Johansson\\Lunds Universitet}
 
 \makeatletter
-\renewcommand{\section}{\@startsection
-{section}%                   % the name
-{1}%                         % the level
-{0mm}%                       % the indent
-{-\baselineskip}%            % the before skip
-{0.5mm}%          % the after skip
-{\normalfont\bfseries}} % the style
+%\renewcommand{\section}{\@startsection
+%{section}%                   % the name
+%{1}%                         % the level
+%{0mm}%                       % the indent
+%{-\baselineskip}%            % the before skip
+%{0.5mm}%          % the after skip
+%{\normalfont\bfseries}} % the style
 %\renewcommand{\sectionmark}[1]{ }
 %\renewcommand{\thesection}{}
 
@@ -81,15 +87,15 @@
 \begin{document}
 \maketitle
 
+\renewcommand{\abstractname}{Abstract} % Om vi vill ha titeln till abstracten på engelska.
 
 \begin{abstract}
-  Kort beskrivning  av resultaten (5-10  rader). Det ska inte  vara en
-  innehållsbeskrivning (först gör vi det, sen använder vi den metoden,
-  och så jämför vi det med de där tidigare kända resultaten, etc) utan
-  vara   koncentrerat  till   ”resultatet”,   vad   man  kommer   fram
-  till. Sammanfattningen är uppsatsens löpsedel. Den ska vara kort och
-  kärnfull och locka läsare genom att  effektivt göra klart vad det är
-  man uppnår genom att läsa rapporten.
+  %Kort beskrivning  av resultaten (5-10  rader). Det ska inte  vara en innehållsbeskrivning (först gör vi det, sen använder vi den metoden, och så jämför vi det med de där tidigare kända resultaten, etc) utan vara   koncentrerat  till   ”resultatet”,   vad   man  kommer fram till. Sammanfattningen är uppsatsens löpsedel. Den ska vara kort och kärnfull och locka läsare genom att  effektivt göra klart vad det är man uppnår genom att läsa rapporten.
+  
+  The study of the properties of optical systems and materials is paramount in the field of optics, and a complete understanding of how light behaves in different media and configurations is important for constructing better optical instruments. In this paper, the behaviour of prisms have been studied and the deflection angle has been derived theoretically and compared to experimental data using lasers of two different wavelengths. A close fit was achieved and the two refractive indices were calculated, but it was found that the shape of the prisms may not have been exactly according to specifications. A simple analysis of the divergence of the laser source as well as a measurement of the focal length of a lens is also included in the paper.
+  
+  In the second part the optical raytracing program FRED was used to study different aberrations in both lens- and mirror systems and it was found that simple optical system have inherent problems that needs to be solved in order to create effective instrument for use in precision applications.
+  
 \end{abstract}
 
 \vspace{2mm}
@@ -97,14 +103,13 @@
 \hspace{-3mm}
 \begin{tabular}{ll}
 Laborationen genomförd: &	2017-03-27 \\
-Rapporten kamratgranskad: &	2013-xx-xx \\
-Lämnad till handledare: &	2013-xx-xx \\
+%Rapporten kamratgranskad: &	2013-xx-xx \\
+Lämnad till handledare: &	2017-04-07 \\
 \end{tabular}
 
 \vspace{3mm}
 
-\begin{multicols}{2}
-  \section*{Inledning}
+\section{Inledning}
   %Preliminär beskrivning av uppgiften  i lättfattliga termer. Bakgrunden till att man intresserar sig för detta problem, denna uppgift. Hur den ingår i ett större sammanhang.
 
 %  En detaljerad beskrivning av vad det hela går ut på, och vad exakt din uppgift   i    sammanhanget   är.    Utrustningsförutsättningar.   Det
@@ -116,72 +121,376 @@ Lämnad till handledare: &	2013-xx-xx \\
 %  för  att  underlätta direktåtkomst  av  för  den individuelle  läsaren
 %  särskilt intressanta delar.
 
+% Konstruktion av optiska system
+% Experimentera med grundläggande optiska komponenter och studera geometrisk optik.
+% Abberationer i linser
+% prisma, illustrera spridning/brytning av ljus
 
+
+Optik är ett väldigt mångsidigt fält som utnyttjas i allt från utvecklingen av optiska kretskort i kvantdatorer \cite{quantumOptics} till framtagandet av en femto-kamera som kan filma i $10^{12}$ bilder per sekund \cite{femtoKamera}. Men för att kunna konstruera avancerade och innovativa optiska system måste man ha en god förståelse av grundläggande optiska instrument samt olika materials optiska egenskaper.
+
+Denna laboration syftar till att bygga en sådan förståelse för konstruktionen av optiska system från grundläggande komponenter. Mer specifikt så är syftet att konstruera ett optiskt system som kan användas för att bestämma brytningsindexet hos ett prisma. Därutöver beräknas även divergensen för en laserstråle som lämnar en optisk fiber, samt att beräkna fokallängden för en positiv lins.
+
+\section{Teori}
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[scale=1.2]
+		\draw (0, 0) -- ({4/sqrt(3)}, -4) -- ({-4/sqrt(3)}, -4) -- (0, 0); % Triangeln
+		
+		\draw (-3, -3) -- ({-2/sqrt(3)}, -2) -- ({1.8/sqrt(3)}, -1.8) -- (2.8, -3); % Den brutna ljusstrålen
+		\draw [dashed] ({-2/sqrt(3)}, -2) -- ({6 - 2*sqrt(3)}, 0); % Hjälplinjer
+		\draw [dashed] ({1.8/sqrt(3)}, -1.8) -- (-1.65, 0);
+		\draw [dashed] ({-2/sqrt(3)-1}, {-(6-sqrt(3))/3}) -- ({-2/sqrt(3)+1}, {-(6+sqrt(3))/3});
+		\draw [dashed] ({1.8/sqrt(3)-1}, -2.4) -- ({1.8/sqrt(3)+1}, -1.25);
+		
+		\draw ({-0.4/2}, {-0.4*sqrt(3)/2}) arc [radius=0.4, start angle=240, end angle=300]; % Toppvinkeln
+		\draw ({-2/sqrt(3) - (sqrt(3)*0.4)/2}, {-2 + 0.4/2}) arc [radius=0.4, start angle=150, end angle={150+58.45}]; % Infallsvinkeln
+		\draw ({0.23 + 2.3*0.83}, {-1.25 - 2.3*0.56}) arc [radius=2.3, start angle=-34, end angle=28.5]; % Avlänkningsvinkeln
+		\draw ({1.8/sqrt(3) + 0.4*0.83}, {-1.8 - 0.4*0.56}) arc [radius=0.4, start angle=-34, end angle=30]; % Lämningsvinkeln
+		\draw ({-2/sqrt(3) + 0.4*sqrt(3)/2}, {-2 - 0.4*0.5}) arc [radius=0.4, start angle=-30, end angle=5.2]; % Hjälpvinklar
+		\draw ({1.8/sqrt(3) - 0.4*0.996}, {-1.8 - 0.4*0.091}) arc [radius=0.4, start angle=185.2, end angle=210];
+		%\draw ({-0.21 + 0.2*sqrt(3)/2}, {-2.55 + 0.2*0.5}) arc [radius=0.2, start angle=30, end angle=150];
+		
+		\node [left] at ({-2/sqrt(3)-0.4}, -2) {$\alpha$};
+		\node [right] at ({-2/sqrt(3)+0.4}, -2.1) {$\alpha'$};
+		\node [left] at ({1.8/sqrt(3)-0.4}, -2.05) {$\beta'$};
+		\node [right] at ({1.8/sqrt(3)+0.4}, -1.8) {$\beta$};
+		\node [right] at ({0.23 + 2.3}, -1.25) {$\delta$};
+		\node [below] at (0, -0.4) {$A$};
+		%\node [above] at (-0.21, -2.35) {$B$};
+	\end{tikzpicture}
+	\caption{Ljusstråle som bryts genom ett prisma med de hjälpvinklar som behövs för att räkna ut avlänkningsvinkeln.}
+	\label{fig:prisma}
+\end{figure}
+  
+  För att räkna ut avlänkningsvinkeln i ett prisma används en liknande strategi som \cite[p.~65]{pearsonIntroOpt} och \autoref{fig:prisma} ritas upp med hjälpvinklarna $\alpha'$, $\beta'$ och $\beta$. Med hjälp av vinkelsumman i triangeln som bildas av prismat samt strålen genom prismat fås
+  
+  \begin{equation} \label{eq:triSum}
+  	(\SI{90}{\degree} - \alpha') + (\SI{90}{\degree} - \beta') + A = \SI{180}{\degree}\text{.}
+  \end{equation}
+  
+  Med denna ekvation tillsammans med Snells lag kan följande ekvationer härledas
 
   \begin{align} 
-  \alpha' &= \arcsin\left(\frac{\sin\alpha}{n}\right)\label{eq:alphaPrim}\\
-  \beta &= \arcsin\left(n \sin\beta'\right)\label{eq:beta}\\
-  \beta' &= A-\alpha'\label{eq:betaPrim}\\
-  \delta &= \alpha+\beta-\alpha'-\beta'  \label{eq:delta}
+  \label{eq:alphaPrim}
+  \alpha' &= \arcsin\left(\frac{\sin\alpha}{n}\right)\\
+  \label{eq:beta}
+  \beta &= \arcsin\left(n \sin\beta'\right)\\
+  \label{eq:betaPrim}
+  \beta' &= A-\alpha'\\
+  \label{eq:delta}
+  \delta &= \alpha+\beta-\alpha'-\beta'
   \end{align}
+  
+  som kan kombineras till
 
-  \begin{equation} \label{eq:avlänkning}
-  \delta = \alpha-A+\arcsin\left(n \sin\left(A-\arcsin\left(\frac{\sin\alpha}{n}\right)\right)\right)
+  \begin{equation} \label{eq:avlankning}
+  	\delta = \alpha-A+\arcsin\left(n \sin\left(A-\arcsin\left(\frac{\sin\alpha}{n}\right)\right)\right)\text{.}
   \end{equation}
+  
+  Men brytningsindexet är inte detsamma för olika våglängder, utan kan beskrivas empiriskt med Cauchys formel
+  
+  \begin{equation} \label{eq:cauchy}
+  	n_\lambda = A + \frac{B}{\lambda^2} + \frac{C}{\lambda^4} + \cdots
+  \end{equation}
+  
+  där $A$, $B$, $C$ och så vidare bestäms experimentellt. Med denna ekvation ser man att brytningsindexet minskar med längre våglängder.
+  
+  För att räkna räkna ut divergensen av en divergerande ljusstråle kan
+  
+  \begin{equation}
+	\tan\theta = \frac{r}{d} \Rightarrow \theta = \arctan\frac{r}{d}\label{eq:divergensGeom}
+  \end{equation}
+  
+  användas, där $\theta$ är divergensen, $r$ är strålens storlek efter längden $d$.
+  
+  För att räkna ut fokallängden kan man hitta de par av avstånd från linsen $s_1$ och $s_2$ så att ett föremål på avståndet $s_1$ avbildas på andra sidan på avståndet $s_2$. Därefter kan ekvationen
+  
+  \begin{equation}
+	  \frac{1}{s_1} + \frac{1}{s_2} = \frac{1}{f}
+  \end{equation}
+  
+  skrivas om till
+  
+  \begin{equation}
+	  f = \frac{1}{\frac{1}{s_1} + \frac{1}{s_2}}\label{eq:foklength}
+  \end{equation}
+  
+  för att räkna ut fokallängden $f$.
 
-  \section{Metod}
+\subsection{Totalreflektion}
+
+	Om $n_i$ betecknar brytningsindex för det första mediet, $n_t$ betecknar brytningsindex för det andra mediet, $\theta_i$ betecknar infallsvinkeln och $\theta_t$ betecknar brytningsvinkeln kan Snells lag uttryckas \cite[pp.~21--22]{pearsonIntroOpt}
+	
+	\begin{equation} \label{eq:snell}
+		n_i\sin\theta_i = n_t\sin\theta_t\text{.}
+	\end{equation}
+	
+	Om $n_t < n_i$ och därmed $\frac{n_t}{n_i} < 1$ finns det någon vinkel $\theta_c$ så att $\sin\theta_c = \frac{n_t}{n_i}$. Om $\theta_i$ sätts till denna vilkel ger Snells lag att $\sin\theta_t = 1$, och alla $\theta_i$ större än $\theta_c$ ger att $\sin\theta_t > 1$, vilket är omöjligt. Eftersom refraktion i det här fallet är omöjligt, och ljuset måste ta vägen någonstans, måste därför allt ljus reflekteras. Detta kallas totalreflection.
+	
+	Om en ljusstråle skulle ledas in i ett medium med högt brytningsindex och tillräckligt plana sidor nära parallella med ljusstrålen skulle man kunna få totalreflection på båda sidor och behålla ljusstrålen i mediet hur länge som helst. Detta är principen bakom till exempel optiska fibrer. Ett problem som uppstår i optiska fiber är vad som kallas för frustrerad totalreflektion. Detta sker när ett medium med högre brytningsindex än $n_t$ kommer i kontakt med ytan. Om det nya brytningsindexet är tillräckligt stort förstörs totalreflektionen och ljus läcker ut i det nya mediet. Om det nya mediet är en annan fibertråd kommer signaler i det ena fibret komma in i det andra, vilket kallas ”cross talk” i kommunikationskretsar.
+	\cite[pp.~261--263]{pearsonIntroOpt}
+
+\section{Metod}
   % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
   % algoritmer,  programspråk och  annan programvara,  undersökningsmetod,
   % statistiska  metoder. Där  valmöjligheter finns,  diskutera de  gjorda
   % valen.
-  \autoref{eq:beta}
+  
+  % Beskrivning av mätning av fokallängd här (OBS annan lins än senare).
 
-  \section{Resultat}
-  %Vad man  kommer fram till?  Om uppgiften innebär programmering  så kan
-  %det färdiga programmet i sig vara resultatet.  Här är det i så fall på
-  %sin  plats  med  beskrivningar  av programmet,  till  exempel  teknisk
-  %beskrivning,    funktionell    beskrivning,    användningsbeskrivning,
-  %användargränssnitt  etc.  Genomförandebeskrivning  kommer  i  så  fall
-  %närmast att handla om programutvecklingen.
+Först av allt, bestämdes divergensen $\theta$ hos en diodlaser som letts genom optisk fiber. Detta gjordes genom att placera en skärm på ett känt avstånd $d$ från lasern och mäta radien $r$ av laserns avbild skärmen. Sedan utnyttjades \eqref{eq:divergensGeom} för att få fram divergensen, som kan härledas ur geometrin. Detta upprepades sedan fem gånger för olika $d$ och $r$ för att få fram ett medelvärde av divergensen.
 
-  %Men det kan också vara så  att det snarare är programmets beteende som
-  %är resultatet.  Man utvecklar till  exempel en numerisk metod  för att
-  %lösa ett problem,  och sedan gör man experiment  med testkörningar och
-  %analyserar dessa test.
+%% TUNN LINS, PARAXIAL APPROX
 
-  \section{Diskussion}
+Därefter bestämdes fokallängden $f$ för en given positiv lins genom att placera linsen på ett avstånd $s_1$ från lasern, och sedan placera skärmen på ett avstånd $s_2$ från linsen, sådana att lasern fokuseras på skärmen. Därefter användes \eqref{eq:foklength} för att beräkna fokallängden. Denna metod upprepades tre gånger för att minska påverkan av eventuella mätfel.
+
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}[scale=1.5]
+		\draw [decorate,decoration={brace,amplitude=10pt}] (0, 0) -- (0, 2) node [midway,left,xshift=-10pt] {$y_0$};
+		\draw [decorate,decoration={brace,amplitude=10pt}] (0, 2) -- (2, 2) node [midway,above,yshift=10pt] {$x_0$};
+		\draw [decorate,decoration={brace,amplitude=7pt,mirror}] (2, 2) -- (3, 2) node [midway,below,yshift=-5pt,xshift=-2pt] {$x$};
+		\draw [dashed] (0, 0) -- (0, 3);
+		\draw [dashed] (-1, 2) -- (2, 2);
+		\draw (2, 2) -- (4, 2);
+		\draw [-{>[scale=1.5]}] (0, 0) -- (1.5, 1);
+		\draw (1.5, 1) -- (3, 2);
+		\node [below] at (0, 0) {Prisma};
+		\node [above] at (3, 2) {Skärm};
+		\draw (0.5, 0) arc [radius=0.5, start angle=0, end angle={atan(2/3)}] node [midway,right,yshift=1pt] {$\gamma=\arctan(\frac{y_0}{x_0+x})$};
+		\draw [-{>[scale=1.5]}] (-2, 0) -- (-1, 0) node [midway,above,xshift=-5pt,yshift=2pt] {Inkommande laser};
+		\draw (-1, 0) -- (0, 0);
+		\draw [dashed] (0, 0) -- (1, 0);
+	\end{tikzpicture}
+	\caption{Experimentuppställning}
+	\label{fig:exp}
+\end{figure}
+  
+Slutligen leddes samma laser genom ett optiskt fiber och en mindre lins användes för att kollimera laserstrålen då den lämnade fibret. Två irisar placerades på en väldefinierad linje och lasern leddes genom dessa för att bekräfta att lasern var rak och kollimerad.
+  
+  Ett prisma på en graderad roterbar platta placerades i laserstrålens väg och en millimetergraderad skärm placerades ut parallell med laserstrålen så att den brutna strålen träffade skärmen enligt \autoref{fig:exp}. Prismat roterades så att laserstrålen träffade rakt på ($\alpha=0$) och prismats rotation antecknades. Sedan roterades prismat \SI{2}{\degree} upprepade gånger och positionen där laserstrålen träffade skärmen antecknades och räknades om till vinkeln $\gamma$.
+  
+  Mätvärdena matades in i matlab och där användes appen ”Curve Fitting” för att hitta ett brytningsindex så att ekvationen \eqref{eq:avlankning} gäller så väl som möjligt.
+
+  Datan för den blå lasern insamlades av en kollega och använder en likanande uppställning, men med ett annat prisma.
+
+\section{Resultat}
+
+I \autoref{tab:div} presenteras den, enligt \autoref{eq:divergensGeom}, uträknade divergensen för en röd lasern som letts genom en optisk fiber, tillsammans med den uppmätta diametern på laserns avbildning samt avståndet till ytan där den avbildades. Ett medelvärde på divergensen togs fram till $9.2\si{\degree}$.
+
+\FloatBarrier
+\begin{table}[h]
+	\centering
+	\caption{Uppmätta storlekar av lasern på olika avstånd och den divergens som de motsvarar samt medelvärdet av de beräknade divergenserna.}
+	\label{tab:div}
+	\begin{tabular}{|rrr|}% Värdesiffror? Före/efter genomsnitt?
+		\hline
+		Avstånd från lasern till ytan (\si{\centi\meter}) & Uppmätta diametern på ytan (\si{\centi\meter}) & Divergens (\si{\degree}) \\
+		\hline
+		$24$ & $8.5$ & $10$ \\
+		$52$ & $16.5$ & $9.0$ \\
+		$54$ & $17.0$ & $8.9$ \\
+		$71$ & $23.0$ & $9.2$ \\
+		$84$ & $27.0$ & $9.1$ \\\hline
+		& Medelvärde: & $9.2$ \\\hline
+	\end{tabular}
+\end{table}
+\FloatBarrier
+
+\autoref{tab:foc} redogör för den beräknade fokallängden hos en given lins och tillhörande uppmätta värden på avstånet mellan lasern, linsen och ytan som lasern fokuserades på. Det beräknade medelvärdet på fokallängden kan avläsas till $5.67\unit{cm}$.
+
+\begin{table}[h]
+	\centering
+	\caption{Uppmätta avstånd mellan lasern och en lins så att strålen fokuseras på en yta längre bort och de med denna data beräknade fokallängderna till linsen.}
+	\label{tab:foc}
+	\begin{tabular}{|rrr|}\hline % Värdesiffror? Före/efter genomsnitt?
+		Avstånd från lasern till linsen (\si{\centi\meter}) & Avstånd från linsen till ytan (\si{\centi\meter}) & Beräknad fokallängd (\si{\centi\meter}) \\\hline
+		$7.4$ & $24.7$ & $5.69$ \\
+		$10$ & $13.5$ & $5.74$ \\
+		$12$ & $10.4$ & $5.57$ \\\hline
+		& Medelvärde: & $5.67$ \\\hline
+	\end{tabular}
+\end{table}
+
+I Figur \ref{fig:red60} och \ref{fig:red} presenteras den uppmätta avlänkningen för olika infallsvinklar då en röd laser leds genom ett prisma. En kurvanpassning gjordes enligt \autoref{eq:avlankning}, där toppvinkeln antogs till $A = 60\si{\degree}$ och brytningsindex $n$ läts variera. Bäst anpassning fås då $n = 1.61$ och brytningsindexet för prismat ligger med $95\%$ säkerhet inom intervallet $1.608\le n \le1.612$. I \autoref{fig:red} anpassades istället en kurva med både toppvinkeln $A$ och brytningsindex $n$ som variabler till samma mätvärden. I den bästa anpassningen är $n = 1.587$ och $A = 61.51\si{\degree}$, där $n$ och $A$ ligger inom $1.584\le n \le1.591$ samt $61.27\si{\degree}\le A \le 61.75\si{\degree}$ med $95\%$ säkerhet.
+
+
+\FloatBarrier
+\begin{figure}[h]
+	\centering
+	\input{Data/rod_laser_A60.tex}
+	\caption{Röd laser med $A$ fixerad till $\SI{60}{\degree}$. I den bästa anpassningen är $n=1.61$ och i \SI{95}{\percent}-intervallet är $1.608\le n \le1.612$.}
+	\label{fig:red60}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\input{Data/rod_laser.tex}
+	\caption{Röd laser med varierande $A$. I den bästa anpassningen är $n=1.587$ och $A=\SI{61.51}{\degree}$ och i \SI{95}{\percent}-intervallet är $1.584\le n \le1.591$ och $\SI{61.27}{\degree}\le A \le\SI{61.75}{\degree}$.}
+	\label{fig:red}
+\end{figure}
+\FloatBarrier
+
+På liknande vis presenteras i Figur \ref{fig:blue60} och \ref{fig:blue} den uppmätta avlänkningen som uppstår då en blå laser letts genom ett prisma för olika infallsvinklar, tillsammans med en kurvanpassning genom mätvärdena. Kurvanpassningen i \autoref{fig:blue60} gjordes med ett fixerat $A = 60\si{\degree}$ och ett varierande brytningsindex $n$. I bästa anpassningen är $n = 1.641$ och $95\%$-intervallet är $1.638\le n \le 1.643$. I \autoref{fig:blue} gjordes istället anpassningen med varierande $A$ och $n$, vilket gav $n = 1.676$ och $A = 58.25\si{\degree}$ i den bästa anpassningen, tillsammans med $95\%$-intervall på $1.674\le n \le 1.679$ och $58.13\si{\degree}\le A \le58.36\si{\degree}$.
+
+\FloatBarrier
+\begin{figure}[h]
+	\centering
+	\input{Data/bla_laser_A60.tex}
+	\caption{Blå laser med $A$ fixerad till $\SI{60}{\degree}$. I den bästa anpassningen är $n=1.641$ och i \SI{95}{\percent}-intervallet är $1.638\le n \le1.643$.}
+	\label{fig:blue60}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\input{Data/bla_laser.tex}
+	\caption{Blå laser med varierande $A$. I den bästa anpassningen är $n=1.676$ och $A=\SI{58.25}{\degree}$ och i \SI{95}{\percent}-intervallet är $1.674\le n \le1.679$ och $\SI{58.13}{\degree}\le A \le\SI{58.36}{\degree}$.}
+	\label{fig:blue}
+\end{figure}
+\FloatBarrier
+
+Figur \ref{fig:frustInget} och \ref{fig:frustHand} visar totalreflektionen som uppstår då en laser leds in i en glasbit med en infallsvinkel som är mindre än den kritiska vinkeln, samt den frustrerade totalreflektionen som uppstår då ett material med högre brytningsindex kommer i kontakt med glasbiten.
+
+\FloatBarrier
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth,angle=-90]{Data/frustrerad_inget.jpg}
+	\caption{Fotografi av en glasplatta vari ljus fångats med hjälp av totalreflektion. Man ser att en del ljus slipper ut, men glasbiten ser ändå mycket ut som en vanlig glasbit.}
+	\label{fig:frustInget}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\textwidth,angle=-90]{Data/frustrerad_hand.jpg}
+	\caption{Samma glasbit som i \autoref{fig:frustInget} med totalreflekterande ljus inuti, men här ser man att när man nuddar ytan med något med högre brytningsindex -- som till exempel ett finger -- totalreflekteras inte längre ljuset vid den ytan utan lämnar istället glasbiten och sprids av fingret.}
+	\label{fig:frustHand}
+\end{figure}
+\FloatBarrier
+
+\section{Diskussion}
   %Är resultaten rimliga? Vad hade kunnat göras annorlunda?
+  
+\autoref{tab:div} visar att alla mått på divergensen ligger runt samma värde och \SI{9}{\degree} är inte orimligt för den laser vi hade.
 
-  \section{Slutsats/avslutning}
+Ur \autoref{tab:foc} fås \SI{5.67}{\centi\meter} som medelvärde på fokallängden hos den större linsen, vilket är nära den fokallängd på \SI{6}{\centi\meter} som angavs på linsen. Skillnaden kan dels bero på felmätning då alla mätningar gjordes för hand, dels på inexaktheter i tillverkningen av linsen samt dels på approximationer i teorin, vilka behandlas senare.
+  
+  % Anpassning, jämföra med och utan toppvinkeln. Rimlighet. Hur bra.
+  
+  Enligt Cauchys formel \eqref{eq:cauchy} borde prismat ha ett större brytningsindex för ljus av kortare våglängd och därmed brytas mer. Denna effekt synns i mätvärdena då avlänkningsvinkeln konsekvent är större för den blåa lasern än den röda då blått ljus har kortare våglängd.
+  
+  % Jämföra röd och blå (Cauchys formel s.67).
+  
+  % (Vilket glas?)
+  
+  % Rimlighet hos brytningsindex.
+
+Kurvanpassningarna som gjordes för den röda lasern (se Figure \ref{fig:red60} och \ref{fig:red}) resulterar i ett brytningsindex i bästa anpassning på $n = 1.61$ då toppvinkeln $A$ hölls fixerat och $n = 1.587$ då både $A$ och $n$ varierade. Likningsvis, det bäst anpassade brytingsindex för den blåa lasern (se Figur \ref{fig:blue60} och \ref{fig:blue}) är $n = 1.641$ då $A$ hölls fix, och $n = 1.676$ då även $A$ tilläts variera. Detta är rimliga värden på brytningsindex för ett glasprisma, då det typiska värdet för glas ligger runt $n = 1.5$ \cite{glassProperties}.
+
+Det är även noterbart att toppvinkeln för kurvanpassningarna som varierade både $n$ och $A$ gav $\SI{61.27}{\degree} \le A \le \SI{61.75}{\degree}$ för den röda lasern och $A = \SI{58.25}{\degree}$ för den blåa. Vilket kan förklaras med imperfektioner i tillverkningen av de två olika prismorna som användes.
+
+  Det finns ett flertal felkällor som kan ha bidragit till de fel i anpassningarna vi ser. Främst var alla avstånd mätta för hand med måttband eller linjal. Vid mätning av divergensen speciellt är kanten på laserstrålen svårdefinierad och vid mätningen av fokallängd användes formler som antar både att linsen är tunn och att alla involverade vinklar var små. Vid mätningen av avlänkningsvinkeln blev pricken som bildades på skärmen relativt utsmetad då avlänkningen var som störst, vilket kan ha påverkat mätningens exakthet. Samtidigt mättes infallsvinkeln med hjälp av måttet som själva prismat var fäst på, och då behövdes den vinkel då infallsvinkeln är $\SI{0}{\degree}$. Denna mättes och kan bara mätas en gång men påverkar alla andra vinklar.
+  
+  % Felkällor:
+  % Handmätt
+  % Utsmetad prick på ytan
+  % Svårdefinierad divergens
+  % Paraxial
+  % 0-nollvinkeln påverkar
+
+\section{Slutsats}
   %En   sammanfattning  där   man  till   skillnad  från   den  inledande
   %sammanfattningen förutsätter  att läsaren har läst  rapporten, samt de
   %slutsatser man kan dra av det gjorda arbetet.
+  
+  Sammanfattningsvis stämde de experimentella mätningarna väl överens med de teoretiska förutsägelserna. Dock fanns en viss skillnad i de uppmätta värdena av de optiska instrumentens egenskaper jämfört med vad tillverkaren uppgivit. Om man ska genomföra precisionsmätningar bör man därför se till så att instrumenten man använder är konstruerade till samma exakthet som resultatet av experimentet.
+  
+  Skillnaderna mellan de olika lasrarnas avlänkning belyser även problemet med våglängdens inverkan på de optiska egenskaperna, något som också måste tas hänsyn till i användning av dessa instrument.
 
-  \section{Referenser}
-  %Den använda litteraturen.
+\section{FRED}
 
-  \section{Appendix}
-  %Eventuell     användarhandledning,     källkod,    anvisningar     för
-  %systemgenerering, och liknande som inte  är av omedelbart intresse för
-  %den ordinäre läsaren, läggs lämpligen som appendix.
+% Om FRED
 
-\end{multicols}
+\subsection{Aberrationer i lins-/spegelsystem}
 
-\section{\LaTeX-kommentarer}
-Kompileras enklast med \texttt{pdflatex}. Använd TeX Live i Linux och
-MiKTeX i Windows.
+Då sfäriska linser inte är den ideala formen för att fokusera korrekt uppkommer aberrationer när dessa används. De lägsta ordningens avvikelser är av tredje ordningens och behandlas i detalj i \cite[Kapitel~20]{pearsonIntroOpt}. Tredje ordningens aberrationer kan delas in i fem kategorier; sfärisk aberration, koma, astigmatism, bildfältskrökning och förvrängning. Här undersöker vi endast koma och astigmatism, men de andra aberrationerna kan säkert hittas i de resulterand punktdiagrammen.
 
-Test av ”komma-hack” och enhetskommando (se källkod):
-\hrule
-\begin{minipage}{0.5\linewidth}
-  Kod
-\begin{verbatim}
-\[ \Delta x = 1.23\unit{km} \]
-\end{verbatim}
-\end{minipage}
-\begin{minipage}{0.5\linewidth}
-  Resultat\\
-  $ \Delta x = 1.23\unit{km} $
-\end{minipage}
+Förutom dessa är även kromatisk aberration ett problem. Kromatisk aberration har inte något med linsens form att göra, utan faktumet att material har olika brytningsindex för olika våglängder på ljus. Det betyder att en lins har olika fokallängder för olika våglängder \cite[Kapitel~20]{pearsonIntroOpt}.
+
+\subsection{Metod}
+
+För att skapa spegelsystemet skapades först en punktkälla som placerades i origo. Sedan en \SI{60}{\milli\meter} stor spegel förskjuten \SI{600}{\milli\meter} i z-led roterad \SI{5}{\degree} runt y-axeln med en fokallängd med \SI{300}{\milli\meter}. Till slut placerades en detektor förskjuten \SI{104}{\milli\meter} i negativ x-led och justerades till den positionen ”Best Geometric Focus...” angav. För att undersöka kromatisk aberration lades en våglängd till till punktkällan.
+
+Linssystemet byggdes upp av kollimerad källa förskjuten \SI{-300}{\milli\meter} i z-riktningen, en detektor förskjuten \SI{300}{\milli\meter} i z-riktningen och en lins i origo med fokallängden \SI{300}{\milli\meter}. Återigen användes funktionen ”Best Geometric Focus...” för att justera detektorns position. När den kromatiska aberrationen undersöktes lades en våglängd till till ljuskällan och vid studien av koma roterades linsen \SI{15}{\degree} runt y-axeln och formfaktorerna -1, 0 och 1.
+
+\subsection{Resultat}
+
+\autoref{fig:astigmBoth} visar de aberrationer som uppstår från en astigmatisk lins. I bilden till vänster ses ett horisontalt fokus som hamnar före skärmen, medan bilden till höger visar hur det vertikala fokuset hamnar efter skärmen.
+
+\FloatBarrier
+\begin{figure}[h]
+	\centering
+	\begin{minipage}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{Data/FRED/FRED1.jpg}
+	\end{minipage}
+	\hspace{10pt}
+	\begin{minipage}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{Data/FRED/FRED2.jpg}
+	\end{minipage}
+	\caption{Bild av ljusstrålar som fokuseras av en konvex spegel sett uppifrån respektive från sidan. Sett ovanifrån hamnar fokuspunkten innan skärmen medan sett från sidan hamnar fokuspunkten efter skärmen. Denna skillnad i fokuspunkt kallas för astigmatism. För att minimera effekten placeras sensorn mitt i mellan fokuspunkterna.}
+	\label{fig:astigmBoth}
+\end{figure}
+\FloatBarrier
+
+I \autoref{fig:chrMir} kan det ses att kromatiska aberrationer inte uppstår i ett spegelsystem som belyses med ljus av våglängderna $600\unit{nm}$ och $400\unit{nm}$. Det sker ingen synbar avvikelse på grund av ljusets våglängden.
+
+\FloatBarrier
+\begin{figure}[h]
+	\centering
+	\input{Data/FRED/ChromaAbberationMirrorSys.tex}
+	\caption{Plot av hur olika våglängder träffar sensorytan i ett spegelsystem. Här ser man att kromatisk aberration inte är något problem i spegelsystem.}
+	\label{fig:chrMir}
+\end{figure}
+\FloatBarrier
+
+Däremot uppstår kromatiska aberrationer i linssystem, som kan ses i Figur \ref{fig:chrLens1} och \ref{fig:chrLens2}. Om systemet byggs för att fokusera längre våglängder (\autoref{fig:chrLens1}) fokuseras inte kortare våglängder korrekt, och om systemet istället optimeras för lägre våglängder (\autoref{fig:chrLens2}) hanteras istället inte längre våglängder på rätt sätt.
+
+\FloatBarrier
+\begin{figure}[h]
+	\centering
+	\input{Data/FRED/Chroma1.tex}
+	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden \SI{600}{\nano\meter}. Då linsen har en annan fokuslängd för ljus med \SI{400}{\nano\meter} blir dessa ljusstrålar inte alls lika väl fokuserade. Resultatet blir kromatisk aberration.}
+	\label{fig:chrLens1}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\input{Data/FRED/Chroma2.tex}
+	\caption{Plot av hur olika våglängder träffar sensorytan i ett linssystem optimerat för ljus med våglängden \SI{400}{\nano\meter}. Då linsen har en annan fokuslängd för ljus med \SI{600}{\nano\meter} blir dessa ljusstrålar inte alls lika väl fokuserade. Resultatet blir kromatisk aberration.}
+	\label{fig:chrLens2}
+\end{figure}
+\FloatBarrier
+
+Figur \ref{fig:comSym}, \ref{fig:comP1} och \ref{fig:comM1} visar hur ett koma uppstår i en konvex och en planokonvex lins som belyses med vinkeln $15\si{\degree}$. I den symmetriska konvexa linsen (Figur \ref{fig:comSym}) ses ett tydligt koma med en maximal spridning på ungefär $5.5\unit{mm}$ i x-led och $2\unit{mm}$ i y-led. Däremot blir komat i den planokonvexa linsen med den sfäriska ytan vänd mot ljuskällan (Figur \ref{fig:comP1}) mer symmetriskt, likt en ofokuserad bild, men den maximala spridningen är ungefär densamma. Till sist, om den planokonvexa linsen belyses med den plana ytan mot ljuskällan (Figur \ref{fig:comM1}), ses istället ett förstärkt koma, med ett större spridning i både x- och y-led.
+
+\FloatBarrier
+\begin{figure}[h]
+	\centering
+	\input{Data/FRED/ComaSym.tex}
+	\caption{Plot av komat när att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en symmetrisk konvex lins. I bilden kan man se ursprunget till namnet då det liknar en komet med svans.}
+	\label{fig:comSym}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\input{Data/FRED/ComaP1.tex}
+	\caption{Plot av komat när av att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en planokonvex lins med den sfäriska ytan vänd mot ljuskällan. Jämfört med \autoref{fig:comSym} sprids ljuset mer, men spridningen är mycket mer symmetrisk och liknar mer en bild som är ofokuserad.}
+	\label{fig:comP1}
+\end{figure}
+\begin{figure}[h]
+	\centering
+	\input{Data/FRED/ComaM1.tex}
+	\caption{Plot av komat när att ljuset kommer in med en vinkel på $\SI{15}{\degree}$ till en planokonvex lins med den plana ytan vänd mot ljuskällan. Effekten som syns i \autoref{fig:comSym} är här förstärkt.}
+	\label{fig:comM1}
+\end{figure}
+\FloatBarrier
+ 
+ \bibliography{bibliography}{}
+ \bibliographystyle{plain}
 
 \end{document}
