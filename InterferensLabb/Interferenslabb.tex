@@ -1,0 +1,141 @@
+% Laborationsmall.tex
+\documentclass[a4paper]{article}
+
+\usepackage[swedish]{babel}
+\usepackage[utf8x]{inputenc}
+
+\usepackage{multicol}
+\usepackage[vmargin=3cm,hmargin=2cm]{geometry}
+\usepackage{parskip}
+\usepackage[runin]{abstract}
+\renewcommand{\abstitleskip}{0mm}
+
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{arrows.meta}
+\usepackage{placeins}
+\usepackage{siunitx}
+
+\addto\extrasswedish{%
+	\def\equationautorefname{Ekvation}%
+	\def\figureautorefname{Figur}%
+	\def\tableautorefname{Tabell}%
+	\def\sectionautorefname{Rubrik}%
+	\def\subsectionautorefname{Underrubrik}%
+	\def\pageautorefname{Sida}%
+}
+
+\usepackage{graphicx}
+\usepackage{ccaption}
+\captionnamefont{\it}
+\captiontitlefont{\it}
+
+% Hack för att få komma istället för punkt i matematiska uttryck
+% $3.141592$ blir 3,141592
+% Om man använder komma direkt får man ett litet oönskat mellanrum:
+% $3,141592$ blir 3, 141592
+\DeclareMathSymbol{,}{\mathpunct}{letters}{"3B}
+\DeclareMathSymbol{.}{\mathord}{letters}{"3B}
+\DeclareMathSymbol{\decimal}{\mathord}{letters}{"3A}
+
+% Kommando för att få icke-kursiva enheter i matematiska uttryck
+% $10\unit{km}$ blir 10 km
+\newcommand{\unit}[1]{\ensuremath{\,\mathrm{#1}}}
+
+\usepackage{lastpage}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf[C]{\thepage}
+\fancyhead[C]{Våglära och optik, FAFF30}
+\fancyhead[R,L]{}
+\fancypagestyle{plain}{
+  \fancyhead{}
+}
+\setcounter{secnumdepth}{-1}
+
+\title{Laborationen ”Ljusets diffraktion”}
+\author{Johan Boström\\Anton Johansson\\Lunds Universitet}
+
+\makeatletter
+%\renewcommand{\section}{\@startsection
+%{section}%                   % the name
+%{1}%                         % the level
+%{0mm}%                       % the indent
+%{-\baselineskip}%            % the before skip
+%{0.5mm}%          % the after skip
+%{\normalfont\bfseries}} % the style
+%\renewcommand{\sectionmark}[1]{ }
+%\renewcommand{\thesection}{}
+
+\renewcommand*\maketitle{
+  {
+    \begin{center}
+      {\huge\bfseries \@title}\\
+      \vspace{5mm}
+      {\large \@author}
+    \end{center}
+    \vspace{2mm}
+  }
+}
+\makeatother
+
+\begin{document}
+\maketitle
+
+\renewcommand{\abstractname}{Abstract} % Om vi vill ha titeln till abstracten på engelska.
+
+\begin{abstract}
+  %Kort beskrivning  av resultaten (5-10  rader). Det ska inte  vara en innehållsbeskrivning (först gör vi det, sen använder vi den metoden, och så jämför vi det med de där tidigare kända resultaten, etc) utan vara   koncentrerat  till   ”resultatet”,   vad   man  kommer fram till. Sammanfattningen är uppsatsens löpsedel. Den ska vara kort och kärnfull och locka läsare genom att  effektivt göra klart vad det är man uppnår genom att läsa rapporten.
+  
+\end{abstract}
+
+\vspace{2mm}
+
+\hspace{-3mm}
+\begin{tabular}{ll}
+Laborationen genomförd: &	2017-07-04 \\
+%Rapporten kamratgranskad: &	2013-xx-xx \\
+Lämnad till handledare: &	2017-xx-xx \\
+\end{tabular}
+
+\vspace{3mm}
+
+\section{Inledning}
+  %Preliminär beskrivning av uppgiften  i lättfattliga termer. Bakgrunden till att man intresserar sig för detta problem, denna uppgift. Hur den ingår i ett större sammanhang.
+
+%  En detaljerad beskrivning av vad det hela går ut på, och vad exakt din uppgift   i    sammanhanget   är.    Utrustningsförutsättningar.   Det
+%  ursprungligen avsedda målet. Även den i ämnet oinsatte ska ha en ärlig
+%  chans att förstå de stora dragen.
+%
+%  Beskrivning av hur rapporten är uppbyggd, för att göra det möjligt för
+%  läsaren att förstå vad som  pågår, ge läsaren rätta förväntningar, och
+%  för  att  underlätta direktåtkomst  av  för  den individuelle  läsaren
+%  särskilt intressanta delar.
+
+\section{Teori}
+
+\section{Metod}
+  % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
+  % algoritmer,  programspråk och  annan programvara,  undersökningsmetod,
+  % statistiska  metoder. Där  valmöjligheter finns,  diskutera de  gjorda
+  % valen.
+
+\section{Resultat}
+
+\section{Diskussion}
+  %Är resultaten rimliga? Vad hade kunnat göras annorlunda?
+
+\section{Slutsats}
+  %En   sammanfattning  där   man  till   skillnad  från   den  inledande
+  %sammanfattningen förutsätter  att läsaren har läst  rapporten, samt de
+  %slutsatser man kan dra av det gjorda arbetet.
+ 
+ \bibliography{bibliography}{}
+ \bibliographystyle{plain}
+
+\end{document}
