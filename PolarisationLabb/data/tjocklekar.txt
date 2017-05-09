@@ -1,0 +1,11 @@
+kristall 1
+0.24 mm
+
+kristall 2
+1 mm
+
+kristall 3
+3 mm
+
+aktiv
+~1 cm
