@@ -277,7 +277,7 @@ Slutligen leddes samma laser genom ett optiskt fiber och en mindre lins använde
 
 \section{Resultat}
 
-I \autoref{tab:div} presenteras den, enligt \autoref{eq:divergensGeom}, uträknade divergensen för en röd lasern som letts genom en optisk fiber, tillsammans med den uppmätta diametern på laserns avbildning samt avståndet till ytan där den avbildades. Ett medelvärde på divergensen togs fram till $9.2\si{\degree}$.
+I \autoref{tab:div} presenteras den enligt \eqref{eq:divergensGeom} uträknade divergensen för en röd laser som letts genom en optisk fiber, tillsammans med den uppmätta diametern på laserns avbildning samt avståndet till ytan där den avbildades. Ett medelvärde på divergensen togs fram till $\SI{9.2}{\degree}$.
 
 \FloatBarrier
 \begin{table}[h]
@@ -298,7 +298,7 @@ I \autoref{tab:div} presenteras den, enligt \autoref{eq:divergensGeom}, uträkna
 \end{table}
 \FloatBarrier
 
-\autoref{tab:foc} redogör för den beräknade fokallängden hos en given lins och tillhörande uppmätta värden på avstånet mellan lasern, linsen och ytan som lasern fokuserades på. Det beräknade medelvärdet på fokallängden kan avläsas till $5.67\unit{cm}$.
+\autoref{tab:foc} redogör för den beräknade fokallängden hos en given lins och tillhörande uppmätta värden på avstånet mellan lasern, linsen och ytan som lasern fokuserades på. Det beräknade medelvärdet på fokallängden kan avläsas till $\SI{5.67}{\centi\meter}$.
 
 \begin{table}[h]
 	\centering
@@ -313,7 +313,7 @@ I \autoref{tab:div} presenteras den, enligt \autoref{eq:divergensGeom}, uträkna
 	\end{tabular}
 \end{table}
 
-I Figur \ref{fig:red60} och \ref{fig:red} presenteras den uppmätta avlänkningen för olika infallsvinklar då en röd laser leds genom ett prisma. En kurvanpassning gjordes enligt \autoref{eq:avlankning}, där toppvinkeln antogs till $A = 60\si{\degree}$ och brytningsindex $n$ läts variera. Bäst anpassning fås då $n = 1.61$ och brytningsindexet för prismat ligger med $95\%$ säkerhet inom intervallet $1.608\le n \le1.612$. I \autoref{fig:red} anpassades istället en kurva med både toppvinkeln $A$ och brytningsindex $n$ som variabler till samma mätvärden. I den bästa anpassningen är $n = 1.587$ och $A = 61.51\si{\degree}$, där $n$ och $A$ ligger inom $1.584\le n \le1.591$ samt $61.27\si{\degree}\le A \le 61.75\si{\degree}$ med $95\%$ säkerhet.
+I Figur \ref{fig:red60} och \ref{fig:red} presenteras den uppmätta avlänkningen för olika infallsvinklar då en röd laser leds genom ett prisma. En kurvanpassning gjordes enligt \eqref{eq:avlankning}, där toppvinkeln antogs till $A = \SI{60}{\degree}$ och brytningsindex $n$ läts variera. Bäst anpassning fås då $n = 1.61$ och brytningsindexet för prismat ligger med $\SI{95}{\percent}$ säkerhet inom intervallet $1.608\le n \le1.612$. I \autoref{fig:red} anpassades istället en kurva med både toppvinkeln $A$ och brytningsindex $n$ som variabler till samma mätvärden. I den bästa anpassningen är $n = 1.587$ och $A = \SI{61.51}{\degree}$, där $n$ och $A$ ligger inom $1.584\le n \le1.591$ samt $\SI{61.27}{\degree}\le A \le \SI{61.75}{\degree}$ med $\SI{95}{\percent}$ säkerhet.
 
 
 \FloatBarrier
@@ -331,7 +331,7 @@ I Figur \ref{fig:red60} och \ref{fig:red} presenteras den uppmätta avlänkninge
 \end{figure}
 \FloatBarrier
 
-På liknande vis presenteras i Figur \ref{fig:blue60} och \ref{fig:blue} den uppmätta avlänkningen som uppstår då en blå laser letts genom ett prisma för olika infallsvinklar, tillsammans med en kurvanpassning genom mätvärdena. Kurvanpassningen i \autoref{fig:blue60} gjordes med ett fixerat $A = 60\si{\degree}$ och ett varierande brytningsindex $n$. I bästa anpassningen är $n = 1.641$ och $95\%$-intervallet är $1.638\le n \le 1.643$. I \autoref{fig:blue} gjordes istället anpassningen med varierande $A$ och $n$, vilket gav $n = 1.676$ och $A = 58.25\si{\degree}$ i den bästa anpassningen, tillsammans med $95\%$-intervall på $1.674\le n \le 1.679$ och $58.13\si{\degree}\le A \le58.36\si{\degree}$.
+På liknande vis presenteras i Figur \ref{fig:blue60} och \ref{fig:blue} den uppmätta avlänkningen som uppstår då en blå laser letts genom ett prisma för olika infallsvinklar, tillsammans med en kurvanpassning genom mätvärdena. Kurvanpassningen i \autoref{fig:blue60} gjordes med ett fixerat $A = \SI{60}{\degree}$ och ett varierande brytningsindex $n$. I bästa anpassningen är $n = 1.641$ och $\SI{95}{\percent}$-intervallet är $1.638\le n \le 1.643$. I \autoref{fig:blue} gjordes istället anpassningen med varierande $A$ och $n$, vilket gav $n = 1.676$ och $A = \SI{58.25}{\degree}$ i den bästa anpassningen, tillsammans med $\SI{95}{\percent}$-intervall på $1.674\le n \le 1.679$ och $\SI{58.13}{\degree}\le A \le\SI{58.36}{\degree}$.
 
 \FloatBarrier
 \begin{figure}[h]
@@ -348,7 +348,7 @@ På liknande vis presenteras i Figur \ref{fig:blue60} och \ref{fig:blue} den upp
 \end{figure}
 \FloatBarrier
 
-Figur \ref{fig:frustInget} och \ref{fig:frustHand} visar totalreflektionen som uppstår då en laser leds in i en glasbit med en infallsvinkel som är mindre än den kritiska vinkeln, samt den frustrerade totalreflektionen som uppstår då ett material med högre brytningsindex kommer i kontakt med glasbiten.
+Figur \ref{fig:frustInget} och \ref{fig:frustHand} visar totalreflektionen som uppstår då ljus leds in i en glasbit nästan parallellt med ytan, samt den frustrerade totalreflektionen som uppstår då ett material med högre brytningsindex kommer i kontakt med glasbiten.
 
 \FloatBarrier
 \begin{figure}[h]
