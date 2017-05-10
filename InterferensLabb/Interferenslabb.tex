@@ -63,7 +63,7 @@
 \fancypagestyle{plain}{
   \fancyhead{}
 }
-\setcounter{secnumdepth}{-1}
+%\setcounter{secnumdepth}{-1} % Stänger av numrering.
 
 \title{Laborationen ”Ljusets diffraktion”}
 \author{Johan Boström\\Anton Johansson\\Lunds Universitet}
@@ -126,6 +126,60 @@ Lämnad till handledare: &	2017-xx-xx \\
 
 \section{Teori}
 
+\subsection{Diffraktion}
+
+\pgfmathsetmacro{\numSources}{4}
+\pgfmathsetmacro{\numWaves}{10}
+\pgfmathsetmacro{\numIncoming}{8}
+\pgfmathsetmacro{\wavesDist}{0.25}
+
+När en våg passerar en spalt eller ett annat objekt som blockerar ljuset i vissa områden kommer den enligt Huygens princip att uppföra sig som om det funnits en mängd punktkällor utspridda över hela ytan där objektet är genomskinligt. Vågorna som bildas från dessa kommer därefter att interferera med varandra. Detta demonstreras i \autoref{fig:singleInterference} med kollimerat infallande ljus approximerat med endast \numSources~punktkällor.
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}
+	\draw[line width=0.75mm] (0, {1 + \wavesDist*\numWaves}) -- (0, 0.5);
+	\draw (0, 0.5) -- (0, -0.5);
+	\draw[line width=0.75mm] (0, -0.5) -- (0, {-1 - \wavesDist*\numWaves});
+	\foreach \incoming in {1,...,\numIncoming}
+	{
+		\draw ({-\incoming*\wavesDist}, {-0.5 - \wavesDist*\numWaves}) -- ({-\incoming*\wavesDist}, {0.5 + \wavesDist*\numWaves});
+	}
+	\foreach \source in {1,...,\numSources} % For each source
+	{
+		\node[circle,fill=black,inner sep=0,minimum size=4] at (0, {(\source-1)/(\numSources-1) - 0.5}) {}; % Draw the source
+		\foreach \waveIdx in {1,...,\numWaves}
+		{ % and numWaves waves spaced with wavesDist
+			\draw (0, {(\source-1)/(\numSources-1) - 0.5 - \wavesDist*\waveIdx}) arc [radius={\wavesDist*\waveIdx}, start angle=-90, end angle=90];
+		}
+	}
+	\end{tikzpicture}
+	\caption{Demonstration av diffraktion i enkelspalt då vågorna infaller från vänster. Där vågorna överlappar interfererar de konstruktivt, medan det är svårare att se när de interfererar destruktivt. Förutom huvudmaximat rakt åt höger syns även ett ytterliggare maximum i vardera riktningen. I en riktig spalt blir det oändligt många punktkällor som måste adderas ihop i en integral.}
+	\label{fig:singleInterference}
+\end{figure}
+
+För att summera bidragen från de oändligt många punktkällorna används Fresnel-Kirchhoffs integral \cite[p.~330]{pearsonIntroOpt}
+
+\begin{equation}
+	E_P = \frac{-i k E_S}{2\pi} e^{-i \omega t} \iint\limits_{\mathrm{Objektet}} {F(\theta)\frac{e^{i k (r + r')}}{r r'} d A}
+	\label{eq:frKirInt}
+\end{equation}
+
+där $E_P$ är det elektriska fältet på skärmen med avstånder $r$ från den infinitesimala arean $d A$ på objektet. På samma sätt är $E_S$ det elektriska fältet av punktkällan och $r'$ dess avstånd till $d A$. $k$ är vågtalet, $\omega$ är vinkelfrekvensen och $F(\theta) = \frac{1 + \cos\theta}{2}$ är en obliquity-faktor som är nära ett då vågen passerar rakt igenom objektet men avtar för högra vinklar.
+
+\subsubsection{Fraunhoferdiffraktion}
+
+När både källan och skärmen är långt borta från objektet varierar både $r$ och $r'$ i \eqref{eq:frKirInt} mycket lite över objektets area och kan flyttas ut ur integralen. Samtidigt blir obliquity-faktorn nästan konstant då $\theta$ är nära 0 och kan även den tas ut ur integralen. Integralen kan då förenklas till \cite[p.~331]{pearsonIntroOpt}
+
+\begin{equation}
+	E_P = C_0 e^{-i \omega t} \iint\limits_{\mathrm{Objektet}} {e^{i k r} dA}
+	\label{eq:fraunhofer}
+\end{equation}
+
+där $C_0$ är en konstant.
+
+\subsubsection{Fresneldiffraktion}
+
 \section{Metod}
   % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
   % algoritmer,  programspråk och  annan programvara,  undersökningsmetod,
@@ -141,11 +195,11 @@ Lämnad till handledare: &	2017-xx-xx \\
   
   För att kunna jämföra med vad teorin förutsäger skrevs ett antal skript i matlab som skulle simulera Fraunhofer- och Fresneldiffraktion. Fraunhoferdiffraktionen implementerades med hjälp av matlabs inbyggda FFT algoritm \lstinline{fft2} och Fresneldiffraktion implementerades för specialfallet med en egg genom funktionerna  \lstinline{fresnelc} och \lstinline{fresnels}.
   
-  \begin{figure}[ht] % Exempel på matlab kod. EJ FÖR SISTA VERSIONEN.
+  \begin{figure}[ht] % Exempel på matlab kod.
   \centering
   \begin{lstlisting}
 function a = f(b)
-	a = b .^ 2; % Matlab code example. NOT FOR FINAL VERSION!
+	a = b .^ 2; % Matlab code example.
 end
   \end{lstlisting}
   \end{figure}
