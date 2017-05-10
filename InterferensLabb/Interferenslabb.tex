@@ -20,6 +20,13 @@
 \usetikzlibrary{arrows.meta}
 \usepackage{placeins}
 \usepackage{siunitx}
+\usepackage[numbered,framed]{matlab-prettifier}
+
+\lstset{
+	style              = Matlab-editor,
+	basicstyle         = \mlttfamily,
+	mlshowsectionrules = true,
+}
 
 \addto\extrasswedish{%
 	\def\equationautorefname{Ekvation}%
@@ -129,6 +136,19 @@ Lämnad till handledare: &	2017-xx-xx \\
   För att mäta detta avstånd användes en dubbelspalt med kända mått och intensitetsfördelningen passades in på en teoretiskt beräknad kurva i programmet. Sedan placerades i tur och ordning en enkelspalt, en tråd, ett flerspaltsystem och en ställbar spalt på samma avstånd från skärmen och intensitetsfördelningarna mättes. Intensitetsfördelningarna passades sedan in över teoretiska intensitetsfördelningar så att relevanta parametrar kunde beräknas.
   
   Sedan togs utrustningen som kollimerade laserstrålen bort och den divergerande strålen läts belysa en cirkel, en ställbar spalt samt en egg. Diffraktionsmöstren fotograferades och för den ställbara spalten filmades förändringarna då spaltbredden förändrades.
+  
+  \subsection{Datorsimulering}
+  
+  För att kunna jämföra med vad teorin förutsäger skrevs ett antal skript i matlab som skulle simulera Fraunhofer- och Fresneldiffraktion. Fraunhoferdiffraktionen implementerades med hjälp av matlabs inbyggda FFT algoritm och Fresneldiffraktion implementerades för specialfallet med en egg genom funktionerna  \lstinline{fresnelc} och \lstinline{fresnels}.
+  
+  \begin{figure}[ht] % Exempel på matlab kod. EJ FÖR SISTA VERSIONEN.
+  \centering
+  \begin{lstlisting}
+function a = f(b)
+	a = b .^ 2; % Matlab code example. NOT FOR FINAL VERSION!
+end
+  \end{lstlisting}
+  \end{figure}
 
 \section{Resultat}
 
