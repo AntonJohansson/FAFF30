@@ -176,7 +176,31 @@ När både källan och skärmen är långt borta från objektet varierar både $
 	\label{eq:fraunhofer}
 \end{equation}
 
-där $C_0$ är en konstant.
+där $C_0$ är en konstant. Om positionen på skärmen betecknas med ortsvektorn $\boldsymbol{p}$ och positionen på objektet med $\boldsymbol{p'}$ blir
+
+\begin{equation}
+	r = \sqrt{(\boldsymbol{p} - \boldsymbol{p'})\cdot(\boldsymbol{p} - \boldsymbol{p'})} = \sqrt{\boldsymbol{p}\cdot\boldsymbol{p} - 2 \boldsymbol{p}\cdot\boldsymbol{p'} + \boldsymbol{p'}\cdot\boldsymbol{p'}}\text{.}
+\end{equation}
+
+Vi kan nu bryta ut $|\boldsymbol{p}|$
+
+\begin{equation}
+r = |\boldsymbol{p}|\sqrt{1 - \frac{2\boldsymbol{p}\cdot\boldsymbol{p'}}{|\boldsymbol{p}|^2} + \left(\frac{|\boldsymbol{p'}|}{|\boldsymbol{p}|}\right)^2}
+\end{equation}
+
+och då $|\boldsymbol{p'}|\ll|\boldsymbol{p}|$ blir $\left(\frac{|\boldsymbol{p'}|}{|\boldsymbol{p}|}\right)^2\approx 0$ och vi kan utveckla kvadratroten till
+
+\begin{equation}
+	r = |\boldsymbol{p}|\left( 1 - \frac{\boldsymbol{p}\cdot\boldsymbol{p'}}{|\boldsymbol{p}|^2} \right) = |\boldsymbol{p}| - \left(\frac{\boldsymbol{p}}{|\boldsymbol{p}|}\right)\cdot\boldsymbol{p'}\text{.}
+\end{equation}
+
+Här är $|\boldsymbol{p}|$ konstant i integralen \eqref{eq:fraunhofer} och kan absorberas i konstanten. Med beteckningen $\boldsymbol{k} = k \frac{\boldsymbol{p}}{|\boldsymbol{p}|}$ kan \eqref{eq:fraunhofer} skrivas
+
+\begin{equation}
+	E_P = C_1 e^{-i \omega t} \iint\limits_{\mathrm{Objektet}} {e^{-i \boldsymbol{k}\cdot\boldsymbol{p'}} dA}\text{.}
+\end{equation}
+
+Nu är integralen exakt definitionen av en tvådimensionell Fouriertransform av en funktion som är $1$ där objektet släpper igenom ljus och $0$ då den inte gör det.
 
 \subsubsection{Fresneldiffraktion}
 
