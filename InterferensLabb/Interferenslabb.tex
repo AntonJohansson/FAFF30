@@ -859,7 +859,7 @@ Diffraktionen från en egg presenteras i \autoref{fig:edge}. I figuren syns ett 
 
 \FloatBarrier
 
-\autoref{fig:fresnelEnkel} visar en bildsekvens på hur diffraktionsmönstret i Fresnelregimen ändras för minskad spaltbredd, där spaltbredden minskar från vänster till höger. I den sista bilden ses ett mönster mer like Fraunhoferdiffraktion.
+\autoref{fig:fresnelEnkel} visar en bildsekvens på hur diffraktionsmönstret i Fresnelregimen ändras för minskad spaltbredd, där spaltbredden minskar från vänster till höger. I den sista bilden ses ett mönster mer likt Fraunhoferdiffraktion.
 
 \FloatBarrier
 
@@ -875,6 +875,8 @@ Diffraktionen från en egg presenteras i \autoref{fig:edge}. I figuren syns ett 
 
 \FloatBarrier
 
+I \autoref{fig:poissonsFlack} ses det diffraktionsmönster som uppstår då en cirkelskiva belsyses. I mitten av den cirkulära skuggan syns vad som kallas Poissons fläck.
+
 \FloatBarrier
 
 \begin{figure}[h!]
@@ -888,6 +890,10 @@ Diffraktionen från en egg presenteras i \autoref{fig:edge}. I figuren syns ett 
 
 \subsection{Datorsimuleringar}
 
+Följande simuleringar gjordes i \textsc{MATLAB} och koden återfinns i \autoref{apx:code}.
+
+\autoref{fig:simuleringEgg} illustrerar intensitetsfördleningen och det diffraktionsmönster som uppstår då ljus belyser en egg. I simuleringen sattes avståndet från ljuskällan till eggen och från eggen till samma värde som för våglängden.
+
 \FloatBarrier
 
 \begin{figure}[h!]
@@ -898,6 +904,8 @@ Diffraktionen från en egg presenteras i \autoref{fig:edge}. I figuren syns ett 
 \end{figure}
 
 \FloatBarrier
+
+En numerisk approximation av Fraunhoferdiffraktionen för en dubbelspalt återfinns i \autoref{fig:simuleringDubbelspalt}. Spalten som simulerades var rektangulär med sin längre sida i vertikalled. De maxima som ses i bilden är även högre än de är breda.
 
 \FloatBarrier
 
@@ -910,6 +918,8 @@ Diffraktionen från en egg presenteras i \autoref{fig:edge}. I figuren syns ett 
 
 \FloatBarrier
 
+\autoref{fig:simulering4Spalt} visar den teoretiska intensitetsfördleningen för Fraunhoferdiffraktionen av ett 4-spaltssystem. Mellan två principalmax kan två stycken bimax ses.
+
 \FloatBarrier
 
 \begin{figure}[h!]
@@ -921,13 +931,15 @@ Diffraktionen från en egg presenteras i \autoref{fig:edge}. I figuren syns ett 
 
 \FloatBarrier
 
+En simulering av Babinets princip kan ses i \autoref{fig:simuleringBabinet}. I bilden längst till vänster ses intensitetsfördelningen för ett objekt där \SI{0.1}{\percent} av pixlarna släpper igenom ljus, dessa pixlar placerades ut slumpmässigt. I mittenfiguren ses komplimentet till föregående figur och i figuren längst till höger ses intensitetsfördleningen av deras summa.
+
 \FloatBarrier
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.3\linewidth]{Data/Figurer/simuleringBabinet1.eps}
-	\includegraphics[width=0.3\linewidth]{Data/Figurer/simuleringBabinet2.eps}
-	\includegraphics[width=0.3\linewidth]{Data/Figurer/simuleringBabinet3.eps}
+	\includegraphics[width=0.32\linewidth]{Data/Figurer/simuleringBabinet1.eps}
+	\includegraphics[width=0.32\linewidth]{Data/Figurer/simuleringBabinet2.eps}
+	\includegraphics[width=0.32\linewidth]{Data/Figurer/simuleringBabinet3.eps}
 	\caption{Från vänster till höger: intensitetsfördelningen för ett objekt som skapats så att \SI{0.1}{\percent} av pixlarna släpper igenom ljus, intensitetsfördelningen för det föregåendes komplement samt intensitetsfördelningen av deras summa. Koden som genererade dessa figurer återfinns i \autoref{apx:code}}
 	\label{fig:simuleringBabinet}
 \end{figure}
