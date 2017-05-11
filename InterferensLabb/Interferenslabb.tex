@@ -148,7 +148,7 @@ När en våg passerar en spalt eller ett annat objekt som blockerar ljuset i vis
 	}
 	\foreach \source in {1,...,\numSources} % For each source
 	{
-		\node[circle,fill=black,inner sep=0,minimum size=4] at (0, {(\source-1)/(\numSources-1) - 0.5}) {}; % Draw the source
+		\node[circle,fill=black,inner sep=0,minimum size=5] at (0, {(\source-1)/(\numSources-1) - 0.5}) {}; % Draw the source
 		\foreach \waveIdx in {1,...,\numWaves}
 		{ % and numWaves waves spaced with wavesDist
 			\draw (0, {(\source-1)/(\numSources-1) - 0.5 - \wavesDist*\waveIdx}) arc [radius={\wavesDist*\waveIdx}, start angle=-90, end angle=90];
@@ -170,16 +170,44 @@ där $E_P$ är det elektriska fältet på skärmen med avstånder $r$ från den 
 
 \subsubsection{Fraunhoferdiffraktion}
 
-När både källan och skärmen är långt borta från objektet varierar både $r$ och $r'$ i \eqref{eq:frKirInt} mycket lite över objektets area och kan flyttas ut ur integralen. Samtidigt blir obliquity-faktorn nästan konstant då $\theta$ är nära 0 och kan även den tas ut ur integralen. Integralen kan då förenklas till \cite[p.~331]{pearsonIntroOpt}
+När både källan och skärmen är långt borta från objektet varierar både $r$ och $r'$ i \eqref{eq:frKirInt} mycket lite över objektets area och kan flyttas ut ur integralen. Samtidigt blir obliquity-faktorn nästan konstant då $\theta$ är nära noll och även den kan tas ut ur integralen. Integralen kan då förenklas till \cite[p.~331]{pearsonIntroOpt}
 
 \begin{equation}
 	E_P = C_0 e^{-i \omega t} \iint\limits_{\mathrm{Objektet}} {e^{i k r} dA}
 	\label{eq:fraunhofer}
 \end{equation}
 
-där $C_0$ är en konstant.
+där $C_0$ är en konstant. Om positionen på skärmen betecknas med ortsvektorn $\boldsymbol{p}$ och positionen på objektet med $\boldsymbol{p'}$ blir
+
+\begin{equation}
+	r = \sqrt{(\boldsymbol{p} - \boldsymbol{p'})\cdot(\boldsymbol{p} - \boldsymbol{p'})} = \sqrt{\boldsymbol{p}\cdot\boldsymbol{p} - 2 \boldsymbol{p}\cdot\boldsymbol{p'} + \boldsymbol{p'}\cdot\boldsymbol{p'}}\text{.}
+\end{equation}
+
+Man kan nu bryta ut $|\boldsymbol{p}|$
+
+\begin{equation}
+r = |\boldsymbol{p}|\sqrt{1 - \frac{2\boldsymbol{p}\cdot\boldsymbol{p'}}{|\boldsymbol{p}|^2} + \left(\frac{|\boldsymbol{p'}|}{|\boldsymbol{p}|}\right)^2}
+\end{equation}
+
+och då $|\boldsymbol{p'}|\ll|\boldsymbol{p}|$ blir $\left(\frac{|\boldsymbol{p'}|}{|\boldsymbol{p}|}\right)^2\approx 0$ och man kan utveckla kvadratroten till
+
+\begin{equation}
+	r = |\boldsymbol{p}|\left( 1 - \frac{\boldsymbol{p}\cdot\boldsymbol{p'}}{|\boldsymbol{p}|^2} \right) = |\boldsymbol{p}| - \left(\frac{\boldsymbol{p}}{|\boldsymbol{p}|}\right)\cdot\boldsymbol{p'}\text{.}
+\end{equation}
+
+Här är $|\boldsymbol{p}|$ konstant i integralen i \eqref{eq:fraunhofer} och kan absorberas i konstanten. Med beteckningen $\boldsymbol{k} = k \frac{\boldsymbol{p}}{|\boldsymbol{p}|}$ kan \eqref{eq:fraunhofer} skrivas
+
+\begin{equation}
+	E_P = C_1 e^{-i \omega t} \iint\limits_{\mathrm{Objektet}} {e^{-i \boldsymbol{k}\cdot\boldsymbol{p'}} dA}\text{.}
+\end{equation}
+
+Nu är integralen exakt definitionen av en tvådimensionell Fouriertransform av en funktion som är ett där objektet släpper igenom ljus och noll där den inte gör det.
 
 \subsubsection{Fresneldiffraktion}
+
+Då man inte kan göra de approximationer som leder fram till Fraunhoferdiffraktion måste man lösa \eqref{eq:frKirInt} direkt, vilket bara går analytiskt för ett fåtal specialfall. Två sådana specialfall behandlas i \cite{pearsonIntroOpt}: objekt med cirkulär samt rektangulär symmetri. Ytterliggare beräknas integralen för en rektangulär öppning då variationerna av obliquity-faktorn och produkten $r r'$ försummas.
+
+% Cirkulära vågfronter, analogi med lök?
 
 \section{Metod}
   % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
