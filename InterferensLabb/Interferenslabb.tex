@@ -18,6 +18,7 @@
 \pgfplotsset{compat=1.13}
 \usetikzlibrary{decorations.pathreplacing}
 \usetikzlibrary{arrows.meta}
+\usepackage{pgfplotstable}
 \usepackage{placeins}
 \usepackage{siunitx}
 \usepackage[numbered,framed]{matlab-prettifier}
@@ -35,6 +36,415 @@
 	\def\sectionautorefname{Rubrik}%
 	\def\subsectionautorefname{Underrubrik}%
 	\def\pageautorefname{Sida}%
+}
+
+\begin{filecontents}{fresnelc.txt}
+   -0.4984
+   -0.4599
+   -0.4308
+   -0.4182
+   -0.4248
+   -0.4489
+   -0.4849
+   -0.5247
+   -0.5596
+   -0.5821
+   -0.5878
+   -0.5756
+   -0.5481
+   -0.5108
+   -0.4711
+   -0.4362
+   -0.4126
+   -0.4043
+   -0.4125
+   -0.4358
+   -0.4701
+   -0.5097
+   -0.5482
+   -0.5799
+   -0.5999
+   -0.6056
+   -0.5963
+   -0.5734
+   -0.5403
+   -0.5014
+   -0.4617
+   -0.4262
+   -0.3992
+   -0.3836
+   -0.3810
+   -0.3917
+   -0.4142
+   -0.4461
+   -0.4839
+   -0.5239
+   -0.5623
+   -0.5957
+   -0.6210
+   -0.6364
+   -0.6407
+   -0.6338
+   -0.6163
+   -0.5898
+   -0.5563
+   -0.5182
+   -0.4782
+   -0.4388
+   -0.4024
+   -0.3711
+   -0.3466
+   -0.3299
+   -0.3218
+   -0.3226
+   -0.3319
+   -0.3491
+   -0.3734
+   -0.4036
+   -0.4384
+   -0.4763
+   -0.5160
+   -0.5561
+   -0.5954
+   -0.6327
+   -0.6671
+   -0.6978
+   -0.7241
+   -0.7456
+   -0.7620
+   -0.7731
+   -0.7789
+   -0.7795
+   -0.7752
+   -0.7661
+   -0.7527
+   -0.7351
+   -0.7140
+   -0.6895
+   -0.6622
+   -0.6323
+   -0.6003
+   -0.5665
+   -0.5312
+   -0.4947
+   -0.4571
+   -0.4188
+   -0.3799
+   -0.3406
+   -0.3009
+   -0.2610
+   -0.2210
+   -0.1809
+   -0.1407
+   -0.1005
+   -0.0603
+   -0.0201
+    0.0201
+    0.0603
+    0.1005
+    0.1407
+    0.1809
+    0.2210
+    0.2610
+    0.3009
+    0.3406
+    0.3799
+    0.4188
+    0.4571
+    0.4947
+    0.5312
+    0.5665
+    0.6003
+    0.6323
+    0.6622
+    0.6895
+    0.7140
+    0.7351
+    0.7527
+    0.7661
+    0.7752
+    0.7795
+    0.7789
+    0.7731
+    0.7620
+    0.7456
+    0.7241
+    0.6978
+    0.6671
+    0.6327
+    0.5954
+    0.5561
+    0.5160
+    0.4763
+    0.4384
+    0.4036
+    0.3734
+    0.3491
+    0.3319
+    0.3226
+    0.3218
+    0.3299
+    0.3466
+    0.3711
+    0.4024
+    0.4388
+    0.4782
+    0.5182
+    0.5563
+    0.5898
+    0.6163
+    0.6338
+    0.6407
+    0.6364
+    0.6210
+    0.5957
+    0.5623
+    0.5239
+    0.4839
+    0.4461
+    0.4142
+    0.3917
+    0.3810
+    0.3836
+    0.3992
+    0.4262
+    0.4617
+    0.5014
+    0.5403
+    0.5734
+    0.5963
+    0.6056
+    0.5999
+    0.5799
+    0.5482
+    0.5097
+    0.4701
+    0.4358
+    0.4125
+    0.4043
+    0.4126
+    0.4362
+    0.4711
+    0.5108
+    0.5481
+    0.5756
+    0.5878
+    0.5821
+    0.5596
+    0.5247
+    0.4849
+    0.4489
+    0.4248
+    0.4182
+    0.4308
+    0.4599
+    0.4984
+\end{filecontents}
+\begin{filecontents}{fresnels.txt}
+   -0.4205
+   -0.4304
+   -0.4576
+   -0.4953
+   -0.5346
+   -0.5663
+   -0.5832
+   -0.5818
+   -0.5626
+   -0.5298
+   -0.4903
+   -0.4524
+   -0.4235
+   -0.4093
+   -0.4122
+   -0.4316
+   -0.4638
+   -0.5028
+   -0.5418
+   -0.5743
+   -0.5948
+   -0.6002
+   -0.5898
+   -0.5654
+   -0.5308
+   -0.4913
+   -0.4524
+   -0.4196
+   -0.3973
+   -0.3881
+   -0.3932
+   -0.4116
+   -0.4411
+   -0.4779
+   -0.5179
+   -0.5565
+   -0.5895
+   -0.6138
+   -0.6269
+   -0.6278
+   -0.6165
+   -0.5943
+   -0.5633
+   -0.5263
+   -0.4865
+   -0.4470
+   -0.4110
+   -0.3809
+   -0.3589
+   -0.3463
+   -0.3437
+   -0.3512
+   -0.3681
+   -0.3932
+   -0.4249
+   -0.4613
+   -0.5006
+   -0.5407
+   -0.5798
+   -0.6160
+   -0.6479
+   -0.6744
+   -0.6945
+   -0.7077
+   -0.7136
+   -0.7123
+   -0.7041
+   -0.6893
+   -0.6686
+   -0.6427
+   -0.6123
+   -0.5784
+   -0.5417
+   -0.5031
+   -0.4634
+   -0.4232
+   -0.3832
+   -0.3441
+   -0.3063
+   -0.2701
+   -0.2359
+   -0.2041
+   -0.1746
+   -0.1477
+   -0.1234
+   -0.1016
+   -0.0824
+   -0.0657
+   -0.0513
+   -0.0392
+   -0.0291
+   -0.0208
+   -0.0143
+   -0.0093
+   -0.0057
+   -0.0031
+   -0.0015
+   -0.0005
+   -0.0001
+   -0.0000
+    0.0000
+    0.0001
+    0.0005
+    0.0015
+    0.0031
+    0.0057
+    0.0093
+    0.0143
+    0.0208
+    0.0291
+    0.0392
+    0.0513
+    0.0657
+    0.0824
+    0.1016
+    0.1234
+    0.1477
+    0.1746
+    0.2041
+    0.2359
+    0.2701
+    0.3063
+    0.3441
+    0.3832
+    0.4232
+    0.4634
+    0.5031
+    0.5417
+    0.5784
+    0.6123
+    0.6427
+    0.6686
+    0.6893
+    0.7041
+    0.7123
+    0.7136
+    0.7077
+    0.6945
+    0.6744
+    0.6479
+    0.6160
+    0.5798
+    0.5407
+    0.5006
+    0.4613
+    0.4249
+    0.3932
+    0.3681
+    0.3512
+    0.3437
+    0.3463
+    0.3589
+    0.3809
+    0.4110
+    0.4470
+    0.4865
+    0.5263
+    0.5633
+    0.5943
+    0.6165
+    0.6278
+    0.6269
+    0.6138
+    0.5895
+    0.5565
+    0.5179
+    0.4779
+    0.4411
+    0.4116
+    0.3932
+    0.3881
+    0.3973
+    0.4196
+    0.4524
+    0.4913
+    0.5308
+    0.5654
+    0.5898
+    0.6002
+    0.5948
+    0.5743
+    0.5418
+    0.5028
+    0.4638
+    0.4316
+    0.4122
+    0.4093
+    0.4235
+    0.4524
+    0.4903
+    0.5298
+    0.5626
+    0.5818
+    0.5832
+    0.5663
+    0.5346
+    0.4953
+    0.4576
+    0.4304
+    0.4205
+\end{filecontents}
+
+\pgfplotstableset{
+    create on use/Y/.style={create col/copy column from table={fresnels.txt}{0}}
 }
 
 \usepackage{graphicx}
@@ -209,9 +619,11 @@ Nu är integralen exakt definitionen av en tvådimensionell Fouriertransform av 
 
 Då man inte kan göra de approximationer som leder fram till Fraunhoferdiffraktion måste man lösa \eqref{eq:frKirInt} direkt, vilket bara går analytiskt för ett fåtal specialfall. Två sådana specialfall behandlas i \cite{pearsonIntroOpt}: objekt med cirkulär samt rektangulär symmetri. Ytterliggare beräknas integralen för en rektangulär öppning då variationerna av obliquity-faktorn och produkten $r r'$ försummas.
 
+Ett viktigt koncept inom Fresneldiffraktion är Fresnelzoner. Då olika delar av ett objekt har olika avstånd till ljuskällan kommer inkommande ljust ha rört sig olika sträckor och därmed ha olika fas när de når objektet. Detta demonstreras i \autoref{fig:fresnelZones}. Allt ljus som träffar precis de röda ringarna i \autoref{fig:fresnelZones} är helt i fas och mellan de röda ringarna finns ljus som kommer in som har helt motsatt fas samt alla faser där imellan. För att förenkla bilden grupperar man in ytan i zoner som man approximerar med endast två direkt motsatta faser, dessa zoner kallas Fresnelzoner. På så sätt kan man dra mycket pricksäkra slutsatser bara genom att räkna hur många zoner av vardera sort som släpps igenom.
+
 \pgfmathsetmacro{\numFresnelWaves}{8}
 \pgfmathsetmacro{\fresnelWavesDist}{0.1}
-\pgfmathsetmacro{\leftRightDist}{2.25}
+\pgfmathsetmacro{\leftRightDist}{2.5}
 
 \begin{figure}[ht]
 	\centering
@@ -243,9 +655,48 @@ Då man inte kan göra de approximationer som leder fram till Fraunhoferdiffrakt
 	\label{fig:fresnelZones}
 \end{figure}
 
-\FloatBarrier
+Utan hinder i vägen släpps alla zoner igenom och den resulterande amplituden på andra sidan kan vi då kalla för $A_0$. Men man kan också beskriva amplituden som en summa av alla Fresnelzoner med omväxlande tecken, då varannan zon har motsatt fas. Efter en analysering av denna summa kan man komma fram till att den totala amplituden blir cirka halva amplituden hos första Fresnelzonen. Detta ger den intressanta och oväntade konsekvensen att när man släcker ut den första zonen kommer de resterande zonerna tillsammans ha en nästan lika stor amplitud, men med motsatt fas, vilket syns som i liten ljus fläck i mitten av skuggan av ett cirkulärt objekt. Denna fläck kallas Poissons fläck.
+\cite{pearsonIntroOpt}
 
-% Cirkulära vågfronter, analogi med lök?
+För fallet med en rektangulär spalt beräknar \cite[pp.~340--342]{pearsonIntroOpt} en approximation till integralen i \eqref{eq:frKirInt} då variationerna av obliquity-faktorn och produkten $r r'$ försummas. Denna beräkning ger att intensiteten ges av
+
+\begin{equation}
+	I_p = I_0 \left\{\left(C(v_2) - C(v_1)\right)^2 + \left(S(v_2) - S(v_1)\right)^2\right\}
+	\label{eq:rectApFre}
+\end{equation}
+
+där $v_1\equiv z_1\sqrt{\frac{2}{L\lambda}}$ så att $z_1$ är avståndet från den optiska axeln till den ena spaltkanten och $v_2\equiv z_2\sqrt{\frac{2}{L\lambda}}$ där $z_2$ är avståndet från den optiska axeln till den andra spaltkanten. $S(v)$ och $C(v)$ är Fresnels sinus- respektive cosinusintegral definierade genom
+
+\begin{align}
+	S(v) &= \int\limits_0^v \sin\left(\frac{\pi u^2}{2}\right) d u \\
+	C(v) &= \int\limits_0^v \cos\left(\frac{\pi u^2}{2}\right) d u\text{.}
+\end{align}
+
+Dessa funktioner finns plotade i \autoref{fig:cornuSpiral}.
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+            xmin=-1,xmax=1,
+            ymin=-1,ymax=1,
+            grid=both,
+            ]
+            \addplot[mark=none] table [y=Y] {fresnelc.txt};
+    \end{axis}
+	\end{tikzpicture}
+	\caption{En plot av en Cornuspiral där x-koordinaten är $C(v)$ och y-koordinaten är $S(v)$. Amplituden på skärmen blir vektorn som förbinder de två punkterna $(C(v_1), S(v_1))$ och $(C(v_2), S(v_2))$ längs kurvan och intensiteten blir den vektorns längd i kvadrat.}
+	\label{fig:cornuSpiral}
+\end{figure}
+
+För en egg går $v_2$ mot oändligheten och både $C(\infty)$ och $S(\infty)$ blir $\frac{1}{2}$. Då blir \eqref{eq:rectApFre}
+
+\begin{equation}
+	I_p = I_0 \left\{\left(\frac{1}{2} - C(v_1)\right)^2 + \left(\frac{1}{2} - S(v_1)\right)^2\right\}\text{.}
+	\label{eq:diffEdge}
+\end{equation}
+
+\FloatBarrier
 
 \section{Metod}
   % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
@@ -390,7 +841,7 @@ intensity = ((0.5 - fresnelc(-v)).^2 + (0.5 - fresnels(-v)).^2)/2;
 % Plot the intensity.
 plot(y, intensity);
   \end{lstlisting}
-  \caption{Kod för att simulera Fresneldiffraktion efter en egg.}
+  \caption{Kod för att simulera Fresneldiffraktion efter en egg. Diffraktionen beräknas med \eqref{eq:diffEdge}}
   \end{figure}
 
   \begin{figure}[ht]
