@@ -613,9 +613,19 @@ Här är $|\boldsymbol{p}|$ konstant i integralen i \eqref{eq:fraunhofer} och ka
 
 \begin{equation}
 	E_P = C_1 e^{-i \omega t} \iint\limits_{\mathrm{Objektet}} {e^{-i \boldsymbol{k}\cdot\boldsymbol{p'}} dA}\text{.}
+	\label{eq:fraunFT}
 \end{equation}
 
 Nu är integralen exakt definitionen av en tvådimensionell Fouriertransform av en funktion som är ett där objektet släpper igenom ljus och noll där den inte gör det.
+
+Ett viktigt specialfall är ett spaltsystem där alla spalter har samma bredd och samma avstånd till sina grannar. Då kan för $N$ spalter intensiteten skrivas \cite[p.~301]{pearsonIntroOpt} \cite{labManual}
+
+\begin{equation}
+	I = I_0 \left(\frac{\sin\beta}{\beta}\right)^2 \left(\frac{\sin N\gamma}{\sin\gamma}\right)^2
+	\label{eq:diffGrating}
+\end{equation}
+
+där $\beta = \frac{\pi}{\lambda} b \sin\theta$ och $\gamma = \frac{\pi}{\lambda} d \sin\theta$ där $\lambda$ är våglängden för ljuset, $b$ är spaltstorleken och $d$ är avståndet från mitten av en spalt till mitten av nästa.
 
 \subsubsection{Fresneldiffraktion}
 
@@ -717,7 +727,7 @@ Om ett objekt byts ut mot ett så kallat komplementärt objekt, som släpper ige
   
   \subsection{Datorsimulering}
   
-  För att kunna jämföra med vad teorin förutsäger skrevs ett antal skript i matlab som skulle simulera Fraunhofer- och Fresneldiffraktion. Fraunhoferdiffraktionen implementerades med hjälp av matlabs inbyggda FFT algoritm \lstinline{fft2} och Fresneldiffraktion implementerades för specialfallet med en egg genom funktionerna  \lstinline{fresnelc} och \lstinline{fresnels}.
+  För att kunna jämföra med vad teorin förutsäger skrevs ett antal skript i matlab som skulle simulera Fraunhofer- och Fresneldiffraktion. Fraunhoferdiffraktionen implementerades med hjälp av matlabs inbyggda FFT algoritm \lstinline{fft2} som beräknar tvådimensionella Fouriertransformer, vilket Fraunhoferdiffraktion kan beskrivas som enligt \eqref{eq:fraunFT}. Fresneldiffraktion implementerades för specialfallet med en egg genom funktionerna  \lstinline{fresnelc} och \lstinline{fresnels} med hjälp av \eqref{eq:diffEdge}.
 
 \section{Resultat}
 
@@ -833,9 +843,9 @@ Intensitetsfördelningen som uppstår då en enkelspalt med spaltbredden \SI{212
 
 \FloatBarrier
 
-\subsection{Mätning av intensitetsfördelningi Fresnelregimen}
+\subsection{Mätning av intensitetsfördelning i Fresnelregimen}
 
-Diffraktionen från en knivegg presenteras i \autoref{fig:edge}. I figuren syns ett tydlig spaltmönster som avtar i intensitet med avståndet från kniveggen.
+Diffraktionen från en egg presenteras i \autoref{fig:edge}. I figuren syns ett tydlig spaltmönster som avtar i intensitet med avståndet från eggen.
 
 \FloatBarrier
 
@@ -843,7 +853,7 @@ Diffraktionen från en knivegg presenteras i \autoref{fig:edge}. I figuren syns 
 	\centering
 	\includegraphics[width=0.75\linewidth]{Data/Figurer/edge.eps}
 	\includegraphics[width=0.5\linewidth]{Data/Figurer/edge.png}
-	\caption{Den teoretiska och experimentella intensitetsfördelningen för ljus som belyser en knivegg.}
+	\caption{Den experimentella intensitetsfördelningen för ljus som belyser en egg.}
 	\label{fig:edge}
 \end{figure}
 
@@ -869,9 +879,9 @@ Diffraktionen från en knivegg presenteras i \autoref{fig:edge}. I figuren syns 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.24\linewidth]{Data/Figurer/poissonsflack.jpg}
-	\caption{Diffraktionsmönster för en variabel enkelspalt i Fresnelregmien. Spaltbredden minskar från vänster till höger.}
-	\label{fig:fresnelEnkel}
+	\includegraphics[width=0.5\linewidth]{Data/Figurer/poissonsflack.jpg}
+	\caption{Diffraktionsmönster bakom ett cirkulär hinder. I mitten syns vad som kallas Poissons fläck.}
+	\label{fig:poissonsFlack}
 \end{figure}
 
 \FloatBarrier
@@ -882,9 +892,9 @@ Diffraktionen från en knivegg presenteras i \autoref{fig:edge}. I figuren syns 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.24\linewidth]{Data/Figurer/simuleringEgg.eps}
-	\caption{Diffraktionsmönster för en variabel enkelspalt i Fresnelregmien. Spaltbredden minskar från vänster till höger.}
-	\label{fig:fresnelEnkel}
+	\includegraphics[width=0.5\linewidth]{Data/Figurer/simuleringEgg.eps}
+	\caption{Den simulerade intensitetsfördelningen för ljus som belyser en egg. Koden som genererade denna figur återfinns i \autoref{apx:code}}
+	\label{fig:simuleringEgg}
 \end{figure}
 
 \FloatBarrier
@@ -893,9 +903,9 @@ Diffraktionen från en knivegg presenteras i \autoref{fig:edge}. I figuren syns 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.24\linewidth]{Data/Figurer/simuleringDubbelspalt.eps}
-	\caption{Diffraktionsmönster för en variabel enkelspalt i Fresnelregmien. Spaltbredden minskar från vänster till höger.}
-	\label{fig:fresnelEnkel}
+	\includegraphics[width=0.5\linewidth]{Data/Figurer/simuleringDubbelspalt.eps}
+	\caption{Diffraktionsmönster för en dubbelspalt beräknad med Fouriertransform. Spalterna är mycket högre än de är breda. Koden som genererade denna figur återfinns i \autoref{apx:code}}
+	\label{fig:simuleringDubbelspalt}
 \end{figure}
 
 \FloatBarrier
@@ -904,9 +914,9 @@ Diffraktionen från en knivegg presenteras i \autoref{fig:edge}. I figuren syns 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.24\linewidth]{Data/Figurer/simulering4Spalt.eps}
-	\caption{Diffraktionsmönster för en variabel enkelspalt i Fresnelregmien. Spaltbredden minskar från vänster till höger.}
-	\label{fig:fresnelEnkel}
+	\includegraphics[width=0.5\linewidth]{Data/Figurer/simulering4Spalt.eps}
+	\caption{Teoretisk diffraktionsmönster för ett 4-spaltssystem beräknat med \eqref{eq:diffGrating}. Koden som genererade denna figur återfinns i \autoref{apx:code}}
+	\label{fig:simulering4Spalt}
 \end{figure}
 
 \FloatBarrier
@@ -918,14 +928,22 @@ Diffraktionen från en knivegg presenteras i \autoref{fig:edge}. I figuren syns 
 	\includegraphics[width=0.3\linewidth]{Data/Figurer/simuleringBabinet1.eps}
 	\includegraphics[width=0.3\linewidth]{Data/Figurer/simuleringBabinet2.eps}
 	\includegraphics[width=0.3\linewidth]{Data/Figurer/simuleringBabinet3.eps}
-	\caption{Diffraktionsmönster för en variabel enkelspalt i Fresnelregmien. Spaltbredden minskar från vänster till höger.}
-	\label{fig:fresnelEnkel}
+	\caption{Från vänster till höger: intensitetsfördelningen för ett objekt som skapats så att \SI{0.1}{\percent} av pixlarna släpper igenom ljus, intensitetsfördelningen för det föregåendes komplement samt intensitetsfördelningen av deras summa. Koden som genererade dessa figurer återfinns i \autoref{apx:code}}
+	\label{fig:simuleringBabinet}
 \end{figure}
 
 \FloatBarrier
 
 \section{Diskussion}
   %Är resultaten rimliga? Vad hade kunnat göras annorlunda?
+  
+  Alla diffraktionsmönster orsakade av enkelspalter stämmer mycket väl överens med de teoretiska kurvorna och då spaltbredden varierades i \autoref{fig:variabelEnkelspalt1}, \autoref{fig:variabelEnkelspalt2} och \autoref{fig:variabelEnkelspalt3} kan man tydligt se hur diffraktionsmönstret sprids ut när spalten minskar i storlek och även \autoref{fig:enkelspalt} passar in i mönstret eftersom diffraktionsmönstret är mindre och spalten som givit upphov till den större.
+  
+  Enligt Babinets princip borde en tråd generera samma diffraktionsmönster som en enkelspalt med samma bredd, men då den centrala toppen var så ljusstark var det svårt att påvisa detta. I \autoref{fig:tradHogExpo} kan man dock ana toppar där de borde vara enligt den teoretiska kurvan för en enkelspalt medan det i \autoref{fig:tradLagExpo} nästan bara syns ett centralmaximum. I \autoref{fig:trad+enkelspalt} belyses både spalt och tråd och man ser tydligare att topparna av högre ordning hamnar på precis samma ställe. Dessutom syns fasförskjutningen då de två mönstren tar ut varandra i mitten, vilket innebär att de har precis motsatt fas. Babinets princip fungerar alltså väl i det här sammanhanget förutom precis i mitten av diffraktionsmönstret där tråden har mycket högre intensitet.
+  
+  När spaltsystem med fler spalter användes blev bilderna mer otydliga, men de första toppar passa ändå mycket väl in med de teoretiska kurvorna och speciellt i \autoref{fig:dubbelspalt} kan man se ett bimaximum mellan varje par av huvudmax, medan det i \autoref{fig:4spalt} är mer otydligt.
+  
+  
 
 %\section{Slutsats}
   %En   sammanfattning  där   man  till   skillnad  från   den  inledande
@@ -935,9 +953,10 @@ Diffraktionen från en knivegg presenteras i \autoref{fig:edge}. I figuren syns 
  \bibliography{bibliography}{}
  \bibliographystyle{plain}
 
+\clearpage
 \appendix
 
-\section{Matlab code}
+\section{Matlab code} \label{apx:code}
 
 \FloatBarrier
 
@@ -962,11 +981,11 @@ v = z*sqrt(2/(L*lambda));
 
 % Calculate the intensity.
 intensity = ((0.5 - fresnelc(-v)).^2 + (0.5 - fresnels(-v)).^2)/2;
-
 % Plot the intensity.
 plot(y, intensity);
   \end{lstlisting}
   \caption{Kod för att simulera Fresneldiffraktion efter en egg. Diffraktionen beräknas med \eqref{eq:diffEdge}}
+  \label{fig:FresnCode}
   \end{figure}
 
   \begin{figure}[ht]
@@ -984,19 +1003,12 @@ slit(resolution/2-Ny:resolution/2+Ny,resolution/2-Nx-d/2:resolution/2+Nx-d/2) = 
 slit(resolution/2-Ny:resolution/2+Ny,resolution/2-Nx+d/2:resolution/2+Nx+d/2) = 1;
 
 % Fourier transform and center the low frequencies.
-diff1 = fftshift(fft2(slit));
+diff = fftshift(fft2(slit));
 % Plot the intensity (scaled for better visibility).
-image(abs(diff1).^2/10);
-
-% Fourier transform for the slits complement.
-diff2 = fftshift(fft2(1 - slit));
-% Plot the intensity from the complement, should be the same due to Babinet's principle.
-image(abs(diff2).^2/10);
-
-% Plot the sum of the amplitudes from the slits and their the complement, should be zero.
-image(abs(diff1 + diff2).^2/10);
+image(abs(diff).^2/10);
   \end{lstlisting}
-  \caption{Kod för att simulera Fraunhoferdiffraktion med hjälp av Fouriertransformer.}
+  \caption{Kod för att simulera Fraunhoferdiffraktion med hjälp av Fouriertransformer. \lstinline{ff2} beräknar en tvådimensionell Fouriertransform, vilket enligt \eqref{eq:fraunFT} precis är Fraunhoferdiffraktion.}
+  \label{fig:fftFraunCode}
   \end{figure}
 
   \begin{figure}[ht]
@@ -1023,8 +1035,40 @@ gamma = beta*pi*d/b;
 % Plot the intensity.
 plot(y, (sinc(beta).*sin(N*gamma)./(sin(gamma))).^2);
   \end{lstlisting}
-  \caption{Kod för att beräkna intensitetsfördelningen som uppkommer på grund av ett godtyckligt antal spalter med hjälp av den analytiskt beräknade funktionen.}
+  \caption{Kod för att beräkna intensitetsfördelningen som uppkommer på grund av ett godtyckligt antal spalter med hjälp av den analytiskt beräknade ekvationen \eqref{eq:diffGrating}.}
+  \label{fig:analyticalGratingCode}
   \end{figure}
+
+\begin{figure}[ht]
+	\centering
+	\begin{lstlisting}
+resolution = 1000; % The total number of pixels per side.
+Nx = resolution/100; % Slit width in pixels.
+Ny = resolution/100; % Slit height in pixels.
+
+% Uncomment if you want to use a rectangular slit.
+%slit = zeros(resolution);
+%slit(resolution/2-Ny:resolution/2+Ny,resolution/2-Nx:resolution/2+Nx) = 1;
+
+% Set 0.1% of the pixels transparent.
+slit = floor(1.001*rand(resolution));
+
+% Fourier transform and center the low frequencies.
+diff1 = fftshift(fft2(slit));
+% Plot the intensity (scaled for better visibility).
+image(abs(diff1).^2/10);
+
+% Fourier transform for the slits complement.
+diff2 = fftshift(fft2(1 - slit));
+% Plot the intensity from the complement, should be the same due to Babinet's principle.
+image(abs(diff2).^2/10);
+
+% Plot the sum of the amplitudes from the slits and their the complement, should be zero.
+image(abs(diff1 + diff2).^2/10);
+	\end{lstlisting}
+	\caption{Kod för att illustrera Babinets princip. Koden fungerar i princip likadant som den i \autoref{fig:fftFraunCode}, men räknar även ut komlementets diffraktionsmönster.}
+	\label{fig:babinetCode}
+\end{figure}
 
 \FloatBarrier
 
