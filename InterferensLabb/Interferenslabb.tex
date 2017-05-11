@@ -273,44 +273,61 @@ end
 
 \section{Resultat}
 
+I alla mätningar användes ett CCD-chip med ett begränsat exponeringsintervall. Intensitetsdatan är därmed normaliserad mellan $0$ och $1$, där $1$ representerar den maximala intensiteten som kan mätas av chippet.
+
+\subsection{Mätning av spaltsystem i Fraunhoferregimen}
+
+I \autoref{fig:dubbelspalt} presenteras den uppmätta intensitetsfördelningen i Fraunhoferregimen för en dubbelspalt med spaltavståndet \SI{100}{\micro\m} och spaltbredden \SI{250}{\micro\m}. Figuren innehåller även det förväntade teoretiska resultatet som beräknades med samma parametrar. Avståndet mellan spalt och skärm bestämdes sedan till \SI{686}{\milli\m},  detta avstånd hölls sedan fixt under resterande mätningar.
+
 \FloatBarrier
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.75\linewidth]{Data/Figurer/4spalt.eps}
-	\includegraphics[width=0.5\linewidth]{Data/Figurer/4spalt.png}
-	\caption{caption}
-	\label{fig:4spalt}
-\end{figure}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\linewidth]{Data/Figurer/dubbelspalt.eps}
 	\includegraphics[width=0.5\linewidth]{Data/Figurer/dubbelspalt.png}
-	\caption{caption}
+	\caption{Interferensmönstret för ett dubbelspaltssystem i Fraunhoferregimen. I figuren visas den experimentella och teoretiska intensitetsfördlningen på ett CCD-chip. Mätningen gjordes med spaltavståndet \SI{250}{\micro\meter} och spaltbredden \SI{100}{\micro\meter}. Avståndet mellan dubbelspalten och skärmen bestämdes till \SI{686}{\milli\meter}.}
 	\label{fig:dubbelspalt}
 \end{figure}
 
+\FloatBarrier
+
+Efter att avståndet till spalten  bestämts, kunde detta användas för att bestämma spaltavståndet i ett fyrspaltssystem. \autoref{fig:4spalt} visar den experimentella och teoretiska intensitetsfördelningen i Fraunhoferregimen för detta system. Spaltbredden var \SI{77.229}{\micro\m} och spaltavståndet bestämdes till \SI{254.28}{\micro\m}.
+
+\FloatBarrier
+
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.75\linewidth]{Data/Figurer/edge.eps}
-	\includegraphics[width=0.5\linewidth]{Data/Figurer/edge.png}
-	\caption{caption}
-	\label{fig:edge}
+	\includegraphics[width=0.75\linewidth]{Data/Figurer/4spalt.eps}
+	\includegraphics[width=0.5\linewidth]{Data/Figurer/4spalt.png}
+	\caption{Den experimentella och teoretiska intensitetsfördlningen på ett CCD-chip för ett fyrspaltssystem. Mätningen gjordes i Fraunhoferregimen med spaltbredden \SI{77.229}{\micro\meter} och spaltavståndet bestämdes till \SI{254.28}{\micro \meter}.}
+	\label{fig:4spalt}
 \end{figure}
+
+\FloatBarrier
+
+Samma mätning upprepades sedan för en enkelspalt. \autoref{fig:enkelspalt} presenterar den teoretiska och experimentella intensitetsfördelningen I Fraunhoferregimen för denna enkelspalt, varefter spaltbredden bestämdes till \SI{212.22}{\micro\m}.
+
+\FloatBarrier
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\linewidth]{Data/Figurer/enkelspalt.eps}
 	\includegraphics[width=0.5\linewidth]{Data/Figurer/enkelspalt.png}
-	\caption{caption}
+	\caption{Diffraktionsmönstret för en enkelspalt. Figuren visar den teoretiska och experimentella intensitetsfördelning på ett CCD-chip, där spaltbredden bestämdes till \SI{212.22}{\micro\m}.}
 	\label{fig:enkelspalt}
 \end{figure}
+
+\FloatBarrier
+
+\autoref{fig:tradHogExpo} och \autoref{fig:tradLagExpo} visar intensitetsfördelningen som uppstår då en tråd med bredden \SI{212.22}{\micro\m} belyses , tillsammans med den teoretiska intensitetsfördelningen av en enkelspalt med samma bredd. I \autoref{fig:tradHogExpo} som är tagen med hög exponering är maxima av högre ordning synliga, medan de lägre är överexponerade. Motsatsen kan ses i \autoref{fig:tradLagExpo} där maxima av ordningen $-1, 0$ och $1$ precis är synliga.
+
+\FloatBarrier
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\linewidth]{Data/Figurer/tradHogExpo.eps}
 	\includegraphics[width=0.5\linewidth]{Data/Figurer/tradHogExpo.png}
-	\caption{caption}
+	\caption{Diffraktionsmönstret för en tråd med bredden \SI{212.22}{\micro\m}. Bilden togs med hög exponering och i figuren är maxima av högre ordning synliga. Mätningen ritas här tillsammans med diffraktionsmönstret från en enkelspalt med samma bredd.}
 	\label{fig:tradHogExpo}
 \end{figure}
 
@@ -318,23 +335,35 @@ end
 	\centering
 	\includegraphics[width=0.75\linewidth]{Data/Figurer/tradLagExpo.eps}
 	\includegraphics[width=0.5\linewidth]{Data/Figurer/tradLagExpo.png}
-	\caption{caption}
+	\caption{Diffraktionsmönstret för en tråd med bredden \SI{212.22}{\micro\m}. Bilden togs med låg exponering och i figuren är maxima av ordningarna $-1, 0$ och $1$ synliga. Mätningen ritas här tillsammans med diffraktionsmönstret från en enkelspalt med samma bredd.}
 	\label{fig:tradLagExpo}
 \end{figure}
+
+\FloatBarrier
+
+Intensitetsfördelningen som uppstår då en enkelspalt med spaltbredden \SI{212.22}{\micro\m} och en tråd av samma bred belyses samtidigt presenteras i \autoref{fig:trad+enkelspalt} tillsammans med den teoretiska intensitetsfördelningen av en enkelspalt med samma bredd. Genom mitten av interferensmönstret är en mörk region med låg intensitet syndlig, i både horisontal- och vertikalled.
+
+\FloatBarrier
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\linewidth]{Data/Figurer/trad+enkelspalt.eps}
 	\includegraphics[width=0.5\linewidth]{Data/Figurer/trad+enkelspalt.png}
-	\caption{caption}
+	\caption{Interferensmönstret då en tråd med bredden \SI{212.22}{\micro\m} och en spalt av samma bredd belyses samtidigt. Genom mitten av mönstret är mörk region med låg intensitet synlig, i både horisontal- och vertikalled.}
 	\label{fig:trad+enkelspalt}
 \end{figure}
+
+\FloatBarrier
+
+\autoref{fig:variabelEnkelspalt1}, \autoref{fig:variabelEnkelspalt2} och \autoref{fig:variabelEnkelspalt3} visar intensitetsfördelningen i Fraunhoferregimen för en ställbar enkelspalt vid tre olika spaltbredder. För att bestämma spaltbredden justerades denna i den teoretiska intensitetsfördelningen så att mönstren stämmer överens. Detta resulterade i spaltbredderna \SI{153.289}{\micro\m}, \SI{111.2}{\micro\m} och \SI{69.5}{\micro\m}
+
+\FloatBarrier
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.75\linewidth]{Data/Figurer/variabelEnkelspalt1.eps}
 	\includegraphics[width=0.5\linewidth]{Data/Figurer/variabelEnkelspalt1.png}
-	\caption{caption}
+	\caption{Intensitetsfördelningen i Fraunhoferregimen för en variabel enkelspalt med spaltbredden \SI{153.289}{\micro\m}.}
 	\label{fig:variabelEnkelspalt1}
 \end{figure}
 
@@ -342,7 +371,7 @@ end
 	\centering
 	\includegraphics[width=0.75\linewidth]{Data/Figurer/variabelEnkelspalt1.eps}
 	\includegraphics[width=0.5\linewidth]{Data/Figurer/variabelEnkelspalt2.png}
-	\caption{caption}
+	\caption{Intensitetsfördelningen i Fraunhoferregimen för en variabel enkelspalt med spaltbredden \SI{111.2}{\micro\m}.}
 	\label{fig:variabelEnkelspalt2}
 \end{figure}
 
@@ -350,12 +379,45 @@ end
 	\centering
 	\includegraphics[width=0.75\linewidth]{Data/Figurer/variabelEnkelspalt2.eps}
 	\includegraphics[width=0.5\linewidth]{Data/Figurer/variabelEnkelspalt2.png}
-	\caption{caption}
+	\caption{Intensitetsfördelningen i Fraunhoferregimen för en variabel enkelspalt med spaltbredden \SI{69.5}{\micro\m}.}
 	\label{fig:variabelEnkelspalt3}
 \end{figure}
 
+\FloatBarrier
+
+\subsection{Mätning av intensitetsfördelningi Fresnelregimen}
+
+Diffraktionen från en knivegg presenteras i \autoref{fig:edge}. I figuren syns ett tydlig spaltmönster som avtar i intensitet med avståndet från kniveggen.
 
 \FloatBarrier
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.75\linewidth]{Data/Figurer/edge.eps}
+	\includegraphics[width=0.5\linewidth]{Data/Figurer/edge.png}
+	\caption{Den teoretiska och experimentella intensitetsfördelningen för ljus som belyser en knivegg.}
+	\label{fig:edge}
+\end{figure}
+
+\FloatBarrier
+
+\autoref{fig:fresnelEnkel} visar en bildsekvens på hur diffraktionsmönstret i Fresnelregimen ändras för minskad spaltbredd, där spaltbredden minskar från vänster till höger. I den sista bilden ses ett mönster mer like Fraunhoferdiffraktion.
+
+\FloatBarrier
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.24\linewidth]{Data/Figurer/fresnelEnkel1.png}
+	\includegraphics[width=0.24\linewidth]{Data/Figurer/fresnelEnkel2.png}
+	\includegraphics[width=0.24\linewidth]{Data/Figurer/fresnelEnkel3.png}
+	\includegraphics[width=0.24\linewidth]{Data/Figurer/fresnelEnkel4.png}
+	\caption{Diffraktionsmönster för en variabel enkelspalt i Fresnelregmien. Spaltbredden minskar från vänster till höger.}
+	\label{fig:fresnelEnkel}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Datorsimuleringar}
 
 \section{Diskussion}
   %Är resultaten rimliga? Vad hade kunnat göras annorlunda?
