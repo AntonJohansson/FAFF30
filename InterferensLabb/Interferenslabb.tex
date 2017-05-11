@@ -138,10 +138,10 @@ När en våg passerar en spalt eller ett annat objekt som blockerar ljuset i vis
 \begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}
-	\draw[line width=0.75mm] (0, {1 + \wavesDist*\numWaves}) -- (0, 0.5);
-	\draw (0, 0.5) -- (0, -0.5);
-	\draw[line width=0.75mm] (0, -0.5) -- (0, {-1 - \wavesDist*\numWaves});
-	\foreach \incoming in {1,...,\numIncoming}
+	\draw[line width=0.75mm] (0, {1 + \wavesDist*\numWaves}) -- (0, 0.5); % Draw the top half of the slit.
+	\draw (0, 0.5) -- (0, -0.5); % Draw the wavefront inside the slit.
+	\draw[line width=0.75mm] (0, -0.5) -- (0, {-1 - \wavesDist*\numWaves}); % Draw the lower half of the slit.
+	\foreach \incoming in {1,...,\numIncoming} % Draw all incoming wavefronts.
 	{
 		\draw ({-\incoming*\wavesDist}, {-0.5 - \wavesDist*\numWaves}) -- ({-\incoming*\wavesDist}, {0.5 + \wavesDist*\numWaves});
 	}
@@ -205,6 +205,40 @@ Nu är integralen exakt definitionen av en tvådimensionell Fouriertransform av 
 \subsubsection{Fresneldiffraktion}
 
 Då man inte kan göra de approximationer som leder fram till Fraunhoferdiffraktion måste man lösa \eqref{eq:frKirInt} direkt, vilket bara går analytiskt för ett fåtal specialfall. Två sådana specialfall behandlas i \cite{pearsonIntroOpt}: objekt med cirkulär samt rektangulär symmetri. Ytterliggare beräknas integralen för en rektangulär öppning då variationerna av obliquity-faktorn och produkten $r r'$ försummas.
+
+\pgfmathsetmacro{\numFresnelWaves}{8}
+\pgfmathsetmacro{\fresnelWavesDist}{0.1}
+\pgfmathsetmacro{\leftRightDist}{2.25}
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}[scale=2]
+	
+	\node[circle,fill=black,inner sep=0,minimum size=3] at (0,0) {}; % Draw the source
+	\foreach \waveIdx in {1,...,\numFresnelWaves}
+	{ % and numFresnelWaves waves spaced with fresnelWavesDist
+		\draw (0, {-\fresnelWavesDist*\waveIdx}) arc [radius={\fresnelWavesDist*\waveIdx}, start angle=-90, end angle=90]; % Waves move to the right +-90*.
+		%\draw ({\fresnelWavesDist*\waveIdx/sqrt(2)}, {-\fresnelWavesDist*\waveIdx/sqrt(2)}) arc [radius={\fresnelWavesDist*\waveIdx}, start angle=-45, end angle=45]; % Waves move to the right +-45*.
+	}
+	
+	% Draw the slit so that it covers 45* of the source's view.
+	\draw[line width=0.75mm] ({\fresnelWavesDist*\numFresnelWaves/sqrt(2)}, {1.4*\fresnelWavesDist*\numFresnelWaves}) -- ({\fresnelWavesDist*\numFresnelWaves/sqrt(2)}, {\fresnelWavesDist*\numFresnelWaves/sqrt(2)}); % top half
+	\draw[line width=0.25mm,red] ({\fresnelWavesDist*\numFresnelWaves/sqrt(2)}, {\fresnelWavesDist*\numFresnelWaves/sqrt(2)}) -- ({\fresnelWavesDist*\numFresnelWaves/sqrt(2)}, {-\fresnelWavesDist*\numFresnelWaves/sqrt(2)}); % emphasis on the aperture.
+	\draw[line width=0.75mm] ({\fresnelWavesDist*\numFresnelWaves/sqrt(2)}, {-\fresnelWavesDist*\numFresnelWaves/sqrt(2)}) --({\fresnelWavesDist*\numFresnelWaves/sqrt(2)}, {-1.4*\fresnelWavesDist*\numFresnelWaves}); % lower half
+
+	\pgfmathsetmacro{\Start}{ceil(\numFresnelWaves/sqrt(2))} % Only the last few wavefronts actually reach the aperture.
+	\foreach \waveIdx in {\Start,...,\numFresnelWaves} % For all those that do
+	{
+		\pgfmathsetmacro{\R}{\fresnelWavesDist*sqrt(\waveIdx*\waveIdx - \numFresnelWaves*\numFresnelWaves/2)} % Calculate the radius of the wavefront at the aperture.
+		\draw[dashed] ({\fresnelWavesDist*\numFresnelWaves/sqrt(2)}, {\R}) -- ({\leftRightDist*\fresnelWavesDist*\numFresnelWaves}, {\R}); % Connect the two images (upper line)
+		\draw[dashed] ({\fresnelWavesDist*\numFresnelWaves/sqrt(2)}, {-\R}) -- ({\leftRightDist*\fresnelWavesDist*\numFresnelWaves}, {-\R}); % Connect the two images (lower line)
+		\draw[red] ({\leftRightDist*\fresnelWavesDist*\numFresnelWaves}, 0) circle ({\R)}); % Draw the intersections of the wavefronts with the aperture.
+	}
+	
+	\end{tikzpicture}
+	\caption{Illustration av hur fresnelzoner uppkommer i en cirkulär öppning. Till vänster visas hur vågfronterna når öppningen efter olika lång sträcka och därmed olika fas. Till höger visas var vågfronterna skär den cirkulära öppningen, varje cirkel är då i fas. I Fraunhoferdiffraktion är ljuskällan så långt bort att alla vågfronterna når öppningen samtidigt utan fasskillnad.}
+	\label{fig:fresnelZones}
+\end{figure}
 
 % Cirkulära vågfronter, analogi med lök?
 
