@@ -580,7 +580,7 @@ För att summera bidragen från de oändligt många punktkällorna används Fres
 	\label{eq:frKirInt}
 \end{equation}
 
-där $E_P$ är det elektriska fältet på skärmen med avstånder $r$ från den infinitesimala arean $d A$ på objektet. På samma sätt är $E_S$ det elektriska fältet av punktkällan och $r'$ dess avstånd till $d A$. $k$ är vågtalet, $\omega$ är vinkelfrekvensen och $F(\theta) = \frac{1 + \cos\theta}{2}$ är en obliquity-faktor som är nära ett då vågen passerar rakt igenom objektet men avtar för högra vinklar.
+där $E_P$ är det elektriska fältet på skärmen med avstånder $r$ från den infinitesimala arean $d A$ på objektet. På samma sätt är $E_S$ det elektriska fältet av punktkällan och $r'$ dess avstånd till $d A$. $k$ är vågtalet, $\omega$ är vinkelfrekvensen och $F(\theta) = \frac{1 + \cos\theta}{2}$ är en obliquity-faktor som är nära ett då vågen passerar rakt igenom objektet men avtar för högra vinklar och $\theta$ är vinkeln mot den optiska axeln.
 
 \subsubsection{Fraunhoferdiffraktion}
 
@@ -609,16 +609,16 @@ och då $|\boldsymbol{p'}|\ll|\boldsymbol{p}|$ blir $\left(\frac{|\boldsymbol{p'
 	r = |\boldsymbol{p}|\left( 1 - \frac{\boldsymbol{p}\cdot\boldsymbol{p'}}{|\boldsymbol{p}|^2} \right) = |\boldsymbol{p}| - \left(\frac{\boldsymbol{p}}{|\boldsymbol{p}|}\right)\cdot\boldsymbol{p'}\text{.}
 \end{equation}
 
-Här är $|\boldsymbol{p}|$ konstant i integralen i \eqref{eq:fraunhofer} och kan absorberas i konstanten. Med beteckningen $\boldsymbol{k} = k \frac{\boldsymbol{p}}{|\boldsymbol{p}|}$ kan \eqref{eq:fraunhofer} skrivas
+Här är $|\boldsymbol{p}|$ konstant i integralen i \eqref{eq:fraunhofer} och kan absorberas i konstanten. Med beteckningen $\boldsymbol{k} = k \frac{\boldsymbol{p}}{|\boldsymbol{p}|}$ kan \eqref{eq:fraunhofer} skrivas \cite{labManual}
 
 \begin{equation}
 	E_P = C_1 e^{-i \omega t} \iint\limits_{\mathrm{Objektet}} {e^{-i \boldsymbol{k}\cdot\boldsymbol{p'}} dA}\text{.}
 	\label{eq:fraunFT}
 \end{equation}
 
-Nu är integralen exakt definitionen av en tvådimensionell Fouriertransform av en funktion som är ett där objektet släpper igenom ljus och noll där den inte gör det.
+Nu är integralen exakt definitionen av en tvådimensionell Fouriertransform av en funktion som är ett där objektet släpper igenom ljus och noll där den inte gör det. \cite{labManual}
 
-Ett viktigt specialfall är ett spaltsystem där alla spalter har samma bredd och samma avstånd till sina grannar. Då kan för $N$ spalter intensiteten skrivas \cite[p.~301]{pearsonIntroOpt} \cite{labManual}
+Ett viktigt specialfall är ett spaltsystem där alla spalter har samma bredd och samma avstånd till sina grannar. Då kan \eqref{eq:fraunFT} lösas exakt och intensitetsfördelningen för $N$ spalter kan skrivas \cite[p.~301]{pearsonIntroOpt} \cite{labManual}
 
 \begin{equation}
 	I = I_0 \left(\frac{\sin\beta}{\beta}\right)^2 \left(\frac{\sin N\gamma}{\sin\gamma}\right)^2
@@ -631,7 +631,7 @@ där $\beta = \frac{\pi}{\lambda} b \sin\theta$ och $\gamma = \frac{\pi}{\lambda
 
 Då man inte kan göra de approximationer som leder fram till Fraunhoferdiffraktion måste man lösa \eqref{eq:frKirInt} direkt, vilket bara går analytiskt för ett fåtal specialfall. Två sådana specialfall behandlas i \cite{pearsonIntroOpt}: objekt med cirkulär samt rektangulär symmetri. Ytterliggare beräknas integralen för en rektangulär öppning då variationerna av obliquity-faktorn och produkten $r r'$ försummas.
 
-Ett viktigt koncept inom Fresneldiffraktion är Fresnelzoner. Då olika delar av ett objekt har olika avstånd till ljuskällan kommer inkommande ljust ha rört sig olika sträckor och därmed ha olika fas när de når objektet. Detta demonstreras i \autoref{fig:fresnelZones}. Allt ljus som träffar precis de röda ringarna i \autoref{fig:fresnelZones} är helt i fas och mellan de röda ringarna finns ljus som kommer in som har helt motsatt fas samt alla faser där imellan. För att förenkla bilden grupperar man in ytan i zoner som man approximerar med endast två direkt motsatta faser, dessa zoner kallas Fresnelzoner. På så sätt kan man dra mycket pricksäkra slutsatser bara genom att räkna hur många zoner av vardera sort som släpps igenom.
+Ett viktigt koncept inom Fresneldiffraktion är Fresnelzoner. Då olika delar av ett objekt har olika avstånd till ljuskällan kommer inkommande ljust ha rört sig olika sträckor och därmed ha olika fas när de når objektet. Detta demonstreras i \autoref{fig:fresnelZones}. Allt ljus som träffar precis de röda ringarna i \autoref{fig:fresnelZones} är helt i fas och mellan de röda ringarna finns ljus som kommer in som har helt motsatt fas samt alla faser där imellan. För att förenkla bilden grupperar man in ytan i zoner över vilka fasen approximeras som konstant och tilldelas en av endast två direkt motsatta faser, dessa zoner kallas Fresnelzoner. På så sätt kan man dra mycket pricksäkra slutsatser bara genom att räkna hur många zoner av vardera sort som släpps igenom. \cite{pearsonIntroOpt}
 
 \pgfmathsetmacro{\numFresnelWaves}{8}
 \pgfmathsetmacro{\fresnelWavesDist}{0.1}
@@ -667,7 +667,7 @@ Ett viktigt koncept inom Fresneldiffraktion är Fresnelzoner. Då olika delar av
 	\label{fig:fresnelZones}
 \end{figure}
 
-Utan hinder i vägen släpps alla zoner igenom och den resulterande amplituden på andra sidan kan vi då kalla för $A_0$. Men man kan också beskriva amplituden som en summa av alla Fresnelzoner med omväxlande tecken, då varannan zon har motsatt fas. Efter en analysering av denna summa kan man komma fram till att den totala amplituden blir cirka halva amplituden hos första Fresnelzonen. Detta ger den intressanta och oväntade konsekvensen att när man släcker ut den första zonen kommer de resterande zonerna tillsammans ha en nästan lika stor amplitud, men med motsatt fas, vilket syns som i liten ljus fläck i mitten av skuggan av ett cirkulärt objekt. Denna fläck kallas Poissons fläck.
+Utan hinder i vägen släpps alla zoner igenom och den resulterande amplituden på andra sidan kan vi då kalla för $A_0$. Men man kan också beskriva amplituden som en summa av alla Fresnelzoner med omväxlande tecken, då varannan zon har motsatt fas. Efter en analys av denna summa kan man komma fram till att den totala amplituden blir cirka halva den amplitud som endast första Fresnelzonen bidrar med. Detta ger den intressanta och oväntade konsekvensen att när man släcker ut den första zonen kommer de resterande zonerna tillsammans ha en nästan lika stor amplitud, men med motsatt fas, vilket syns som i liten ljus fläck i mitten av skuggan av ett cirkulärt objekt. Denna fläck kallas Poissons fläck.
 \cite{pearsonIntroOpt}
 
 För fallet med en rektangulär spalt beräknar \cite[pp.~340--342]{pearsonIntroOpt} en approximation till integralen i \eqref{eq:frKirInt} då variationerna av obliquity-faktorn och produkten $r r'$ försummas. Denna beräkning ger att intensiteten ges av
@@ -684,12 +684,14 @@ där $v_1\equiv z_1\sqrt{\frac{2}{L\lambda}}$ så att $z_1$ är avståndet från
 	C(v) &= \int\limits_0^v \cos\left(\frac{\pi u^2}{2}\right) d u\text{.}
 \end{align}
 
-Dessa funktioner finns plotade i \autoref{fig:cornuSpiral}.
+Dessa funktioner illustreras i \autoref{fig:cornuSpiral}.
 
 \begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}
 	\begin{axis}[
+			xlabel=$C(v)$,
+			ylabel=$S(v)$,
             xmin=-1,xmax=1,
             ymin=-1,ymax=1,
             grid=both,
@@ -712,7 +714,7 @@ För en egg går $v_2$ mot oändligheten och både $C(\infty)$ och $S(\infty)$ b
 
 \subsection{Babinets princip}
 
-Om ett objekt byts ut mot ett så kallat komplementärt objekt, som släpper igenom ljus där den ursprungliga inte gjorde och blockerar där den ursprungliga var genomskinlig, blir hela interferensmönstret likadant, fast med motsatt fas. Detta kallas Babinets princip och kan motiveras genom att tänka sig att om båda objekten var närvarande samtidigt borde allt släckas ut, men samtidigt borde effekten bara vara summan av det två objektens effekt. Om summan av två tal ska bli noll, måste de vara minus varandra, vilket motsvarar en fasförskjutning på $\pi$, men intensiteten förändras inte då fasen inte påverkar intensiteten.
+Om ett objekt byts ut mot ett så kallat komplementärt objekt, som släpper igenom ljus där den ursprungliga inte gjorde och blockerar där den ursprungliga var genomskinlig, blir hela interferensmönstret likadant, fast med motsatt fas. Detta kallas Babinets princip och kan motiveras genom att tänka sig att om båda objekten var närvarande samtidigt borde allt släckas ut, men samtidigt borde effekten bara vara summan av det två objektens effekt. Om summan av två tal ska bli noll, måste de vara minus varandra, vilket motsvarar en fasförskjutning på $\pi$, men intensiteten förändras inte då den inte påverkas av teckenbytet.
 
 \section{Metod}
   % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
@@ -727,7 +729,7 @@ Om ett objekt byts ut mot ett så kallat komplementärt objekt, som släpper ige
   
   \subsection{Datorsimulering}
   
-  För att kunna jämföra med vad teorin förutsäger skrevs ett antal skript i matlab som skulle simulera Fraunhofer- och Fresneldiffraktion. Fraunhoferdiffraktionen implementerades med hjälp av matlabs inbyggda FFT algoritm \lstinline{fft2} som beräknar tvådimensionella Fouriertransformer, vilket Fraunhoferdiffraktion kan beskrivas som enligt \eqref{eq:fraunFT}. Fresneldiffraktion implementerades för specialfallet med en egg genom funktionerna  \lstinline{fresnelc} och \lstinline{fresnels} med hjälp av \eqref{eq:diffEdge}.
+  För att kunna jämföra med vad teorin förutsäger skrevs ett antal skript i matlab som skulle simulera Fraunhofer- och Fresneldiffraktion. Fraunhoferdiffraktionen implementerades med hjälp av matlabs inbyggda FFT algoritm \lstinline{fft2} som beräknar tvådimensionella Fouriertransformer, vilket Fraunhoferdiffraktion kan beskrivas som enligt \eqref{eq:fraunFT}. Fresneldiffraktion implementerades för specialfallet med en egg genom funktionerna  \lstinline{fresnelc} och \lstinline{fresnels} med hjälp av \eqref{eq:diffEdge}. Även diffraktionsmönstret för ett gitter med godtyckligt antal spalter beräknades och för detta användes \eqref{eq:diffGrating}.
 
 \section{Resultat}
 
@@ -777,7 +779,7 @@ Samma mätning upprepades sedan för en enkelspalt. \autoref{fig:enkelspalt} pre
 
 \FloatBarrier
 
-\autoref{fig:tradHogExpo} och \autoref{fig:tradLagExpo} visar intensitetsfördelningen som uppstår då en tråd med bredden \SI{212.22}{\micro\m} belyses , tillsammans med den teoretiska intensitetsfördelningen av en enkelspalt med samma bredd. I \autoref{fig:tradHogExpo} som är tagen med hög exponering är maxima av högre ordning synliga, medan de lägre är överexponerade. Motsatsen kan ses i \autoref{fig:tradLagExpo} där maxima av ordningen $-1, 0$ och $1$ precis är synliga.
+\autoref{fig:tradHogExpo} och \autoref{fig:tradLagExpo} visar intensitetsfördelningen som uppstår då en tråd med bredden \SI{212.22}{\micro\m} belyses, tillsammans med den teoretiska intensitetsfördelningen av en enkelspalt med samma bredd. I \autoref{fig:tradHogExpo} som är tagen med hög exponering är maxima av högre ordning synliga, medan de lägre är överexponerade. Motsatsen kan ses i \autoref{fig:tradLagExpo} där maxima av ordningen $-1, 0$ och $1$ precis är synliga.
 
 \FloatBarrier
 
