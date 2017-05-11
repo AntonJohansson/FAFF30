@@ -261,15 +261,6 @@ Då man inte kan göra de approximationer som leder fram till Fraunhoferdiffrakt
   \subsection{Datorsimulering}
   
   För att kunna jämföra med vad teorin förutsäger skrevs ett antal skript i matlab som skulle simulera Fraunhofer- och Fresneldiffraktion. Fraunhoferdiffraktionen implementerades med hjälp av matlabs inbyggda FFT algoritm \lstinline{fft2} och Fresneldiffraktion implementerades för specialfallet med en egg genom funktionerna  \lstinline{fresnelc} och \lstinline{fresnels}.
-  
-  \begin{figure}[ht] % Exempel på matlab kod.
-  \centering
-  \begin{lstlisting}
-function a = f(b)
-	a = b .^ 2; % Matlab code example.
-end
-  \end{lstlisting}
-  \end{figure}
 
 \section{Resultat}
 
@@ -367,5 +358,98 @@ end
  
  \bibliography{bibliography}{}
  \bibliographystyle{plain}
+
+\appendix
+
+\section{Matlab code}
+
+\FloatBarrier
+
+  \begin{figure}[ht]
+  \centering
+  \begin{lstlisting}
+% Definitions of variables.
+p = 1; % Distance from source to edge.
+q = 1; % Distance from screen to edge.
+L = 1/(1/p + 1/q);
+lambda = 1; % Wavelength.
+screenSize = 20; % Width of screen.
+
+% The position on the screen.
+y = linspace(-screenSize/2,screenSize/2,1001);
+
+% Calculate how far a straight line from the source to the screen passes the edge.
+z = y*p/(q + p);
+
+% Calculate the distance along the Cornu spiral.
+v = z*sqrt(2/(L*lambda));
+
+% Calculate the intensity.
+intensity = ((0.5 - fresnelc(-v)).^2 + (0.5 - fresnels(-v)).^2)/2;
+
+% Plot the intensity.
+plot(y, intensity);
+  \end{lstlisting}
+  \caption{Kod för att simulera Fresneldiffraktion efter en egg.}
+  \end{figure}
+
+  \begin{figure}[ht]
+  \centering
+  \begin{lstlisting}
+resolution = 1000; % The total number of pixels per side.
+Nx = resolution/1000; % Slit width in pixels.
+Ny = resolution/4; % Slit height in pixels.
+d = resolution/50; % Distance between slits.
+slit = zeros(resolution); % Init blocking all light.
+
+% Set ones where the first slit is.
+slit(resolution/2-Ny:resolution/2+Ny,resolution/2-Nx-d/2:resolution/2+Nx-d/2) = 1;
+% Set ones where the second slit is.
+slit(resolution/2-Ny:resolution/2+Ny,resolution/2-Nx+d/2:resolution/2+Nx+d/2) = 1;
+
+% Fourier transform and center the low frequencies.
+diff1 = fftshift(fft2(slit));
+% Plot the intensity (scaled for better visibility).
+image(abs(diff1).^2/10);
+
+% Fourier transform for the slits complement.
+diff2 = fftshift(fft2(1 - slit));
+% Plot the intensity from the complement, should be the same due to Babinet's principle.
+image(abs(diff2).^2/10);
+
+% Plot the sum of the amplitudes from the slits and their the complement, should be zero.
+image(abs(diff1 + diff2).^2/10);
+  \end{lstlisting}
+  \caption{Kod för att simulera Fraunhoferdiffraktion med hjälp av Fouriertransformer.}
+  \end{figure}
+
+  \begin{figure}[ht]
+  \centering
+  \begin{lstlisting}
+% Definitions of variables.
+L = 0.686; % Distance to screen.
+lambda = 404e-9; % Wavelength.
+screenSize = 0.034; % Width of screen.
+d = 0.25e-3; % Grating constant.
+b = 0.077e-3; % Size of a single slit.
+N = 4; % Number of slits.
+
+% The position on the screen.
+y = linspace(-screenSize/2,screenSize/2,1001);
+
+% The angle from the grating to the screen with small angle approximation.
+theta = y/L;
+
+% Intermidiate variables from lab instructions.
+beta = 1/lambda*b*sin(theta);
+gamma = beta*pi*d/b;
+
+% Plot the intensity.
+plot(y, (sinc(beta).*sin(N*gamma)./(sin(gamma))).^2);
+  \end{lstlisting}
+  \caption{Kod för att beräkna intensitetsfördelningen som uppkommer på grund av ett godtyckligt antal spalter med hjälp av den analytiskt beräknade funktionen.}
+  \end{figure}
+
+\FloatBarrier
 
 \end{document}
