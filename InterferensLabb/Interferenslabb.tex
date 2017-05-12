@@ -631,7 +631,7 @@ där $\beta = \frac{\pi}{\lambda} b \sin\theta$ och $\gamma = \frac{\pi}{\lambda
 
 Då man inte kan göra de approximationer som leder fram till Fraunhoferdiffraktion måste man lösa \eqref{eq:frKirInt} direkt, vilket bara går analytiskt för ett fåtal specialfall. Två sådana specialfall behandlas i \cite{pearsonIntroOpt}: objekt med cirkulär samt rektangulär symmetri. Ytterliggare beräknas integralen för en rektangulär öppning då variationerna av obliquity-faktorn och produkten $r r'$ försummas.
 
-Ett viktigt koncept inom Fresneldiffraktion är Fresnelzoner. Då olika delar av ett objekt har olika avstånd till ljuskällan kommer inkommande ljust ha rört sig olika sträckor och därmed ha olika fas när de når objektet. Detta demonstreras i \autoref{fig:fresnelZones}. Allt ljus som träffar precis de röda ringarna i \autoref{fig:fresnelZones} är helt i fas och mellan de röda ringarna finns ljus som kommer in som har helt motsatt fas samt alla faser där imellan. För att förenkla bilden grupperar man in ytan i zoner över vilka fasen approximeras som konstant och tilldelas en av endast två direkt motsatta faser, dessa zoner kallas Fresnelzoner. På så sätt kan man dra mycket pricksäkra slutsatser bara genom att räkna hur många zoner av vardera sort som släpps igenom. \cite{pearsonIntroOpt}
+Ett viktigt koncept inom Fresneldiffraktion är Fresnelzoner. Då olika delar av ett objekt har olika avstånd till ljuskällan kommer inkommande ljuset ha rört sig olika sträckor och därmed ha olika fas när de når objektet. Detta demonstreras i \autoref{fig:fresnelZones}. Allt ljus som träffar precis de röda ringarna i \autoref{fig:fresnelZones} är helt i fas och mellan de röda ringarna finns ljus som kommer in som har helt motsatt fas samt alla faser där imellan. För att förenkla bilden grupperar man in ytan i zoner över vilka fasen approximeras som konstant och tilldelas en av endast två direkt motsatta faser, dessa zoner kallas Fresnelzoner. På så sätt kan man dra mycket pricksäkra slutsatser bara genom att räkna hur många zoner av vardera sort som släpps igenom. \cite{pearsonIntroOpt}
 
 \pgfmathsetmacro{\numFresnelWaves}{8}
 \pgfmathsetmacro{\fresnelWavesDist}{0.1}
@@ -907,7 +907,7 @@ Följande simuleringar gjordes i \textsc{MATLAB} och koden återfinns i \autoref
 
 \FloatBarrier
 
-En numerisk approximation av Fraunhoferdiffraktionen för en dubbelspalt återfinns i \autoref{fig:simuleringDubbelspalt}. Spalten som simulerades var rektangulär med sin längre sida i vertikalled. De maxima som ses i bilden är även högre än de är breda.
+En numerisk approximation av Fraunhoferdiffraktionen för en dubbelspalt återfinns i \autoref{fig:simuleringDubbelspalt}. Spalten som simulerades var rektangulär med sin längre sida i vertikalled. 
 
 \FloatBarrier
 
@@ -957,7 +957,15 @@ En simulering av Babinets princip kan ses i \autoref{fig:simuleringBabinet}. I b
   
   När spaltsystem med fler spalter användes blev bilderna mer otydliga, men de första toppar passa ändå mycket väl in med de teoretiska kurvorna och speciellt i \autoref{fig:dubbelspalt} kan man se ett bimaximum mellan varje par av huvudmax, medan det i \autoref{fig:4spalt} är mer otydligt.
   
-  
+  Den uppmätta Frenseldiffraktionen från en egg i \autoref{fig:edge} stämmer väl överens med det simulerade mönstret som ses i \autoref{fig:simuleringEgg}. Tydliga Fresnelzoner uppstår där ljuset från olika delar av vågfronten anländer i fas. Intensiteten oscillerar mellan att vara större och mindre än intensiteten för en oförhindrad vågrfront. Intensiteten oscillerar med avståndet från eggen, vilket kan förklaras genom att ljus från fler punktkällor kan adderas till varje punkt på skärmen. Detta resulterar även i att intensitetsskillnaden och därmed kontrasten mellan maxima och minima minskar.
+
+  Intensitetsfördelningen för en enkelspalt i Fresnelregimen, som kan ses i \autoref{fig:fresnelEnkel}, kan förklaras genom att betrakta kanterna av spalten som en egg och addera de resulterande diffraktionsmönstrena som uppstår. När spaltbredden minskades, så minskades även bredden på det resulterande diffraktionsmönstret. Däremot, när spaltbredden görs tillräckligt liten övergår vi till Fraunhoferregimen, eftersom avståndet till spalten är stort i jämförelse med spaltbredden. Vågfronterna kan då betraktas som plana.
+ 
+  Framkomsten av Poissons fläck i \autoref{fig:poissonsflack} där en cirkel belsyses med en divergent ljuskälla kan enklast förklaras med ljusets vågnatur. Enligt Huygens princip uppstår oändligt många punktkällor längs randen på cirkeln. Ljust från dessa punktkällor har samma optiska välglängd till centrumet av skärmen och anländer därmed i fas, vilket resulterar i en ljusfläck.
+
+  Datorsimuleringen av en dubbelspalt i Fraunhoferregimen som kan ses i \autoref{fig:simuleringDubbelspalt} stämmer väl överens med experimentet som utfördes (se \autoref{fig:dubbelspalt}). Det är väldigt tydligt att mönstret som uppstår är en kombination av ett interferensmönster som berer på spaltavståndet och ett diffraktionsmönster som beror på spaltbredden.
+
+  Samma sak gäller simuleringen av ett 4-spaltssytem i \autoref{fig:simulering4Spalt} där samma skärmavstånd, våglängd, skärmstorlek, spaltavstånd och spaltbredd användes som i experimentet (se \autoref{fig:4spalt}). Simuleringen överensstämmer därmed väldigt väl med experimentet som gjordes. Den enda skillnaden är att intensiteten för principalmaxen är större i simuleringen. Detta beror på att CCD-chippet som användes i kameran har ett relativt litet exponeringsintervall.
 
 %\section{Slutsats}
   %En   sammanfattning  där   man  till   skillnad  från   den  inledande
