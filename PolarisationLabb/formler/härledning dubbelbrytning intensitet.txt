@@ -1,0 +1,29 @@
+e_p*exp(-i*w*t)
+
+
+e_x = cos(theta)*e_p - sin(theta)*e_pt
+
+e_y = cos(theta)*e_pt + sin(theta)*e_p
+
+e_p = e_x*cos(theta) + e_y*sin(theta)
+
+
+e_x*cos(theta)*exp(-i*w*t) + e_y*sin(theta)*exp(-i*w*t)
+
+
+e_x*cos(theta)*exp(i*(delta - w*t)) + e_y*sin(theta)*exp(-i*w*t)
+
+
+e_a = cos(phi)*e_p - sin(phi)*e_pt
+
+e_at = cos(phi)*e_pt + sin(phi)*e_p
+
+
+e_x = e_a*cos(theta-phi) - e_at*sin(theta-phi)
+
+e_y = e_a*sin(theta-phi) + e_at*cos(theta-phi)
+
+
+(e_a*cos(theta-phi) - e_at*sin(theta-phi))*cos(theta)*exp(i*(delta - w*t)) + (e_a*sin(theta-phi) + e_at*cos(theta-phi))*sin(theta)*exp(-i*w*t)
+
+e_a*(cos(theta-phi)*cos(theta)*exp(i*(delta - w*t)) + sin(theta-phi)*sin(theta)*exp(-i*w*t))

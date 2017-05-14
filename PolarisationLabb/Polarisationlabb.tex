@@ -109,7 +109,7 @@
 \begin{tabular}{ll}
 Laborationen genomförd: &	2017-05-09 \\
 %Rapporten kamratgranskad: &	2013-xx-xx \\
-Lämnad till handledare: &	2017-xx-xx \\
+Lämnad till handledare: &	2017-05-16 \\
 \end{tabular}
 
 \vspace{3mm}
@@ -133,8 +133,58 @@ Lämnad till handledare: &	2017-xx-xx \\
   % algoritmer,  programspråk och  annan programvara,  undersökningsmetod,
   % statistiska  metoder. Där  valmöjligheter finns,  diskutera de  gjorda
   % valen.
+  
+  I alla experiment användes en vitljuslampa vars ljus linjerades genom en polarisator och en analysator in i en kalibrerad spektrometer som mätte intensiteten av ljus i våglängdsintervallet mellan cirka \SI{480}{\nano\meter} till \SI{720}{\nano\meter} med en CCD inkopplad till en dator.
+  
+  I första experimentet placerades tre kvartskristaller en åt gången mellan polarisatorn och analysatorn. Kristallerna var klyvda längs den optiska axeln med tjocklekarna \SI{0.24}{\milli\meter}, \SI{1}{\milli\meter} respektive \SI{3}{\milli\meter}. Kristallerna roterades så att deras effekter på spektrumet blev så liten respektive stor som möjligt och därefter roterades analysatorn och det registrerade spektrumet sparades vid intressanta vinklar av analysatorn.
+  
+  I andra experientet placerades en tjockare kvartskristall med en tjocklek av storleksordningen centimetrar och klyvd mot den optiska axeln mellan polarisatorn och analysatorn.
 
 \section{Resultat}
+
+\FloatBarrier
+
+\pgfmathsetmacro{\A}{0.009081}
+\pgfmathsetmacro{\B}{0.0001519}
+\pgfmathsetmacro{\m}{58}
+%\pgfmathsetmacro{\A}{0.009356}
+%\pgfmathsetmacro{\B}{0.0001245}
+%\pgfmathsetmacro{\m}{59}
+\pgfmathsetmacro{\d}{3000}
+
+\begin{figure}[ht]
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	title=Title,
+	grid=both,
+	xlabel=$\lambda$/\si{\micro\meter},
+	ylabel=$\Delta n$,
+	xmin=0.45,
+	xmax=0.75,
+	scaled ticks=false,
+	y tick label style={/pgf/number format/.cd,sci,sci e}
+	]
+	\addplot[mark=none,domain=0.45:0.75] {\A + \B/x^2};
+	\addplot[only marks,mark=+] coordinates {
+		(0.504870000000000, 0.009676675000000)
+		(0.512890000000000, 0.009659428333333)
+		(0.521150000000000, 0.009641275000000)
+		(0.529640000000000, 0.009621793333333)
+		(0.538600000000000, 0.009605033333333)
+		(0.547800000000000, 0.009586500000000)
+		(0.557470000000000, 0.009569901666667)
+		(0.567610000000000, 0.009554768333333)
+		(0.577980000000000, 0.009536670000000)
+		(0.588820000000000, 0.009519256666667)
+		(0.600120000000000, 0.009501900000000)
+	};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{}
+\end{figure}
+
+\FloatBarrier
 
 \section{Diskussion}
   %Är resultaten rimliga? Vad hade kunnat göras annorlunda?
