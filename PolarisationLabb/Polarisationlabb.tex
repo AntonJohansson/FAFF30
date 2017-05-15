@@ -12,6 +12,7 @@
 
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage{pgfplots}
@@ -128,6 +129,33 @@ Lämnad till handledare: &	2017-05-16 \\
 
 \section{Teori}
 
+I en elektromagnetisk våg oscillerar det elektriska och magnetiska fältet i planet vinkelrätt mot utbredningsriktningen. Då det elektriska fältet är så mycket större än det magnetiska brukar ljusets polarisation definieras som det elektriska fältets riktning. I opolariserat ljus oscillerar det elektriska fältet i slumpmässiga riktningar.
+
+För att beskriva en vågs polarisering inför man en bas $(\vec e_x, \vec e_y)$ i planet vinkelrätt mot utbredningsriktningen och uttrycker det elektriska fältet som
+
+\begin{equation}
+	\vec E = E_x \sin\left(k z - \omega t + \delta\right) \vec e_x + E_y \sin\left(k z - \omega t\right) \vec e_y
+\end{equation}
+
+där $k$ är vågtalet, $\omega$ är vinkelfrekvensen, $\delta$ är en konstant fasförskjutning och $E_x$ och $E_y$ är amplituderna i respektive riktningar. Ett viktigt specialfall är då $\delta = n\pi \,\, \left(n \in \mathbb{Z}\right)$ eller antingen $E_x=0$ eller $E_y=0$, i detta fall oscillerar fältet längs en linje och kallas planpolariserat. Om istället $E_x=E_y$ och $\delta = \left(2 n + 1\right)\frac{\pi}{2}$ har det elektriska fältet alltid samma intensitet, men roterar i planet och kallas därför cirkulärpolariserat.
+
+Vissa material, till exempel kvarts, har egenskapen att brytningsindex skiljer sig mellan olika polarisationer. Kvarts är ett så kallat uniaxialt material, vilka har samma brytningsindex i två riktningar, men ett annat brytningsindex i den tredje riktningen. Riktningen med annorlunda brytningsindex brukar kallas för den optiska axeln. Detta innebär att polarisationer parallella med den optiska axeln kommer att röra sig med en annan hastighet än de som är vinkelräta.
+
+\begin{equation}
+	d \Delta n = \left(2 (m - p) + 1\right)\frac{\lambda}{2}
+	\label{eq:deltaMax}
+\end{equation}
+
+\begin{equation}
+	\Delta n = A + \frac{B}{\lambda^2}
+	\label{eq:deltaCauchy}
+\end{equation}
+
+\begin{equation}
+	d \left(A + \frac{B}{\lambda^2}\right) = \left(2 (m - p) + 1\right)\frac{\lambda}{2}
+	\label{eq:cauchyMax}
+\end{equation}
+
 \section{Metod}
   % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
   % algoritmer,  programspråk och  annan programvara,  undersökningsmetod,
@@ -138,7 +166,9 @@ Lämnad till handledare: &	2017-05-16 \\
   
   I första experimentet placerades tre kvartskristaller en åt gången mellan polarisatorn och analysatorn. Kristallerna var klyvda längs den optiska axeln med tjocklekarna \SI{0.24}{\milli\meter}, \SI{1}{\milli\meter} respektive \SI{3}{\milli\meter}. Kristallerna roterades så att deras effekter på spektrumet blev så liten respektive stor som möjligt och därefter roterades analysatorn och det registrerade spektrumet sparades vid intressanta vinklar av analysatorn.
   
-  I andra experientet placerades en tjockare kvartskristall med en tjocklek av storleksordningen centimetrar och klyvd mot den optiska axeln mellan polarisatorn och analysatorn.
+  I andra experimentet placerades en tjockare kvartskristall med en tjocklek av storleksordningen centimetrar och klyvd mot den optiska axeln mellan polarisatorn och analysatorn. Spektrumets observerades då analysatorn roterades och några bilder togs.
+  
+  Till sist togs analysatorn och alla kristaller bort och i ljusstrålens väg placerades istället en glasskiva. Polarisatorn och glasskivan roterade tills reflektionen på glasskivan försvann och vinkeln noterades.
 
 \section{Resultat}
 
@@ -151,12 +181,14 @@ Lämnad till handledare: &	2017-05-16 \\
 %\pgfmathsetmacro{\B}{0.0001245}
 %\pgfmathsetmacro{\m}{59}
 \pgfmathsetmacro{\d}{3000}
+\pgfmathsetmacro{\maxM}{\m-1}
+\pgfmathsetmacro{\minM}{\m-11}
 
 \begin{figure}[ht]
 	\centering
 	\begin{tikzpicture}
 	\begin{axis}[
-	title=Title,
+	title=Skillnad i brytningsindex som funktion av våglängd,
 	grid=both,
 	xlabel=$\lambda$/\si{\micro\meter},
 	ylabel=$\Delta n$,
@@ -165,8 +197,9 @@ Lämnad till handledare: &	2017-05-16 \\
 	scaled ticks=false,
 	y tick label style={/pgf/number format/.cd,sci,sci e}
 	]
-	\addplot[mark=none,domain=0.45:0.75] {\A + \B/x^2};
-	\addplot[only marks,mark=+] coordinates {
+	\addplot[mark=none,blue,domain=0.45:0.75] {\A + \B/x^2};
+	\addlegendentry{anpassad kurva};
+	\addplot[only marks,mark=+,red] coordinates {
 		(0.504870000000000, 0.009676675000000)
 		(0.512890000000000, 0.009659428333333)
 		(0.521150000000000, 0.009641275000000)
@@ -179,9 +212,10 @@ Lämnad till handledare: &	2017-05-16 \\
 		(0.588820000000000, 0.009519256666667)
 		(0.600120000000000, 0.009501900000000)
 	};
+	\addlegendentry{datapunkter};
 	\end{axis}
 	\end{tikzpicture}
-	\caption{}
+	\caption{Skillnad i brytningsindex beräknade med \eqref{eq:deltaMax} från datan samt funktionen \eqref{eq:deltaCauchy}. $A$, $B$ och $m$ togs fram genom en anpassning av \eqref{eq:cauchyMax} där $A$, $B$ och $m$ tilläts variera. Bästa anpassning gav $A=\SI{\A}{}$, $B=\SI{\B}{\micro\meter\squared}$ och $m=\m$.}
 \end{figure}
 
 \FloatBarrier
