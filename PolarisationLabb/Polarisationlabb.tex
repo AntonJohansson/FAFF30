@@ -217,7 +217,7 @@ Beroende på om rotationen sker moturs eller medurs relativt en observatör som 
   
   I alla experiment användes en vitljuslampa vars ljus linjerades genom en polarisator och en analysator in i en kalibrerad spektrometer som mätte intensiteten av ljus i våglängdsintervallet mellan cirka \SI{480}{\nano\meter} till \SI{720}{\nano\meter} med en CCD inkopplad till en dator.
   
-  I första experimentet placerades tre kvartskristaller en åt gången mellan polarisatorn och analysatorn. Kristallerna var klyvda längs den optiska axeln med tjocklekarna \SI{0.24}{\milli\meter}, \SI{1}{\milli\meter} respektive \SI{3}{\milli\meter}. Kristallerna roterades så att deras effekter på spektrumet blev så liten respektive stor som möjligt och därefter roterades analysatorn och det registrerade spektrumet sparades vid intressanta vinklar av analysatorn. På den tjockaste kristallen mätte vi även våglängderna för 11 toppar mellan cirka \SI{500}{\nano\meter} till \SI{600}{\nano\meter}.
+  I första experimentet placerades tre kvartskristaller en åt gången mellan polarisatorn och analysatorn. Kristallerna var klyvda längs den optiska axeln med tjocklekarna \SI{0.24}{\milli\meter}, \SI{1}{\milli\meter} respektive \SI{3}{\milli\meter}. Kristallerna roterades så att deras effekter på spektrumet blev så liten respektive stor som möjligt och därefter roterades analysatorn och det registrerade spektrumet sparades vid intressanta vinklar av analysatorn. På den tjockaste kristallen mätte vi även våglängderna för 11 toppar mellan cirka \SI{500}{\nano\meter} till \SI{600}{\nano\meter}. Med hjälp av matlab anpassades sedan \eqref{eq:cauchyMax} till datan.
   
   I andra experimentet placerades en tjockare kvartskristall med en tjocklek av storleksordningen centimetrar och klyvd mot den optiska axeln mellan polarisatorn och analysatorn. Spektrumets observerades då analysatorn roterades och några bilder togs.
   
@@ -238,7 +238,7 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_fritt_inv}
 	\caption{Intensitetsspektra för vitljuslampan där anylasatorn har vinkeln \SI{0}{\degree} i förhållande till polarisatorn.}
-	\label{fig:}
+	\label{fig:fritt}
 \end{figure}
 \FloatBarrier
 
@@ -247,7 +247,7 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_180_kristall1_180_inv}
 	\caption{Intensitetsspektra för en \SI{0.24}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt mot den optiska axeln. Analysatorn har här vinkeln \SI{0}{\degree} relativt polarisatorn.}
-	\label{fig:}
+	\label{fig:k1_0}
 \end{figure}
 \FloatBarrier
 
@@ -256,7 +256,7 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_180_kristall1_270_inv}
 	\caption{Intensitetsspektra för en \SI{0.24}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt mot den optiska axeln. Analysatorn har här vinkeln \SI{+90}{\degree} relatit polarisatorn.}
-	\label{fig:}
+	\label{fig:k1_90}
 \end{figure}
 \FloatBarrier
 
@@ -265,7 +265,7 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_kristall1_optAx_inv}
 	\caption{Intensitetsspektra för en \SI{0.24}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt med den optiska axeln, men polarisationen är parallell eller vinkelrät mot den optiska axeln.}
-	\label{fig:}
+	\label{fig:k1OptAx}
 \end{figure}
 \FloatBarrier
 
@@ -273,8 +273,8 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_180_kristall2_0_inv}
-	\caption{Intensitetsspektra för en \SI{1}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt mot den optiska axeln.  Vinkeln mellan analysatorn och polarisatorn är här \SI{0}{\degree}.}
-	\label{fig:}
+	\caption{Intensitetsspektra för en \SI{1}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt mot den optiska axeln. Vinkeln mellan analysatorn och polarisatorn är här \SI{0}{\degree}.}
+	\label{fig:k2_0}
 \end{figure}
 \FloatBarrier	
 
@@ -282,8 +282,8 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_180_kristall2_70_inv}
-	\caption{Intensitetsspektra för en \SI{1}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt mot den optiska axeln.  Vinkeln mellan analysatorn och polarisatorn är här \SI{-110}{\degree}.}
-	\label{fig:}
+	\caption{Intensitetsspektra för en \SI{1}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt mot den optiska axeln. Vinkeln mellan analysatorn och polarisatorn är här \SI{-110}{\degree}.}
+	\label{fig:k2_110}
 \end{figure}
 \FloatBarrier
 
@@ -291,8 +291,8 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_180_kristall3_140_inv}
-	\caption{Intensitetsspektra för en \SI{3}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt mot den optiska axeln.  Vinkeln mellan analysatorn och polarisatorn är här \SI{-40}{\degree}.}
-	\label{fig:}
+	\caption{Intensitetsspektra för en \SI{3}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt mot den optiska axeln. Vinkeln mellan analysatorn och polarisatorn är här \SI{-40}{\degree}.}
+	\label{fig:k3_40}
 \end{figure}
 \FloatBarrier
 
@@ -340,6 +340,7 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 	\end{axis}
 	\end{tikzpicture}
 	\caption{Skillnad i brytningsindex beräknade med \eqref{eq:deltaMax} från datan samt funktionen \eqref{eq:deltaCauchy}. $A$, $B$ och $m$ togs fram genom en anpassning av \eqref{eq:cauchyMax} där $A$, $B$ och $m$ tilläts variera. Bästa anpassning gav $A=\SI{\A}{}$, $B=\SI{\B}{\micro\meter\squared}$ och $m=\m$.}
+	\label{fig:anpassning}
 \end{figure}
 
 \FloatBarrier
@@ -349,7 +350,7 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_aktiv3_inv}
 	\caption{Intensitetsspektra för en cirka \SI{1}{\centi\m} tjock kvartskristall, där ljuset infaller parallellt med den optiska axeln. Om analysatorn vrids i positiv riktning förskjuts minimat mot längre våglängder.}
-	\label{fig:}
+	\label{fig:aktiv1}
 \end{figure}
 \FloatBarrier
 
@@ -358,7 +359,7 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_aktiv1_inv}
 	\caption{Intensitetsspektra för en cirka \SI{1}{\centi\m} tjock kvartskristall, där ljuset infaller parallellt med den optiska axeln. Om analysatorn vrids i positiv riktning förskjuts minimat mot längre våglängder.}
-	\label{fig:}
+	\label{fig:aktiv2}
 \end{figure}
 \FloatBarrier
 
@@ -367,7 +368,7 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_aktiv2_inv}
 	\caption{Intensitetsspektra för en cirka \SI{1}{\centi\m} tjock kvartskristall, där ljuset infaller parallellt med den optiska axeln. Om analysatorn vrids i positiv riktning förskjuts minimat mot längre våglängder.}
-	\label{fig:}
+	\label{fig:aktiv3}
 \end{figure}
 \FloatBarrier
 
@@ -379,7 +380,13 @@ Reflektion brewstervinkel: \SI{222}{\degree}, \SI{282}{\degree}.
 
 % oscillationerna i spektrat för kristallerna 							- 	Johan
 
+I \autoref{fig:k1_0}, \autoref{fig:k1_90}, \autoref{fig:k2_0} och \autoref{fig:k3_40} syns maxima och minima för vissa våglängder. Detta uppstår eftersom fasförskjutningen beror på våglängden och då $\delta$ är en multipel av $\pi$ är ljuset som kommer ut planpolariserat. Det planpolariserade ljuset kan sedan helt släckas ut eller släppas igenom vid analysatorn. De våglängder som ligger däremellan blir istället olika varianter av elliptiskt polariserat och därför släpps alltid lite igenom.
+
 % kurvanpassning 											- 	Johan
+
+\pgfmathsetmacro{\deltaNsodium}{\A + \B/(0.5893)^2}
+
+Kurvanpassningen i \autoref{fig:anpassning} gav en mycket nära anpassning, men om man avrundat $m$ uppåt hade det varit nästan lika bra fast värdena hade skilt sig med cirka \SI{3}{\percent}. Vid våglängden \SI{589.3}{\nano\meter} ges $\Delta n$ för kvarts av $0.0091$\cite[p.~383]{pearsonIntroOpt}, medan \eqref{eq:deltaCauchy} med anpassningens parametrar ger $\deltaNsodium$ avrundat till samma antal värdesiffror. Det är en relativt liten skillnad och beror nog till stor del på för få datapunkter i relation till antalet okända då varje ytterligare okänd gör det lättare att få en bra anpassning.
 
 % Figur 9, 10, 11 => levo-rototary, rotation av kristallen => ingenting 			- 	Anton
 
