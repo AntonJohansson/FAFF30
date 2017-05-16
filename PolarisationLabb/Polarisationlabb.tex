@@ -209,6 +209,26 @@ Beroende på om rotationen sker moturs eller medurs relativt en observatör som 
 
 \subsection{Polarisation och reflektans}
 
+Då ljus går från ett media till ett annat, med brytningsindex $n_1$ respektive $n_2$, observeras både reflekterad och transmitterat ljus. Den observerade reflektionen förklaras genom att den inkommande elektromagnetiska (EM) vågen orsakar oscillationer i materialets elektroner, som då avger strålning \cite[pp.~575--579]{pearsonIntroOpt}. Eftersom vågors oscillationsrikning är vinkelrät mot rörelsen, så reflekteras ljus endast då oscillationen har någon komponent vinkelrät mot reflektionsriktningen.
+
+Om det infallande ljuset då har en polarisationsriktning i det plan som spänns upp av det infallande ljuset och normalen, så kommer ingen reflektion ske då vinkeln mellan reflektions- och transmissionsriktningen är \SI{90}{\degree}. Snells lag ger
+
+\begin{equation}\label{eq:snell}
+	n_1\sin{\theta_i} = n_2\sin{\theta_r},
+\end{equation}
+
+där $n_1$ och $n_2$ är brytningsindex för materialen där brytningen sker, och $\theta_i$ och $\theta_r$ är infalls- respektive brytningsvinkeln. Om ingen oscillation sker i reflektionsriktningen, så är denna riktning vinkelrät mot transmissionsriktningen, d.v.s.
+
+\begin{equation}\label{eq:vinkelrät}
+	\theta_r = \SI{90}{\degree} - \theta_i.
+\end{equation}
+
+Kombineras då \eqref{eq:snell} och \label{eq:vinkelrät} så kan följande uttryck för $\theta_i$ och $n_2$ härledas
+
+\begin{align}
+	\theta_i &= \arctan{\frac{n_2}{n_1}}\label{eq:brewster}\\
+	\Leftrightarrow n_2 &= n_1\tan{\theta_i}\label{eq:n_brewster}
+\end{align}
 
 
 \section{Metod}
