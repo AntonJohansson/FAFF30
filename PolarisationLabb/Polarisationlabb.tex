@@ -149,24 +149,47 @@ Om polarisationen av det infallande ljuset varken är vinkelrät mot eller paral
 
 \begin{equation}
 	\delta = \frac{2\pi}{\lambda} d \Delta n
+	\label{eq:phaseDiff}
 \end{equation}
 
 där $\delta$ är fasförskjutningen, $\lambda$ är våglängden, $d$ är materialets tjocklek och $\Delta n$ är skillnaden i brytningsindex mellan de två polarisationerna.
 
+I en experimentuppställning med en kristall utföljd av en analysator vinklad vinkelrätt mot det infallande ljusets polarisation kommer intensiteten $I$ beräknas med \cite{labManual}
+
 \begin{equation}
-	d \Delta n = \left(2 (m - p) + 1\right)\frac{\lambda}{2}
+	I = I_0 \sin\left(2\theta\right)^2 \sin\left(\delta / 2\right)^2
+\end{equation}
+
+där $\theta$ är vinkeln mellan det infallande ljusets polarisation och den optiska axeln. Maximal intensitet uppkommer då när $\sin\left(\delta / 2\right) = \pm 1$, eller $\delta = \left(2 n + 1\right)\pi$. \cite{labManual} Med detta tillsammans med \eqref{eq:phaseDiff} är alltså villkoret för maxima
+
+\begin{equation}
+	d \Delta n = \left(2 (m - p) + 1\right)\frac{\lambda}{2}\text{.}
 	\label{eq:deltaMax}
 \end{equation}
+
+där $p$ är ett heltal som bestämmer ordningen relativt ett fast maximum $m$ och som ökar med ökande våglängd då $d \Delta n$ är ungefär konstant mellan två närliggande maxima.
+
+För att beräkna brytningsindexets beroende av våglängden kan den empiriskt framtagna Cauchys formel användas \cite{labManual} \cite[p.~67]{pearsonIntroOpt}
+
+\begin{equation}
+	n = a + \frac{b}{\lambda^2}
+\end{equation}
+
+där $a$ och $b$ är konstanter. Då differansen av två ekvationer på denna form har exakt samma form kan även skillnaden i brytningsindex skrivas
 
 \begin{equation}
 	\Delta n = A + \frac{B}{\lambda^2}
 	\label{eq:deltaCauchy}
 \end{equation}
 
+med två nya konstanter $A$ och $B$. Detta kan kombineras med \eqref{eq:phaseDiff} till
+
 \begin{equation}
-	d \left(A + \frac{B}{\lambda^2}\right) = \left(2 (m - p) + 1\right)\frac{\lambda}{2}
+	d \left(A + \frac{B}{\lambda^2}\right) = \left(2 (m - p) + 1\right)\frac{\lambda}{2}\text{.}
 	\label{eq:cauchyMax}
 \end{equation}
+
+Om man våglängderna av ett antal maxima mitt i ett spektrum kan man då använda denna formel för att anpassa en kurva med de tre konstanterna $A$, $B$ och $m$.
 
 \subsection{Rörelse parallellt med den optiska axeln}
 
