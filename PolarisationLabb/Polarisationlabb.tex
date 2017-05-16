@@ -129,17 +129,29 @@ Lämnad till handledare: &	2017-05-16 \\
 
 \section{Teori}
 
-I en elektromagnetisk våg oscillerar det elektriska och magnetiska fältet i planet vinkelrätt mot utbredningsriktningen. Då det elektriska fältet är så mycket större än det magnetiska brukar ljusets polarisation definieras som det elektriska fältets riktning. I opolariserat ljus oscillerar det elektriska fältet i slumpmässiga riktningar.
+I en elektromagnetisk våg oscillerar det elektriska och magnetiska fältet i planet vinkelrätt mot utbredningsriktningen. Då det elektriska fältet är så mycket större än det magnetiska brukar ljusets polarisation definieras som det elektriska fältets riktning. I opolariserat ljus oscillerar det elektriska fältet i slumpmässiga riktningar. \cite[pp.~146--148]{pearsonIntroOpt}
 
-För att beskriva en vågs polarisering inför man en bas $(\vec e_x, \vec e_y)$ i planet vinkelrätt mot utbredningsriktningen och uttrycker det elektriska fältet som
+För att beskriva en vågs polarisering inför man en bas $(\vec e_x, \vec e_y)$ i planet vinkelrätt mot utbredningsriktningen och uttrycker det elektriska fältet som \cite{labManual}
 
 \begin{equation}
 	\vec E = E_x \sin\left(k z - \omega t + \delta\right) \vec e_x + E_y \sin\left(k z - \omega t\right) \vec e_y
 \end{equation}
 
-där $k$ är vågtalet, $\omega$ är vinkelfrekvensen, $\delta$ är en konstant fasförskjutning och $E_x$ och $E_y$ är amplituderna i respektive riktningar. Ett viktigt specialfall är då $\delta = n\pi \,\, \left(n \in \mathbb{Z}\right)$ eller antingen $E_x=0$ eller $E_y=0$, i detta fall oscillerar fältet längs en linje och kallas planpolariserat. Om istället $E_x=E_y$ och $\delta = \left(2 n + 1\right)\frac{\pi}{2}$ har det elektriska fältet alltid samma intensitet, men roterar i planet och kallas därför cirkulärpolariserat.
+där $k$ är vågtalet, $\omega$ är vinkelfrekvensen, $\delta$ är en konstant fasförskjutning och $E_x$ och $E_y$ är amplituderna i respektive riktningar. Ett viktigt specialfall är då $\delta = n\pi \,\, \left(n \in \mathbb{Z}\right)$ eller antingen $E_x=0$ eller $E_y=0$, i detta fall oscillerar fältet längs en linje och kallas planpolariserat. Om istället $E_x=E_y$ och $\delta = \left(2 n + 1\right)\frac{\pi}{2}$ har det elektriska fältet alltid samma intensitet, men roterar i planet och kallas därför cirkulärpolariserat. \cite{labManual}\cite[p.~147]{pearsonIntroOpt}
 
-Vissa material, till exempel kvarts, har egenskapen att brytningsindex skiljer sig mellan olika polarisationer. Kvarts är ett så kallat uniaxialt material, vilka har samma brytningsindex i två riktningar, men ett annat brytningsindex i den tredje riktningen. Riktningen med annorlunda brytningsindex brukar kallas för den optiska axeln. Detta innebär att polarisationer parallella med den optiska axeln kommer att röra sig med en annan hastighet än de som är vinkelräta.
+Vissa material, till exempel kvarts, har egenskapen att brytningsindex skiljer sig mellan olika polarisationer. Kvarts är ett så kallat uniaxialt material, vilka har samma brytningsindex i två riktningar, men ett annat brytningsindex i den tredje riktningen. Riktningen med annorlunda brytningsindex brukar kallas för den optiska axeln. Detta innebär att polarisationer parallella med den optiska axeln kommer att röra sig med en annan hastighet än de som är vinkelräta.\cite{labManual}\cite[pp.~382--383]{pearsonIntroOpt}
+
+I resten av rapporten kommer infallande ljus antas vara linjärpolariserat.
+
+\subsection{Rörelse vinkelrätt mot den optiska axeln}
+
+Om polarisationen av det infallande ljuset varken är vinkelrät mot eller parallell med den optiska axeln kan man dela upp den i två nollskilda vågor polariserade parallellt med respektive vinkelrätt mot den optiska axeln. Dessa delvågor kommer då ha olika brytningsindex och därmed ha olika fas då de lämnar materialet igen enligt \cite{labManual}
+
+\begin{equation}
+	\delta = \frac{2\pi}{\lambda} d \Delta n
+\end{equation}
+
+där $\delta$ är fasförskjutningen, $\lambda$ är våglängden, $d$ är materialets tjocklek och $\Delta n$ är skillnaden i brytningsindex mellan de två polarisationerna.
 
 \begin{equation}
 	d \Delta n = \left(2 (m - p) + 1\right)\frac{\lambda}{2}
@@ -155,6 +167,8 @@ Vissa material, till exempel kvarts, har egenskapen att brytningsindex skiljer s
 	d \left(A + \frac{B}{\lambda^2}\right) = \left(2 (m - p) + 1\right)\frac{\lambda}{2}
 	\label{eq:cauchyMax}
 \end{equation}
+
+\subsection{Rörelse parallellt med den optiska axeln}
 
 \section{Metod}
   % De  olika  stegen  i  uppgiftens genomförande.  Till  exempel  val  av
