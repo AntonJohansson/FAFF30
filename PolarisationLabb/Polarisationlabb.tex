@@ -191,7 +191,7 @@ med två nya konstanter $A$ och $B$. Detta kan kombineras med \eqref{eq:phaseDif
 	\label{eq:cauchyMax}
 \end{equation}
 
-Om man våglängderna av ett antal maxima mitt i ett spektrum kan man då använda denna formel för att anpassa en kurva med de tre konstanterna $A$, $B$ och $m$.
+Om man antecknar våglängderna av ett antal maxima mitt i ett spektrum kan man då använda denna formel för att anpassa en kurva med de tre konstanterna $A$, $B$ och $m$.
 
 \subsection{Rörelse parallellt med den optiska axeln}
 
@@ -199,7 +199,7 @@ Då den infallande ljusstrålen instället rör sig parallellt med den optiska a
 
 Med samma argument som för dubbelbrytning kan våglängdsberoendet beskrivas med \cite{labManual}
 
-\begin{equation}
+\begin{equation}\label{eq:rotary}
 	\rho = a + \frac{b}{\lambda^2}
 \end{equation}
 
@@ -209,9 +209,7 @@ Beroende på om rotationen sker moturs eller medurs relativt en observatör som 
 
 \subsection{Polarisation och reflektans}
 
-Då ljus går från ett media till ett annat, med brytningsindex $n_1$ respektive $n_2$, observeras både reflekterad och transmitterat ljus. Den observerade reflektionen förklaras genom att den inkommande elektromagnetiska (EM) vågen orsakar oscillationer i materialets elektroner, som då avger strålning \cite[pp.~575--579]{pearsonIntroOpt}. Eftersom vågors oscillationsrikning är vinkelrät mot rörelsen, så reflekteras ljus endast då oscillationen har någon komponent vinkelrät mot reflektionsriktningen.
-
-Om det infallande ljuset då har en polarisationsriktning i det plan som spänns upp av det infallande ljuset och normalen, så kommer ingen reflektion ske då vinkeln mellan reflektions- och transmissionsriktningen är \SI{90}{\degree}. Snells lag ger
+Reflektionen och transmissionen som uppstår då polariserat ljus går från ett medium till ett annat orsakas av elektronoscillationer som uppstår i polarisationsriktningen inuti materialet. Eftersom oscillerande laddningar bara kan avge strålning i riktningar som är vinkelräta mot oscillationen, så uppstår ingen reflektion då vinkelskillnaden mellan reflektions- och transmissionsriktningen är \SI{90}{\degree} \cite[pp.~575--579]{pearsonIntroOpt}. Snells lag er då
 
 \begin{equation}\label{eq:snell}
 	n_1\sin{\theta_i} = n_2\sin{\theta_r},
@@ -223,12 +221,14 @@ där $n_1$ och $n_2$ är brytningsindex för materialen där brytningen sker, oc
 	\theta_r = \SI{90}{\degree} - \theta_i.
 \end{equation}
 
-Kombineras då \eqref{eq:snell} och \label{eq:vinkelrät} så kan följande uttryck för $\theta_i$ och $n_2$ härledas
+Kombineras då \eqref{eq:snell} och \eqref{eq:vinkelrät} så kan följande uttryck för $\theta_i$ och $n_2$ härledas
 
 \begin{align}
 	\theta_i &= \arctan{\frac{n_2}{n_1}}\label{eq:brewster}\\
-	\Leftrightarrow n_2 &= n_1\tan{\theta_i}\label{eq:n_brewster}
+	\Leftrightarrow n_2 &= n_1\tan{\theta_i}\label{eq:n_brewster},
 \end{align}
+
+där $\theta_i$ är den så kallade brewstervinkeln.
 
 
 \section{Metod}
@@ -247,15 +247,13 @@ Kombineras då \eqref{eq:snell} och \label{eq:vinkelrät} så kan följande uttr
 
 \section{Resultat}
 
+\subsection{Undersökning av dubbelbrytning i kvartskristaller}
 
-
-%medurs från spektrometerns perspektiv
-%+ = 180 -> 360
-%- = 180 -> 0
-
-Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysatorns vinkel mättes relativt polarisatorn. En positiv vinkel representerar därmed en virdning medurs, ur spektrometerns perspektiv.
+Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, analysatorns vridning mättes sedan relativt polarisatorn, där positiv riktning definieras som medurs ur spektrometerns perspektiv. De kristaller som undersöktes var kluvna sådana att ljuset infaller vinkelrätt mot den optiska axeln.
 
 \FloatBarrier
+\autoref{fig:fritt} presenterar intensitetsspektrat för den vitljuslampa som användes under mätningarna. Ljuset som mättes var vertikalpolariserat då analysatorn hade en vridning av \SI{0}{\degree}.
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_fritt_inv}
@@ -265,22 +263,28 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 \FloatBarrier
 
 \FloatBarrier
+Därefter placerades en \SI{0.24}{\milli\m} tjock kvartskristall mellan analysatorn och polarisatorn, det resulterande intensitetsspektrat kan ses i \autoref{fig:k1_0}. Återigen så hade analysatorn en vridning av \SI{0}{\degree}.
+
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_180_kristall1_180_inv}
-	\caption{Intensitetsspektra för en \SI{0.24}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt mot den optiska axeln. Analysatorn har här vinkeln \SI{0}{\degree} relativt polarisatorn.}
+	\caption{Intensitetsspektra för en \SI{0.24}{\milli\m} tjock kvartskristall. Analysatorn har här vinkeln \SI{0}{\degree} relativt polarisatorn.}
 	\label{fig:k1_0}
 \end{figure}
 \FloatBarrier
+
+I \autoref{fig:k1_90} visas intensitetsspektrat för samma \SI{0.24}{mm} tjocka kvartskristall. Analysatorn har här vinkeln \SI{90}{\degree} jämfört med polarisatorn.
 
 \FloatBarrier
 \begin{figure}[ht!]
 	\centering
 	\includegraphics[width=\linewidth]{data/spektra_180_kristall1_270_inv}
-	\caption{Intensitetsspektra för en \SI{0.24}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt mot den optiska axeln. Analysatorn har här vinkeln \SI{+90}{\degree} relatit polarisatorn.}
+	\caption{Intensitetsspektra för en \SI{0.24}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt mot den optiska axeln. Analysatorn har här vinkeln \SI{+90}{\degree} relativt polarisatorn.}
 	\label{fig:k1_90}
 \end{figure}
 \FloatBarrier
+
+\autoref{fig:k1OptAx} presenterar intensitetsspektrat för samma kvartskristall av \SI{0.24}{mm} tjocklek, analysatorn har vinkeln \SI{0}{\degree} relativt polarisatorn. Däremot är kristallen vriden sådana att ljusets polarisation antingen är vinkelrät eller parallell med den optiska axeln.
 
 \FloatBarrier
 \begin{figure}[ht!]
@@ -291,6 +295,8 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 \end{figure}
 \FloatBarrier
 
+Samma mätningar utfördes även för en kristall med tjockleken \SI{1}{\milli\m}. Även denna var kluven sådana att ljuset infaller vinkelrätt mot den optiska axeln. I \autoref{fig:k2_0} syns intensitetsspektrat för denna kristall. Analysatorn är vriden \SI{0}{\degree} relativt polarisatorn.
+
 \FloatBarrier
 \begin{figure}[ht!]
 	\centering
@@ -299,6 +305,8 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 	\label{fig:k2_0}
 \end{figure}
 \FloatBarrier	
+
+I \autoref{fig:k2_110} ses intensitetsspektrat för samma \SI{1}{\milli\m} tjocka kvartskristall. Analysatorn är vriden \SI{-110}{\degree} relativt polarisatorn.
 
 \FloatBarrier
 \begin{figure}[ht!]
@@ -309,6 +317,8 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 \end{figure}
 \FloatBarrier
 
+\autoref{fig:k3_40} presenterar intensitetsspektrat för en \SI{3}{\milli\m} tjock kvartskristall, där ljuset infaller vinkelrätt mot den optiska axeln. Analysatorn är vriden \SI{-40}{\degree} relativt polarisatorn.
+
 \FloatBarrier
 \begin{figure}[ht!]
 	\centering
@@ -317,6 +327,8 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 	\label{fig:k3_40}
 \end{figure}
 \FloatBarrier
+
+I \autoref{fig:anpassning} presenteras den, enligt \eqref{eq:deltaMax}, beräknade skillnaden i brytningsindex för utvalda maxima i \autoref{fig:k3_40}. I figuren syns även skillnaden i brytningsindex som en funktion av ökad våglängd, enligt \eqref{eq:deltaCauchy}. Variablerna $A$, $B$ och $m$ togs fram genom en anpassning av \eqref{eq:cauchyMax} till datan som går att utläsa ur \autoref{fig:k3_40}. Bästa anpasningen gav då $A = 0.0090081$, $B = \SI{0.0001519}{\micro\m²}$ och $m = 58$.
 
 \FloatBarrier
 
@@ -364,8 +376,15 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 	\caption{Skillnad i brytningsindex beräknade med \eqref{eq:deltaMax} från datan samt funktionen \eqref{eq:deltaCauchy}. $A$, $B$ och $m$ togs fram genom en anpassning av \eqref{eq:cauchyMax} där $A$, $B$ och $m$ tilläts variera. Bästa anpassning gav $A=\SI{\A}{}$, $B=\SI{\B}{\micro\meter\squared}$ och $m=\m$.}
 	\label{fig:anpassning}
 \end{figure}
-
 \FloatBarrier
+
+\subsection{Undersökning av optisk aktivitet i en kvartskristall}
+
+I följande mätningar undersöktes en cirka \SI{1}{\centi\m} tjock kvartskristall som var kluven sådana att ljuset infaller parallellt med den optiska axeln.
+
+\autoref{fig:aktiv1}, \autoref{fig:aktiv2} och \autoref{fig:aktiv3} presenterar intensitetsspektrat för denna kristall, där polarisatorn hölls vertikalt fix och analysatorns vridning ökar medurs med varje figur.
+
+\autoref{fig:aktiv1} har sitt minima för $\lambda = \SI{537.63}{\nano\m}$, \autoref{fig:aktiv2} för $\lambda = \SI{593.87}{\nano\m}$, och \autoref{fig:aktiv3} för $\lambda = \SI{649.71}{\nano\m}$. Notera särskilt att minimat förskjuts mot längre våglängder då analysatorns vridning ökar.
 
 \FloatBarrier
 \begin{figure}[ht!]
@@ -394,11 +413,19 @@ Under alla spektralmätningar hölls polarisatorn vinkelrätt fix, där analysat
 \end{figure}
 \FloatBarrier
 
-Reflektion brewstervinkel: \SI{222}{\degree}, \SI{282}{\degree}.
+\subsection{Bestämning av brewstervinkel och brytningsindex för en glasskiva}
+
+För en glasskiva som belystes med horisontalpolariserat ljus antecknades brewstervinkeln till $\theta_p = \SI{60}{\degree}$, därefter användes \eqref{eq:n_brewster} för att beräkna glasskivans brytningsindex, vilket blev $n = tan(\theta_p) \approx 1.7$.
+
+%Reflektion brewstervinkel: \SI{222}{\degree}, \SI{282}{\degree}.
 
 \section{Diskussion}
 
 % Likheter mellan figur1 (fritt spektra), 4, 6 och varför det är ett förväntat resultat	- 	Anton
+
+Tydliga likheter mellan spektrat för vitljuslampan (\autoref{fig:fritt}), \autoref{fig:k1OptAx} och \autoref{fig:k2_110} kan observeras. För den mindre kristallen (\autoref{fig:k1OptAx}) beror detta på att båda polarisatorn och analysatorn är vertikala, samt att ljusets polarisationsriktning antingen är parallell eller vinkelrät med den optiska axeln. Ljuset kommer då passera igenom system oförändrat.
+
+För \autoref{fig:k2_110} blir det lite mer komplicerat då analysatorn är roterad \SI{-110}{\degree} relativt polarisatorn. Eftersom samma spektra som för enbart vitljuslampan återfås, så antas polarisationsriktning av ljuset roteras antingen \SI{+70}{\degree} eller \SI{-110}{\degree} då det passerar genom kristallen. Detta kan exempelvis ske om fasförskjutningen är en multipel av $\pi$ och vinkeln mellan polarisationsriktningen och den optiska axeln är antingen \SI{-55}{\degree} eller \SI{35}{\degree}. Kristallen fungerar då som en halvvågsplatta.
 
 % oscillationerna i spektrat för kristallerna 							- 	Johan
 
@@ -412,10 +439,17 @@ Kurvanpassningen i \autoref{fig:anpassning} gav en mycket nära anpassning, men 
 
 % Figur 9, 10, 11 => levo-rototary, rotation av kristallen => ingenting 			- 	Anton
 
+Rotationen av kristallen vid undersökningen av optisk aktivitet gav ingen märkbar påverkan, vilket är förväntat då kristallen är symmetrisk runt den optiska axeln. I och med att en rotation medurs förskjuter minimat mot längre våglängder i Figur \ref{fig:aktiv1}, \ref{fig:aktiv2} och \ref{fig:aktiv3}, så måste kristallen vara levorotatory. Detta för att ljus av kortare våglängder blir synligt vid större rotationsvinklar, jämfört med ljus av längre våglängder, vilket stämmer överens med \eqref{eq:rotary}.
+
+
 % brewstervinkeln => brytningsindexet för glaset. 						- 	Anton
 
+Mätningen av brewstervinkeln för en glasskiva medförde ett brytningsindex på $n \approx 1.7$, vilket överensstämmer med vanliga brytningsindex för glas. Själva mätningen gjordes med ögonmått, vilket självklart påverkar resultatets exakthet.
+
 % Slutsats												- 	Nån
- 
+
+Sammanfattningsvis stämde de experimentella mätningarna väl överens med de teoretiska modeller som använts, och inga egentliga diskrepanser hittades.
+
  \bibliography{bibliography}{}
  \bibliographystyle{plain}
 
